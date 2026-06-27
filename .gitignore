@@ -1,3 +1,13 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Vite
+*.local
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
