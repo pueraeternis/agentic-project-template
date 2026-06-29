@@ -1,0 +1,121 @@
+---
+
+alwaysApply: true
+description: Repository-wide implementation workflow and engineering principles
+-------------------------------------------------------------------------------
+
+# Plan-Driven Implementation
+
+Implement only work authorized by the current implementation plan.
+
+Before writing code:
+
+1. Read the active implementation plan.
+2. Confirm the implementation scope.
+3. Understand the acceptance criteria.
+4. Respect documented architectural boundaries.
+
+If additional work is discovered during implementation:
+
+* stop;
+* document the finding;
+* create or update a plan.
+
+Do not silently expand scope.
+
+---
+
+# Documentation Before Implementation
+
+Repository documentation is the source of truth.
+
+Read in this order:
+
+1. `AGENTS.md`
+2. `PROJECT.md`
+3. `ROADMAP.md`
+4. `ARCHITECTURE.md`
+5. Relevant ADRs
+6. Active implementation plan
+
+When documentation conflicts with chat instructions, update the documentation before changing the implementation.
+
+---
+
+# Scope Control
+
+Implement only the approved scope.
+
+Avoid:
+
+* unrelated refactoring;
+* speculative engineering;
+* premature optimization;
+* future roadmap phases.
+
+One implementation should correspond to one implementation plan.
+
+---
+
+# Architectural Boundaries
+
+Respect the documented architecture.
+
+Do not:
+
+* bypass defined component boundaries;
+* violate dependency direction;
+* duplicate responsibilities between components.
+
+When architecture must change:
+
+1. Update `ARCHITECTURE.md`.
+2. Record an ADR if appropriate.
+3. Continue implementation.
+
+Architecture changes are part of implementation.
+
+---
+
+# Simplicity First
+
+Prefer the simplest architecture that satisfies:
+
+* the approved implementation plan;
+* the documented architecture;
+* current project requirements.
+
+Do not introduce:
+
+* additional layers;
+* abstractions;
+* design patterns;
+* extension points;
+* indirection
+
+only because they might be useful in the future.
+
+Evolve the architecture incrementally as project complexity grows.
+
+Avoid premature optimization and speculative engineering.
+
+---
+
+# Validation
+
+Before considering implementation complete:
+
+* verify acceptance criteria;
+* run required validation commands;
+* update documentation when required;
+* update implementation checklist.
+
+Implementation is complete only after validation succeeds.
+
+---
+
+# General Rule
+
+Prefer the simplest architecture and implementation that satisfy the approved plan.
+
+Introduce complexity only when it is justified by the documented project requirements or architecture.

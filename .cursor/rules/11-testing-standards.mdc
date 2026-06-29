@@ -1,0 +1,186 @@
+---
+description: General testing and validation standards
+alwaysApply: false
+---
+
+# Testing Standards
+
+Testing is part of implementation.
+
+New functionality should be accompanied by appropriate validation.
+
+---
+
+# Testing Philosophy
+
+Tests should verify:
+
+- business behavior;
+- domain rules;
+- validation logic;
+- system interactions.
+
+Avoid testing implementation details.
+
+Prefer testing observable behavior.
+
+---
+
+# Testing Levels
+
+Use the lowest practical testing level.
+
+Typical hierarchy:
+
+- Unit tests
+- Integration tests
+- End-to-end or system tests
+
+Keep fast tests separate from slower integration tests whenever practical.
+
+---
+
+# Unit Tests
+
+Unit tests should:
+
+- run quickly;
+- be deterministic;
+- avoid external dependencies;
+- test one unit of behavior.
+
+Unit tests should not require:
+
+- network access;
+- external APIs;
+- production databases;
+- live LLMs.
+
+---
+
+# Integration Tests
+
+Integration tests verify interaction between components.
+
+Examples include:
+
+- service integrations;
+- persistence;
+- external adapters;
+- messaging;
+- API boundaries.
+
+Use isolated test environments whenever possible.
+
+---
+
+# Determinism
+
+Tests should produce the same result on every execution.
+
+Avoid dependencies on:
+
+- current time;
+- execution order;
+- random values without fixed seeds;
+- mutable external state.
+
+Prefer fixtures and controlled test data.
+
+---
+
+# Regression Testing
+
+Every bug fix should include a regression test whenever practical.
+
+Preferred workflow:
+
+```text
+Failing Test
+      ↓
+Implement Fix
+      ↓
+Passing Test
+```
+
+The test should reproduce the original issue.
+
+---
+
+# Validation
+
+Before completing implementation, perform the project's required validation.
+
+Typical validation includes:
+
+- formatting;
+- static analysis;
+- automated tests;
+- manual verification.
+
+Project-specific validation procedures are documented separately.
+
+---
+
+# Test Design
+
+Prefer tests that are:
+
+- readable;
+- focused;
+- independent;
+- maintainable.
+
+Avoid duplicated test logic.
+
+Prefer reusable fixtures over repeated setup code.
+
+---
+
+# External Systems
+
+Mock or isolate external systems during automated testing whenever practical.
+
+Examples include:
+
+- databases;
+- web services;
+- LLM providers;
+- message brokers;
+- cloud services.
+
+Tests should remain stable regardless of external availability.
+
+---
+
+# Coverage Philosophy
+
+Coverage is an indicator, not a goal.
+
+Prioritize testing:
+
+- critical business logic;
+- validation rules;
+- safety mechanisms;
+- important workflows.
+
+Avoid writing tests solely to increase coverage metrics.
+
+---
+
+# Definition of Done
+
+Implementation is not complete until:
+
+- required tests have been added or updated;
+- validation has been performed;
+- regressions have been considered;
+- project-specific quality requirements have been satisfied.
+
+---
+
+# General Rule
+
+Tests should increase confidence in the implementation.
+
+Prefer meaningful tests over a large number of superficial tests.

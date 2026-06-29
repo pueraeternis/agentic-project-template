@@ -1,0 +1,187 @@
+---
+description: General Python engineering standards
+globs: "**/*.py"
+alwaysApply: false
+---
+
+# Python Engineering Standards
+
+These rules apply to Python source code.
+
+Project-specific conventions take precedence where documented.
+
+---
+
+# Type Safety
+
+Use type annotations for all public functions and methods.
+
+Prefer explicit types over `Any`.
+
+Use structured models instead of untyped dictionaries whenever practical.
+
+Prefer:
+
+- explicit return types;
+- typed collections;
+- domain models.
+
+Avoid unnecessary use of:
+
+- `Any`;
+- `dict[str, Any]`;
+- untyped containers.
+
+---
+
+# Function Design
+
+Functions should:
+
+- perform one responsibility;
+- have explicit inputs;
+- have explicit outputs;
+- minimize side effects.
+
+Prefer small, composable functions.
+
+Avoid generic functions such as:
+
+```python
+def process(data):
+    ...
+```
+
+Use descriptive names that reflect the business responsibility.
+
+---
+
+# Classes
+
+Classes should have a single responsibility.
+
+Prefer composition over inheritance.
+
+Avoid deep inheritance hierarchies unless clearly justified.
+
+---
+
+# Error Handling
+
+Use explicit exception types.
+
+Raise exceptions that accurately describe the failure.
+
+Never silently ignore exceptions.
+
+Avoid:
+
+```python
+except Exception:
+    pass
+```
+
+Catch only exceptions that can be handled meaningfully.
+
+---
+
+# Logging
+
+Use the project's logging framework.
+
+Prefer structured or parameterized logging.
+
+Avoid string interpolation in logging calls.
+
+Prefer:
+
+```python
+logger.info("Created task %s", task_id)
+```
+
+Avoid:
+
+```python
+logger.info(f"Created task {task_id}")
+```
+
+Do not use `print()` outside CLI or explicitly interactive utilities.
+
+---
+
+# Imports
+
+Keep imports at module level.
+
+Avoid:
+
+- dynamic imports;
+- import-time side effects;
+- circular dependencies.
+
+Use `TYPE_CHECKING` when type-only imports would otherwise create dependency cycles.
+
+---
+
+# Configuration
+
+Do not hardcode:
+
+- credentials;
+- secrets;
+- endpoints;
+- environment-specific values.
+
+Configuration should come from the project's configuration mechanism.
+
+---
+
+# Documentation
+
+Public APIs should include docstrings.
+
+Internal helpers should be documented only when the intent is not obvious.
+
+Prefer concise documentation over repeating the implementation.
+
+---
+
+# Package Structure
+
+Keep modules focused.
+
+Avoid generic packages such as:
+
+```text
+utils
+helpers
+common
+misc
+```
+
+Prefer packages that represent explicit responsibilities.
+
+---
+
+# Maintainability
+
+Prefer:
+
+- readability;
+- explicit behavior;
+- deterministic code;
+- simple implementations.
+
+Avoid:
+
+- premature optimization;
+- unnecessary abstraction;
+- speculative engineering.
+
+---
+
+# General Rule
+
+Write code that is easy to understand, review, and maintain.
+
+Clarity is preferred over cleverness.

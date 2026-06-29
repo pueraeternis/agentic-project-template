@@ -1,0 +1,88 @@
+---
+alwaysApply: true
+description: Project-specific engineering conventions
+---
+
+# Project Conventions
+
+This rule contains conventions that are specific to this repository.
+
+It supplements the framework rules.
+
+When this rule conflicts with a framework rule, follow this rule.
+
+---
+
+# Project Technology Stack
+
+Document technologies that are mandatory for this project.
+
+Examples:
+
+- dependency manager
+- web framework
+- AI framework
+- database
+- testing framework
+
+---
+
+# Project Architecture
+
+Describe architecture decisions that are unique to this project.
+
+Examples:
+
+- package layout
+- component ownership
+- runtime model
+- deployment model
+
+Do not repeat framework documentation.
+
+---
+
+# Project Coding Conventions
+
+Document repository-specific coding conventions.
+
+Examples:
+
+- naming conventions
+- package structure
+- configuration patterns
+- logging conventions
+
+Only include conventions that differ from the framework defaults.
+
+---
+
+# Project Validation
+
+Document project-specific validation commands if they differ from the framework.
+
+Examples:
+
+```bash
+uv run pytest tests/integration
+uv run alembic check
+```
+
+---
+
+# Project Constraints
+
+Document constraints that implementation agents must respect.
+
+Examples:
+
+- Python version
+- deployment platform
+- compatibility requirements
+- external system limitations
+
+---
+
+# Project Notes
+
+Document any additional repository-specific guidance that does not belong in the shared framework.

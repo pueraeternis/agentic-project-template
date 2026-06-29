@@ -1,0 +1,140 @@
+---
+description: Documentation-driven development workflow
+alwaysApply: true
+---
+
+# Documentation Workflow
+
+Documentation is a first-class engineering artifact.
+
+Implementation and documentation evolve together.
+
+Permanent project knowledge must be recorded in the repository.
+
+---
+
+# Documentation Responsibilities
+
+Use each document according to its purpose.
+
+| Document | Responsibility |
+|----------|----------------|
+| `PROJECT.md` | Project vision, goals, scope |
+| `ROADMAP.md` | Long-term implementation strategy |
+| `ARCHITECTURE.md` | System organization and boundaries |
+| ADRs | Significant architectural decisions |
+| Plans | Authorized implementation increments |
+| `PROGRESS.md` | Completed engineering history |
+| `RUNBOOK.md` | Operational procedures and project-specific commands |
+
+Avoid duplicating information across documents.
+
+Each piece of knowledge should have one authoritative location.
+
+---
+
+# Documentation Lifecycle
+
+Project knowledge evolves through the following stages:
+
+```text
+Idea
+    ↓
+PROJECT.md
+    ↓
+ROADMAP.md
+    ↓
+ARCHITECTURE.md
+    ↓
+Implementation Plan
+    ↓
+Implementation
+    ↓
+PROGRESS.md
+```
+
+Significant architectural decisions should be recorded as ADRs.
+
+---
+
+# Documentation Updates
+
+Update documentation whenever:
+
+- project goals change;
+- architecture changes;
+- implementation workflow changes;
+- repository structure changes;
+- new permanent project knowledge appears.
+
+Do not leave important decisions only in chat history.
+
+---
+
+# Architectural Decisions
+
+Create or update an ADR when a decision:
+
+- changes component boundaries;
+- introduces a new architectural pattern;
+- establishes a long-term engineering convention;
+- is difficult or costly to reverse.
+
+Do not create ADRs for ordinary implementation details.
+
+---
+
+# Progress Tracking
+
+`PROGRESS.md` records completed work only.
+
+Record:
+
+- completed implementation increments;
+- engineering milestones;
+- important artifacts;
+- completed architectural work.
+
+Do not record:
+
+- future work;
+- TODO lists;
+- implementation ideas.
+
+---
+
+# Documentation Consistency
+
+Repository documentation should remain internally consistent.
+
+When updating one document, verify whether related documents also require updates.
+
+Examples:
+
+- Architecture changes may require ADR updates.
+- Completed plans should be reflected in `PROGRESS.md`.
+- Project scope changes may require updates to both `PROJECT.md` and `ROADMAP.md`.
+
+---
+
+# Repository Knowledge Rule
+
+If a discussion results in:
+
+- a permanent engineering decision;
+- a project convention;
+- an architectural rule;
+- a repeatable workflow;
+- a significant implementation strategy;
+
+document it in the repository.
+
+Do not rely on conversational memory.
+
+---
+
+# General Rule
+
+Documentation drives implementation.
+
+Implementation should not become the only source of project knowledge.

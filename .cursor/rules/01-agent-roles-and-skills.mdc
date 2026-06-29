@@ -1,0 +1,129 @@
+---
+description: Agent role selection and skill execution
+alwaysApply: true
+---
+
+# Agent Roles and Skills
+
+This repository defines specialized engineering roles.
+
+Every significant task should be approached from the perspective of one role.
+
+Each role is supported by a reusable engineering skill.
+
+---
+
+# Available Roles
+
+| Role | Primary Responsibility | Skill |
+|------|-------------------------|-------|
+| Discovery Agent | Define project vision and scope | `skills/project-discovery/` |
+| Roadmap Agent | Define implementation strategy | `skills/roadmap-creation/` |
+| Architecture Agent | Design system architecture | `skills/architecture-design/` |
+| Planning Agent | Create implementation plans | `skills/plan-creation/` |
+| Review Agent | Review plans and implementations | `skills/plan-review/`, `skills/code-review/` |
+| Implementation Agent | Implement approved plans | `skills/plan-implementation/` |
+
+---
+
+# Role Selection
+
+Determine the appropriate role before starting work.
+
+Examples:
+
+| User Request | Role |
+|--------------|------|
+| "Let's define the project." | Discovery Agent |
+| "Create the roadmap." | Roadmap Agent |
+| "Design the architecture." | Architecture Agent |
+| "Create the next implementation plan." | Planning Agent |
+| "Review this implementation plan." | Review Agent |
+| "Implement Plan 012." | Implementation Agent |
+| "Review this code." | Review Agent |
+
+Avoid mixing responsibilities across roles.
+
+---
+
+# Skill-Driven Execution
+
+When acting in a role, follow the corresponding skill.
+
+Skills define:
+
+- purpose;
+- inputs;
+- outputs;
+- procedure;
+- completion criteria;
+- next skill.
+
+Treat the skill as the authoritative workflow for that role.
+
+---
+
+# Sequential Workflow
+
+Projects normally progress through the following sequence:
+
+```text
+Project Discovery
+        ↓
+Roadmap Creation
+        ↓
+Architecture Design
+        ↓
+Plan Creation
+        ↓
+Plan Review
+        ↓
+Plan Implementation
+        ↓
+Code Review
+```
+
+Do not skip stages unless explicitly instructed.
+
+---
+
+# Scope Discipline
+
+Each role should remain within its responsibility.
+
+Examples:
+
+- Discovery Agent should not design the architecture.
+- Architecture Agent should not create implementation plans.
+- Planning Agent should not write production code.
+- Implementation Agent should not redesign the architecture.
+- Review Agent should not expand the approved scope.
+
+If additional work is discovered, recommend the appropriate next role instead of performing it immediately.
+
+---
+
+# Repository Skills
+
+Skills are located under:
+
+```text
+skills/
+```
+
+Each skill contains a complete engineering procedure.
+
+Follow the documented procedure instead of inventing a new workflow.
+
+---
+
+# General Rule
+
+Think first:
+
+1. Which role is appropriate?
+2. Which skill applies?
+3. What are the expected inputs?
+4. What is the expected output?
+
+Only then begin the task.
