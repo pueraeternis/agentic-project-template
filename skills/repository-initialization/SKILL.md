@@ -4,192 +4,232 @@
 
 This skill transforms approved project documentation into a repository that is ready for implementation.
 
-Repository Initialization does not implement the project.
+Repository Initialization does **not** design or implement the project.
 
-Instead, it synchronizes the repository with the approved engineering decisions and prepares it for the first implementation plan.
+Instead, it materializes the approved project and engineering decisions into a consistent repository structure.
 
-The output of this skill is an initialized repository that is ready for development.
-
----
-
-## Role
-
-Initialization Agent
+The result is a repository ready for the first implementation plan.
 
 ---
 
-## When to Use
+# Lifecycle Stage
+
+```text
+Project Discovery
+        ↓
+Roadmap Creation
+        ↓
+Architecture Design
+        ↓
+Engineering Design
+        ↓
+Repository Initialization
+        ↓
+Plan Creation
+```
+
+Repository Initialization is the bridge between project design and implementation.
+
+---
+
+# Role
+
+Primary role:
+
+**Initialization Agent**
+
+---
+
+# When to Use
 
 Use this skill when:
 
-- `PROJECT.md` has been approved;
-- `ROADMAP.md` has been approved;
-- `ARCHITECTURE.md` has been approved;
-- `ENGINEERING.md` has been approved;
-- a new project repository is being initialized.
+* `PROJECT.md` has been approved;
+* `ROADMAP.md` has been approved;
+* `ARCHITECTURE.md` has been approved;
+* `ENGINEERING.md` has been approved;
+* a new project repository is being initialized.
 
-This skill is normally executed once at the beginning of a project.
+Normally this skill is executed once.
 
-It may be executed again later to synchronize repository metadata and documentation, provided no implementation artifacts are overwritten.
+It may later be executed again to synchronize repository metadata without modifying implementation artifacts.
 
 Do not use this skill for:
 
-- implementation planning;
-- writing production code;
-- repository bootstrap;
-- dependency installation;
-- project implementation.
+* architecture design;
+* engineering design;
+* implementation planning;
+* production code;
+* dependency installation;
+* runtime bootstrap.
 
 ---
 
-## Inputs
+# Inputs
 
-The skill requires:
+Required:
 
-- approved `PROJECT.md`;
-- approved `ROADMAP.md`;
-- approved `ARCHITECTURE.md`;
-- approved `ENGINEERING.md`;
-- repository framework templates.
+* `PROJECT.md`
+* `ROADMAP.md`
+* `ARCHITECTURE.md`
+* `ENGINEERING.md`
 
-All engineering decisions should already be documented.
+Additional inputs:
 
-Repository Initialization must not invent missing decisions.
+* framework templates;
+* framework rules;
+* repository skeleton.
 
----
-
-## Outputs
-
-The skill produces an initialized repository by:
-
-- creating project documentation from templates;
-- creating project-local Cursor rules;
-- creating project-local Codex rules;
-- creating project operational documentation;
-- synchronizing repository metadata;
-- validating repository structure.
-
-The repository should be ready for the first implementation plan.
+Repository Initialization must never invent missing project decisions.
 
 ---
 
-## Procedure
+# Outputs
 
-### Step 1 — Validate Project Documentation
+Produce an initialized repository by:
 
-Verify that the following documents exist and have been approved:
+* generating project documentation from templates;
+* generating project-local Cursor configuration;
+* generating project-local Codex configuration;
+* generating operational documentation;
+* synchronizing repository metadata;
+* validating repository structure.
 
-- `PROJECT.md`
-- `ROADMAP.md`
-- `ARCHITECTURE.md`
-- `ENGINEERING.md`
-
-Stop if required project documentation is missing.
-
-Repository Initialization never invents missing project information.
+No production source code should be generated.
 
 ---
 
-### Step 2 — Create Project Documentation
+# Procedure
 
-Generate project-specific documentation from repository templates.
+## Step 1 — Validate Project Design
+
+Verify that all required project documentation exists and is approved:
+
+* `PROJECT.md`
+* `ROADMAP.md`
+* `ARCHITECTURE.md`
+* `ENGINEERING.md`
+
+Stop immediately if project design is incomplete.
+
+---
+
+## Step 2 — Materialize Documentation
+
+Generate project-specific documents from templates.
+
+Typical outputs:
+
+* `README.md`
+* `RUNBOOK.md`
+
+Populate templates using approved project documentation.
+
+---
+
+## Step 3 — Generate Tool Configuration
+
+Generate project-local configuration for supported AI tools.
 
 Examples:
 
-- `README.md`
-- `RUNBOOK.md`
+```text
+.cursor/templates/90-project-local.mdc
 
-Populate templates using the approved project documentation.
+.codex/templates/project-local.md
+```
 
----
+Only project-specific rules should be generated.
 
-### Step 3 — Create Project Rules
-
-Generate project-local development rules.
-
-Examples:
-
-- `.cursor/rules/90-project-local.mdc`
-- `.codex/project-local.md`
-
-Only include project-specific conventions.
-
-Global framework rules remain unchanged.
+Framework rules remain unchanged.
 
 ---
 
-### Step 4 — Synchronize Repository Structure
+## Step 4 — Synchronize Repository Structure
 
-Verify that the repository structure matches the approved architecture.
+Create or verify:
 
-Create missing documentation directories when required.
+* documentation directories;
+* repository layout;
+* project metadata;
+* framework integration files.
 
-Do not generate implementation code.
+Do not create implementation code.
 
 ---
 
-### Step 5 — Validate Repository
+## Step 5 — Validate Initialization
 
 Verify that:
 
-- required documentation exists;
-- repository structure is complete;
-- generated project rules exist;
-- project metadata is consistent.
+* required documentation exists;
+* generated documentation is consistent;
+* project-local rules exist;
+* repository structure matches Engineering Design.
 
-The repository should be ready for implementation planning.
+The repository should now be ready for implementation planning.
 
 ---
 
-## Rules
+# Rules
 
 During Repository Initialization:
 
-- synchronize the repository with approved documentation;
-- never invent project decisions;
-- never redesign architecture;
-- never modify project goals;
-- never implement production code;
-- never install dependencies;
-- never bootstrap the runtime environment;
-- never create implementation artifacts.
+Do:
+
+* materialize approved project decisions;
+* generate repository artifacts;
+* synchronize documentation;
+* preserve framework integrity.
+
+Do not:
+
+* redesign the project;
+* modify architecture;
+* invent engineering decisions;
+* install dependencies;
+* initialize runtime environments;
+* generate production code.
 
 Repository Initialization prepares the repository.
 
-Implementation begins later.
+Implementation begins afterwards.
 
 ---
 
-## Initialization Principles
+# Principles
 
 Repository Initialization should be:
 
-- deterministic;
-- repeatable;
-- idempotent;
-- documentation-driven;
-- implementation-independent.
+* deterministic;
+* repeatable;
+* idempotent;
+* documentation-driven;
+* implementation-independent.
 
-Running the skill multiple times should update repository metadata without damaging existing implementation work.
+Running the skill multiple times should synchronize repository metadata without damaging existing implementation work.
 
 ---
 
-## Success Criteria
+# Success Criteria
 
 The skill is complete when:
 
-- required project documents exist;
-- project documentation has been generated;
-- project-local rules have been created;
-- repository structure is synchronized;
-- the repository is ready for Plan Creation.
+* required project documentation exists;
+* project artifacts have been generated;
+* project-local AI tool configuration has been generated;
+* repository structure is synchronized;
+* repository metadata is consistent;
+* the repository is ready for Plan Creation.
 
-No production code should be generated.
+No implementation artifacts should be produced.
 
 ---
 
-## Next Skill
+# Handover
 
 After Repository Initialization is complete, continue with:
 
 **Plan Creation**
+
+The repository is now synchronized with the approved project documentation and ready for incremental implementation through engineering plans.

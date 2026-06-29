@@ -1,28 +1,34 @@
 ---
+
 description: Review, completion, and commit workflow
 alwaysApply: true
----
+-----------------
 
 # Review and Completion
 
-Implementation is not complete until it has been reviewed, validated, and documented.
+Implementation is not complete until it has been:
 
-Review is a required engineering activity, not an optional quality improvement.
+* validated;
+* independently reviewed;
+* documented;
+* accepted.
+
+Review is a mandatory engineering stage of the project lifecycle.
 
 ---
 
-# Review Workflow
-
-After implementation:
+# Completion Workflow
 
 ```text
-Implementation
+Plan Implementation
         ↓
 Validation
         ↓
 Code Review
         ↓
-Documentation Check
+Documentation Update
+        ↓
+Progress Update
         ↓
 Commit
 ```
@@ -35,18 +41,22 @@ Do not skip review unless explicitly instructed.
 
 Review the implementation against:
 
-- the approved implementation plan;
-- project documentation;
-- architectural boundaries;
-- acceptance criteria.
+* the approved implementation plan;
+* `PROJECT.md`;
+* `ROADMAP.md`;
+* `ARCHITECTURE.md`;
+* `ENGINEERING.md`;
+* relevant ADRs;
+* acceptance criteria.
 
 Focus on:
 
-- correctness;
-- completeness;
-- maintainability;
-- consistency;
-- scope compliance.
+* correctness;
+* completeness;
+* maintainability;
+* engineering consistency;
+* architectural compliance;
+* scope compliance.
 
 ---
 
@@ -54,10 +64,11 @@ Focus on:
 
 Confirm that:
 
-- only approved functionality has been implemented;
-- no unrelated changes have been introduced;
-- no undocumented architectural changes exist;
-- implementation remains within the approved plan.
+* only approved functionality has been implemented;
+* no undocumented functionality has been introduced;
+* architectural boundaries have been respected;
+* engineering conventions have been followed;
+* implementation remains within the approved scope.
 
 Reject unnecessary scope expansion.
 
@@ -67,28 +78,42 @@ Reject unnecessary scope expansion.
 
 Before completing the work, verify whether updates are required for:
 
-- `ARCHITECTURE.md`;
-- ADRs;
-- implementation plans;
-- `PROGRESS.md`;
-- `RUNBOOK.md`.
+* `ARCHITECTURE.md`;
+* `ENGINEERING.md`;
+* ADRs;
+* implementation plans;
+* `RUNBOOK.md`;
+* `PROGRESS.md`.
 
-Repository knowledge should remain complete and internally consistent.
+Repository knowledge should remain internally consistent.
 
 ---
 
 # Validation
 
-Perform all project-required validation before completion.
+Perform all project-required validation.
 
 Typical validation includes:
 
-- formatting;
-- static analysis;
-- automated tests;
-- manual verification.
+* formatting;
+* linting;
+* type checking;
+* automated tests;
+* manual verification.
 
-Project-specific validation commands are defined separately.
+Use the validation commands documented in `ENGINEERING.md`.
+
+---
+
+# Progress Update
+
+When implementation is approved:
+
+* update `PROGRESS.md` when appropriate;
+* complete the implementation checklist;
+* move completed plans according to the documented plan lifecycle.
+
+Project history should accurately reflect completed work.
 
 ---
 
@@ -98,32 +123,34 @@ Create commits only when explicitly requested.
 
 Before committing, verify:
 
-- validation has completed successfully;
-- documentation has been updated where required;
-- no temporary code remains;
-- the repository is in a consistent state.
+* validation has completed successfully;
+* documentation is synchronized with implementation;
+* review findings have been addressed;
+* no temporary code remains;
+* the repository is internally consistent.
 
-Use Conventional Commits unless project-specific rules specify otherwise.
+Use Conventional Commits unless project-specific conventions specify otherwise.
 
 ---
 
-# Definition of Complete
+# Definition of Done
 
 Work is complete when:
 
-- implementation satisfies the approved plan;
-- acceptance criteria are met;
-- validation has passed;
-- documentation has been updated;
-- review findings have been addressed;
-- the repository remains internally consistent.
+* the approved implementation plan has been satisfied;
+* acceptance criteria have been met;
+* validation has succeeded;
+* review has been completed;
+* documentation has been updated where required;
+* project progress has been recorded when appropriate;
+* repository consistency has been preserved.
 
-Code alone does not complete a task.
+Code generation alone does not complete an implementation.
 
 ---
 
 # General Rule
 
-Finish work by leaving the repository in a better and fully consistent state.
+Finish every implementation by leaving the repository in a better, fully documented, and internally consistent state.
 
-Avoid leaving partially updated documentation or incomplete implementation artifacts.
+Implementation, documentation, and project history should always evolve together.

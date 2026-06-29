@@ -6,39 +6,35 @@ description: Repository-wide implementation workflow and engineering principles
 
 # Plan-Driven Implementation
 
-Implement only work authorized by the current implementation plan.
+Implement only work authorized by an approved implementation plan.
 
 Before writing code:
 
 1. Read the active implementation plan.
 2. Confirm the implementation scope.
-3. Understand the acceptance criteria.
-4. Respect documented architectural boundaries.
+3. Review the acceptance criteria.
+4. Review the project architecture.
+5. Review the project engineering decisions.
 
-If additional work is discovered during implementation:
+Implementation is the execution of an approved engineering contract.
 
-* stop;
-* document the finding;
-* create or update a plan.
-
-Do not silently expand scope.
+Do not invent new work.
 
 ---
 
-# Documentation Before Implementation
+# Required Project Context
 
-Repository documentation is the source of truth.
-
-Read in this order:
+Before implementation, review:
 
 1. `AGENTS.md`
 2. `PROJECT.md`
 3. `ROADMAP.md`
 4. `ARCHITECTURE.md`
-5. Relevant ADRs
-6. Active implementation plan
+5. `ENGINEERING.md`
+6. Relevant ADRs
+7. Active implementation plan
 
-When documentation conflicts with chat instructions, update the documentation before changing the implementation.
+If documentation conflicts with implementation, resolve the documentation first rather than silently changing the code.
 
 ---
 
@@ -46,58 +42,74 @@ When documentation conflicts with chat instructions, update the documentation be
 
 Implement only the approved scope.
 
-Avoid:
+Do not introduce:
 
 * unrelated refactoring;
 * speculative engineering;
 * premature optimization;
-* future roadmap phases.
+* future roadmap phases;
+* undocumented functionality.
 
-One implementation should correspond to one implementation plan.
+One implementation should correspond to one approved implementation plan.
+
+If additional work is discovered:
+
+* stop;
+* document the finding;
+* recommend creating or updating a plan.
+
+Never silently expand scope.
 
 ---
 
-# Architectural Boundaries
+# Architectural and Engineering Boundaries
 
-Respect the documented architecture.
+Respect both:
+
+* architectural decisions (`ARCHITECTURE.md`);
+* engineering decisions (`ENGINEERING.md`).
 
 Do not:
 
-* bypass defined component boundaries;
-* violate dependency direction;
-* duplicate responsibilities between components.
+* violate architectural boundaries;
+* bypass dependency rules;
+* duplicate responsibilities;
+* ignore documented engineering conventions.
 
-When architecture must change:
+If architectural changes are required:
 
 1. Update `ARCHITECTURE.md`.
-2. Record an ADR if appropriate.
-3. Continue implementation.
+2. Create or update an ADR when appropriate.
+3. Continue implementation only after the architecture has been updated.
 
-Architecture changes are part of implementation.
+If engineering conventions change:
+
+1. Update `ENGINEERING.md`.
+2. Update related operational documentation if required.
 
 ---
 
-# Simplicity First
+# Implementation Principles
 
-Prefer the simplest architecture that satisfies:
+Prefer:
 
-* the approved implementation plan;
-* the documented architecture;
-* current project requirements.
+* simple solutions;
+* explicit logic;
+* maintainable code;
+* deterministic behavior;
+* documented conventions.
 
-Do not introduce:
+Avoid:
 
-* additional layers;
-* abstractions;
-* design patterns;
-* extension points;
-* indirection
+* speculative engineering;
+* unnecessary abstractions;
+* future-proofing;
+* hidden behavior;
+* unnecessary extension points.
 
-only because they might be useful in the future.
+Implement today's requirements.
 
-Evolve the architecture incrementally as project complexity grows.
-
-Avoid premature optimization and speculative engineering.
+Leave tomorrow's requirements to future plans.
 
 ---
 
@@ -106,16 +118,39 @@ Avoid premature optimization and speculative engineering.
 Before considering implementation complete:
 
 * verify acceptance criteria;
-* run required validation commands;
-* update documentation when required;
-* update implementation checklist.
+* execute required validation commands;
+* complete the implementation checklist;
+* update documentation when repository knowledge changes;
+* ensure repository consistency.
 
-Implementation is complete only after validation succeeds.
+Implementation is complete only after successful validation.
+
+---
+
+# Repository Consistency
+
+Implementation and documentation evolve together.
+
+When implementation changes durable project knowledge, update the corresponding repository artifacts.
+
+Typical examples:
+
+* architecture → `ARCHITECTURE.md`
+* engineering conventions → `ENGINEERING.md`
+* completed work → `PROGRESS.md`
+* significant architectural decisions → ADRs
+
+Never leave repository documentation behind the implementation.
 
 ---
 
 # General Rule
 
-Prefer the simplest architecture and implementation that satisfy the approved plan.
+The simplest correct implementation is preferred.
 
-Introduce complexity only when it is justified by the documented project requirements or architecture.
+Introduce complexity only when it is required by:
+
+* the approved implementation plan;
+* the documented architecture;
+* the documented engineering design;
+* accepted project requirements.

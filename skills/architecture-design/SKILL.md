@@ -1,248 +1,226 @@
-# SKILL.md
-
 # Architecture Design
 
 ## Purpose
 
-This skill transforms an approved `PROJECT.md` and `ROADMAP.md` into a stable system architecture.
+This skill transforms an approved project definition and roadmap into a stable system architecture.
 
-The architecture defines how the system is organized before implementation planning begins.
+It defines the long-term organization of the system before engineering design and implementation begin.
 
-It establishes system structure, component boundaries, dependency rules, and major components so that implementation plans can be written against a shared technical foundation.
-
-Architecture Design bridges project strategy and implementation planning.
+The resulting architecture becomes the foundation for engineering decisions and implementation planning.
 
 ---
 
-## Role
+# Lifecycle Stage
 
-Reasoning Agent or Architecture Agent
+```text
+Project Discovery
+        ↓
+Roadmap Creation
+        ↓
+Architecture Design
+        ↓
+Engineering Design
+```
+
+Architecture Design defines **how the system is organized**.
+
+Engineering Design later defines **how that architecture will be implemented**.
 
 ---
 
-## When to Use
+# Role
+
+Primary role:
+
+**Architecture Agent**
+
+This skill may also be executed by another reasoning-capable agent when acting in the Architecture Agent role.
+
+---
+
+# When to Use
 
 Use this skill when:
 
-- an approved `ROADMAP.md` exists;
-- the system structure needs to be defined before the first implementation plan;
-- a roadmap phase introduces new major components or boundaries;
-- architectural boundaries or dependency rules need to change.
+* `PROJECT.md` has been approved;
+* `ROADMAP.md` has been approved;
+* the initial architecture must be created;
+* a roadmap phase introduces new architectural capabilities;
+* architectural boundaries need to evolve.
 
 Do not use this skill for:
 
-- project vision definition;
-- roadmap creation;
-- implementation planning;
-- writing production code.
-
-Architecture is created after roadmap approval and before plan creation.
-
----
-
-## Inputs
-
-The skill requires:
-
-- an approved `PROJECT.md`;
-- an approved `ROADMAP.md`;
-- current project documentation (when updating an existing architecture);
-- relevant ADRs (when architecture already exists).
-
-The roadmap should already be stable before architecture design begins.
+* project discovery;
+* engineering decisions;
+* repository initialization;
+* implementation planning;
+* production code.
 
 ---
 
-## Outputs
+# Inputs
 
-The skill produces:
+Required:
 
-- a completed or updated `ARCHITECTURE.md`;
-- defined system structure and major components;
-- documented architectural boundaries;
-- explicit dependency rules;
-- one or more ADRs when significant architectural decisions are made.
+* `PROJECT.md`
+* `ROADMAP.md`
 
-The architecture should provide enough structure for implementation plans to be created without redesigning the system.
+Optional:
+
+* existing `ARCHITECTURE.md`
+* existing ADRs
+
+The project vision and roadmap should already be stable.
 
 ---
 
-## Procedure
+# Outputs
 
-### Step 1 — Understand the Project and Roadmap
+Produce:
+
+* `ARCHITECTURE.md`
+* ADRs (when required)
+
+The architecture should provide sufficient structure for Engineering Design without introducing implementation details.
+
+---
+
+# Procedure
+
+## Step 1 — Understand the Project
 
 Review:
 
-- `PROJECT.md`;
-- `ROADMAP.md`;
-- existing architecture documentation (if any);
-- relevant ADRs.
+* project goals;
+* roadmap phases;
+* constraints;
+* target users;
+* expected capabilities.
 
-Identify:
-
-- project goals and constraints;
-- MVP scope and near-term phases;
-- major capabilities to be delivered;
-- external systems and integration points;
-- constraints that affect system structure.
-
-The architecture should support the approved roadmap, not replace it.
+Architecture must support the approved project direction.
 
 ---
 
-### Step 2 — Define System Structure
-
-Identify the major components of the system.
-
-For each component, define:
-
-- purpose;
-- responsibilities;
-- inputs and outputs;
-- allowed dependencies;
-- constraints.
-
-Focus on components required for the current and immediately upcoming roadmap phases.
-
-Avoid defining components that exist only for distant future phases.
-
----
-
-### Step 3 — Establish Boundaries and Dependency Rules
+## Step 2 — Design the System
 
 Define:
 
-- architectural boundaries between components;
-- allowed dependency directions;
-- prohibited dependencies;
-- ownership of data and control flow.
+* major components;
+* responsibilities;
+* ownership boundaries;
+* dependency rules;
+* integration points.
 
-Boundaries should prevent coupling that would make future implementation harder to reason about.
-
-Dependency rules should be explicit enough that an implementation agent can follow them without guessing.
-
----
-
-### Step 4 — Document External Systems and Flows
-
-Describe:
-
-- external systems and integration boundaries;
-- primary data flow paths;
-- primary control flow paths;
-- validation and safety boundaries relevant to the architecture.
-
-Keep the description at the architectural level.
-
-Implementation details belong in plans.
+Focus on stable system organization rather than implementation.
 
 ---
 
-### Step 5 — Record Significant Decisions
+## Step 3 — Define Flows
 
-When a design choice has long-term consequences, create an ADR.
+Document:
 
-Significant decisions include choices about:
+* control flow;
+* data flow;
+* external integrations;
+* trust boundaries.
 
-- major component structure;
-- integration patterns;
-- persistence strategy;
-- communication models;
-- security or safety boundaries;
-- technology selection with architectural impact.
-
-Not every architectural detail requires an ADR.
-
-Use ADRs for decisions that future work must respect or revisit.
+Remain at the architectural level.
 
 ---
 
-### Step 6 — Validate the Architecture
+## Step 4 — Record Architectural Decisions
 
-Review the architecture for:
+Create ADRs when decisions:
 
-- alignment with `PROJECT.md` and `ROADMAP.md`;
-- clear component boundaries;
-- explicit dependency rules;
-- scope limited to current and near-term needs;
-- no overdesign of future phases;
-- sufficient detail for plan creation.
+* establish long-term architecture;
+* introduce significant trade-offs;
+* are expensive to reverse.
 
-Every major component should have a clear reason to exist in the current roadmap context.
+Avoid ADRs for implementation details.
 
 ---
 
-### Step 7 — Produce ARCHITECTURE.md
+## Step 5 — Validate
 
-Populate the architecture template.
+Verify that:
 
-Describe the system clearly enough that implementation plans can be created without additional architectural design.
-
-Document deferred decisions explicitly rather than solving problems before they are relevant.
+* architecture supports the roadmap;
+* boundaries are explicit;
+* responsibilities are clear;
+* dependency rules are well defined;
+* future phases are not overdesigned.
 
 ---
 
-## Rules
+## Step 6 — Produce Documentation
 
-During Architecture Design:
+Complete:
 
-- define system structure, boundaries, dependency rules, and major components;
-- align architecture with the approved roadmap;
-- scope architecture to current and near-term roadmap phases;
-- defer design for future phases unless required now;
-- record significant decisions as ADRs;
-- focus on organization, not implementation tasks.
+* `ARCHITECTURE.md`
+* ADRs (if required)
+
+The resulting documentation should allow Engineering Design to begin without further architectural discussions.
+
+---
+
+# Rules
+
+Do:
+
+* define stable system structure;
+* document responsibilities;
+* define architectural boundaries;
+* define dependency rules;
+* keep architecture implementation-independent;
+* defer speculative design.
 
 Do not:
 
-- redefine project vision;
-- rewrite the roadmap;
-- create implementation plans;
-- overdesign for future phases;
-- specify file-level implementation details;
-- choose technologies without architectural justification;
-- document ordinary implementation changes in `ARCHITECTURE.md`.
+* choose engineering tooling;
+* define repository structure;
+* select development workflow;
+* define testing strategy;
+* create implementation plans.
 
-The architecture defines *how the system is organized*, not *what code to write next*.
+Those responsibilities belong to Engineering Design.
 
 ---
 
-## Architecture Principles
+# Principles
 
-An architecture should be:
+A good architecture is:
 
-- stable;
-- explicit;
-- boundary-driven;
-- aligned with the roadmap;
-- sufficient for planning;
-- resistant to unnecessary complexity.
+* stable;
+* understandable;
+* boundary-driven;
+* minimally complex;
+* aligned with the roadmap;
+* implementation-independent.
 
-Near-term roadmap phases should be architecturally supported.
+Design for current and near-term roadmap phases.
 
-Future phases may be acknowledged but should not drive premature design.
-
-Individual implementation plans are expected to evolve more frequently than the architecture.
+Avoid speculative architecture.
 
 ---
 
-## Success Criteria
+# Success Criteria
 
 The skill is complete when:
 
-- system structure is defined;
-- major components and their responsibilities are documented;
-- architectural boundaries are explicit;
-- dependency rules are documented;
-- the architecture supports the approved roadmap;
-- future phases are not overdesigned;
-- significant decisions are recorded in ADRs where appropriate;
-- the human approves the resulting `ARCHITECTURE.md`.
+* `ARCHITECTURE.md` is complete;
+* major components are documented;
+* responsibilities are defined;
+* dependency rules are explicit;
+* ADRs have been created where appropriate;
+* the architecture supports Engineering Design;
+* the human approves the resulting architecture.
 
 ---
 
-## Next Skill
+# Handover
 
-After Architecture Design is complete, continue with:
+After Architecture Design is approved, continue with:
 
-**Plan Creation**
+**Engineering Design**
+
+The Engineering Agent will translate the architecture into implementation conventions, repository structure, tooling, and engineering standards before repository initialization begins.

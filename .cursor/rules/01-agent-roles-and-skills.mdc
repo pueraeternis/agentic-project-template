@@ -1,28 +1,64 @@
 ---
+
 description: Agent role selection and skill execution
 alwaysApply: true
----
+-----------------
 
 # Agent Roles and Skills
 
-This repository defines specialized engineering roles.
+This repository defines specialized engineering roles and reusable skills.
 
-Every significant task should be approached from the perspective of one role.
+A role defines **who owns a lifecycle stage**.
 
-Each role is supported by a reusable engineering skill.
+A skill defines **how that stage is executed**.
+
+Every significant task should start by identifying:
+
+1. the lifecycle stage;
+2. the appropriate role;
+3. the corresponding skill;
+4. the expected repository artifact.
+
+---
+
+# Lifecycle Model
+
+```text id="81vy3j"
+Project Discovery
+        ↓
+Roadmap Creation
+        ↓
+Architecture Design
+        ↓
+Engineering Design
+        ↓
+Repository Initialization
+        ↓
+Plan Creation
+        ↓
+Plan Review
+        ↓
+Plan Implementation
+        ↓
+Code Review
+        ↓
+Progress Update
+```
 
 ---
 
 # Available Roles
 
-| Role | Primary Responsibility | Skill |
-|------|-------------------------|-------|
-| Discovery Agent | Define project vision and scope | `skills/project-discovery/` |
-| Roadmap Agent | Define implementation strategy | `skills/roadmap-creation/` |
-| Architecture Agent | Design system architecture | `skills/architecture-design/` |
-| Planning Agent | Create implementation plans | `skills/plan-creation/` |
-| Review Agent | Review plans and implementations | `skills/plan-review/`, `skills/code-review/` |
-| Implementation Agent | Implement approved plans | `skills/plan-implementation/` |
+| Role                 | Primary Responsibility                            | Skill                                        |
+| -------------------- | ------------------------------------------------- | -------------------------------------------- |
+| Discovery Agent      | Define project vision and scope                   | `skills/project-discovery/`                  |
+| Roadmap Agent        | Define project evolution strategy                 | `skills/roadmap-creation/`                   |
+| Architecture Agent   | Design system architecture                        | `skills/architecture-design/`                |
+| Engineering Agent    | Define engineering decisions                      | `skills/engineering-design/`                 |
+| Initialization Agent | Initialize repository from approved documentation | `skills/repository-initialization/`          |
+| Planning Agent       | Create implementation plans                       | `skills/plan-creation/`                      |
+| Review Agent         | Review plans and implementations                  | `skills/plan-review/`, `skills/code-review/` |
+| Implementation Agent | Implement approved plans                          | `skills/plan-implementation/`                |
 
 ---
 
@@ -30,17 +66,17 @@ Each role is supported by a reusable engineering skill.
 
 Determine the appropriate role before starting work.
 
-Examples:
-
-| User Request | Role |
-|--------------|------|
-| "Let's define the project." | Discovery Agent |
-| "Create the roadmap." | Roadmap Agent |
-| "Design the architecture." | Architecture Agent |
-| "Create the next implementation plan." | Planning Agent |
-| "Review this implementation plan." | Review Agent |
-| "Implement Plan 012." | Implementation Agent |
-| "Review this code." | Review Agent |
+| User Request                           | Role                 |
+| -------------------------------------- | -------------------- |
+| "Let's define the project."            | Discovery Agent      |
+| "Create the roadmap."                  | Roadmap Agent        |
+| "Design the architecture."             | Architecture Agent   |
+| "Define the engineering stack."        | Engineering Agent    |
+| "Initialize the repository."           | Initialization Agent |
+| "Create the next implementation plan." | Planning Agent       |
+| "Review this implementation plan."     | Review Agent         |
+| "Implement Plan 012."                  | Implementation Agent |
+| "Review this code."                    | Review Agent         |
 
 Avoid mixing responsibilities across roles.
 
@@ -52,38 +88,35 @@ When acting in a role, follow the corresponding skill.
 
 Skills define:
 
-- purpose;
-- inputs;
-- outputs;
-- procedure;
-- completion criteria;
-- next skill.
+* purpose;
+* lifecycle stage;
+* inputs;
+* outputs;
+* procedure;
+* rules;
+* success criteria;
+* handover.
 
 Treat the skill as the authoritative workflow for that role.
 
 ---
 
-# Sequential Workflow
+# Repository Artifacts
 
-Projects normally progress through the following sequence:
+Each lifecycle stage produces or validates repository artifacts.
 
-```text
-Project Discovery
-        ↓
-Roadmap Creation
-        ↓
-Architecture Design
-        ↓
-Plan Creation
-        ↓
-Plan Review
-        ↓
-Plan Implementation
-        ↓
-Code Review
-```
-
-Do not skip stages unless explicitly instructed.
+| Stage                     | Primary Artifact        |
+| ------------------------- | ----------------------- |
+| Project Discovery         | `PROJECT.md`            |
+| Roadmap Creation          | `ROADMAP.md`            |
+| Architecture Design       | `ARCHITECTURE.md`, ADRs |
+| Engineering Design        | `ENGINEERING.md`        |
+| Repository Initialization | initialized repository  |
+| Plan Creation             | implementation plan     |
+| Plan Review               | review outcome          |
+| Plan Implementation       | implementation changes  |
+| Code Review               | review outcome          |
+| Progress Update           | `PROGRESS.md`           |
 
 ---
 
@@ -93,11 +126,14 @@ Each role should remain within its responsibility.
 
 Examples:
 
-- Discovery Agent should not design the architecture.
-- Architecture Agent should not create implementation plans.
-- Planning Agent should not write production code.
-- Implementation Agent should not redesign the architecture.
-- Review Agent should not expand the approved scope.
+* Discovery Agent should not design the architecture.
+* Roadmap Agent should not create implementation plans.
+* Architecture Agent should not define engineering tooling.
+* Engineering Agent should not redesign the architecture.
+* Initialization Agent should not create production code.
+* Planning Agent should not write production code.
+* Implementation Agent should not redesign the architecture.
+* Review Agent should not expand the approved scope.
 
 If additional work is discovered, recommend the appropriate next role instead of performing it immediately.
 
@@ -119,11 +155,12 @@ Follow the documented procedure instead of inventing a new workflow.
 
 # General Rule
 
-Think first:
+Before starting work, answer:
 
-1. Which role is appropriate?
-2. Which skill applies?
-3. What are the expected inputs?
-4. What is the expected output?
+1. Which lifecycle stage is active?
+2. Which role owns this stage?
+3. Which skill applies?
+4. What inputs are required?
+5. What artifact should be produced or reviewed?
 
 Only then begin the task.

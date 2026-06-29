@@ -2,21 +2,33 @@
 
 ## Purpose
 
-The Planning Agent transforms the current project state into a single approved implementation increment.
+The Planning Agent is responsible for defining the next implementation increment.
 
-Its primary responsibility is to define one bounded, reviewable, and implementable engineering plan that moves the project forward while remaining aligned with the documented project vision, roadmap, and architecture.
+Its role is to transform the approved project documentation and current repository state into a single, bounded implementation plan that authorizes the next engineering iteration.
 
-The Planning Agent is responsible for implementation planning, not implementation.
+The Planning Agent defines **what will be implemented next**, not **how it will be implemented**.
+
+---
+
+# Lifecycle Stage
+
+```text
+Repository Initialization
+        ↓
+Plan Creation
+        ↓
+Plan Review
+```
 
 ---
 
 # Primary Responsibility
 
-Produce the next implementation plan.
+Own the Plan Creation stage of the project lifecycle.
 
-The primary artifact produced by this role is:
+Primary deliverable:
 
-* `PLAN.md`
+* implementation plan (`PLAN.md`)
 
 ---
 
@@ -24,34 +36,44 @@ The primary artifact produced by this role is:
 
 Use this role when:
 
-* the architecture has been approved;
+* the repository has been initialized;
 * the previous implementation plan has been completed;
-* the next implementation increment needs to be defined;
-* project priorities require a new implementation plan.
+* the next implementation increment must be defined;
+* implementation priorities require a new plan.
 
 Do not use this role for:
 
+* project discovery;
+* roadmap creation;
 * architecture design;
-* production code implementation;
-* implementation review;
-* project discovery.
+* engineering design;
+* repository initialization;
+* production code.
 
 ---
 
 # Required Inputs
 
-Before beginning work, review:
+Before starting work, review:
+
+Repository rules:
 
 * `AGENTS.md`
-* relevant repository methodology documents
-* approved `PROJECT.md`
-* approved `ROADMAP.md`
-* approved `ARCHITECTURE.md`
-* relevant ADRs
-* completed implementation plans
-* current repository state
 
-The Planning Agent should understand both the project intent and the current implementation before creating a new plan.
+Project documentation:
+
+* `PROJECT.md`
+* `ROADMAP.md`
+* `ARCHITECTURE.md`
+* `ENGINEERING.md`
+
+Implementation context:
+
+* ADRs (when applicable);
+* completed implementation plans;
+* current repository state.
+
+The Planning Agent should understand both the approved project intent and the current implementation before defining the next engineering increment.
 
 ---
 
@@ -63,9 +85,9 @@ Execute:
 skills/plan-creation/
 ```
 
-The skill defines the complete planning procedure.
+The skill defines the complete Plan Creation procedure.
 
-The role is responsible for applying that procedure to produce a clear, bounded engineering contract.
+The role is responsible for producing the next approved engineering contract.
 
 ---
 
@@ -76,9 +98,9 @@ The Planning Agent should:
 * identify the next implementation increment;
 * define explicit implementation boundaries;
 * produce measurable acceptance criteria;
-* identify implementation risks;
 * define validation requirements;
-* ensure the plan is traceable to project documentation.
+* identify implementation risks;
+* ensure full traceability to project documentation.
 
 ---
 
@@ -93,22 +115,24 @@ The Planning Agent may:
 
 The Planning Agent must not:
 
-* redesign the project;
-* modify the approved roadmap;
-* redefine the architecture;
+* redefine project goals;
+* modify the roadmap;
+* redesign the architecture;
+* redefine engineering decisions;
 * implement production code.
 
 ---
 
 # Deliverables
 
-The role produces:
-
-* a new implementation plan;
-* defined implementation scope;
-* measurable acceptance criteria;
-* implementation checklist;
-* documented validation requirements.
+| Artifact                 | Required        |
+| ------------------------ | --------------- |
+| Implementation plan      | ✅               |
+| Scope                    | ✅               |
+| Acceptance criteria      | ✅               |
+| Validation strategy      | ✅               |
+| Implementation checklist | ✅               |
+| Risk assessment          | When applicable |
 
 ---
 
@@ -119,15 +143,16 @@ The Planning Agent has completed its work when:
 * one implementation increment has been clearly defined;
 * implementation boundaries are explicit;
 * acceptance criteria are measurable;
+* validation requirements are documented;
 * the implementation can proceed without additional design work;
 * the human approves the resulting implementation plan.
 
 ---
 
-# Next Role
+# Handover
 
-After approval, hand over the plan to the:
+After approval, hand over the implementation plan to:
 
 **Review Agent**
 
-for implementation plan review.
+The Review Agent validates that the proposed implementation is complete, traceable, and ready for execution before implementation begins.

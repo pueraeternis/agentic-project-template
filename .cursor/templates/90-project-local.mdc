@@ -1,88 +1,79 @@
 ---
+
 alwaysApply: true
 description: Project-specific engineering conventions
+-----------------------------------------------------
+
+# Project-Specific Conventions
+
+This rule adapts the shared engineering framework to this specific repository.
+
+Project-specific engineering decisions are defined in:
+
+`docs/project/ENGINEERING.md`
+
+Follow that document whenever project-specific conventions are required.
+
+Do not duplicate engineering decisions here.
+
 ---
 
-# Project Conventions
+# Purpose
 
-This rule contains conventions that are specific to this repository.
+Use this rule to remind the agent that project-specific engineering conventions override generic defaults.
 
-It supplements the framework rules.
+Examples include:
 
-When this rule conflicts with a framework rule, follow this rule.
+* language version;
+* dependency management;
+* repository layout;
+* runtime technologies;
+* testing strategy;
+* validation commands;
+* coding conventions;
+* deployment assumptions.
+
+The authoritative source remains `ENGINEERING.md`.
 
 ---
 
-# Project Technology Stack
+# When ENGINEERING.md Exists
 
-Document technologies that are mandatory for this project.
+Treat `ENGINEERING.md` as authoritative for:
+
+* language and runtime versions;
+* package management;
+* repository structure;
+* project technology stack;
+* configuration strategy;
+* coding conventions;
+* validation workflow;
+* operational assumptions.
+
+Do not invent engineering conventions that are not documented.
+
+---
+
+# Local Cursor Guidance
+
+Only place Cursor-specific guidance here when it cannot reasonably belong in the framework.
 
 Examples:
 
-- dependency manager
-- web framework
-- AI framework
-- database
-- testing framework
+* repository-specific prompting hints;
+* preferred repository navigation;
+* editor-specific workflow adjustments.
+
+Avoid duplicating framework documentation.
+
+Avoid duplicating project documentation.
 
 ---
 
-# Project Architecture
+# General Rule
 
-Describe architecture decisions that are unique to this project.
+Framework rules define **how engineering is performed**.
 
-Examples:
+`ENGINEERING.md` defines **how this project is engineered**.
 
-- package layout
-- component ownership
-- runtime model
-- deployment model
-
-Do not repeat framework documentation.
-
----
-
-# Project Coding Conventions
-
-Document repository-specific coding conventions.
-
-Examples:
-
-- naming conventions
-- package structure
-- configuration patterns
-- logging conventions
-
-Only include conventions that differ from the framework defaults.
-
----
-
-# Project Validation
-
-Document project-specific validation commands if they differ from the framework.
-
-Examples:
-
-```bash
-uv run pytest tests/integration
-uv run alembic check
-```
-
----
-
-# Project Constraints
-
-Document constraints that implementation agents must respect.
-
-Examples:
-
-- Python version
-- deployment platform
-- compatibility requirements
-- external system limitations
-
----
-
-# Project Notes
-
-Document any additional repository-specific guidance that does not belong in the shared framework.
+This file only bridges the framework to Cursor.

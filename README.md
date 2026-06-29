@@ -1,113 +1,204 @@
 # Agentic Project Template
 
-A reusable framework for building software with AI agents. The repository is the shared working memory where project intent, architecture, decisions, plans, and history live together — not just source code.
+A reusable AI-first development framework for building software with AI agents.
 
-## What This Is
+The repository is the shared working memory where project intent, architecture, engineering decisions, implementation plans, and project history live together—not just source code.
 
-This repository provides a **documentation-first engineering methodology** for human–AI collaboration. It defines how to organize project knowledge, authorize implementation work, record architectural decisions, and preserve traceability over time.
+---
 
-It is a **template**, not a finished application. Copy or fork it, then populate `docs/project/` with your own project artifacts using the templates in `docs/templates/`.
+# What This Is
 
-## Who This Is For
+This repository provides a **documentation-driven engineering framework** for human–AI collaboration.
 
-- **Engineering leads and architects** who want structured, traceable development with AI assistance
-- **Developers** starting a new project and wanting a clear documentation workflow from day one
-- **Teams** that use Cursor, Codex, Claude Code, or other AI coding agents and need a tool-agnostic process
-- **Anyone** who has lost context in chat history and wants durable project memory in the repository
+It defines how projects move from an initial idea to production implementation through a structured lifecycle.
 
-## Core Idea
+The framework separates:
 
-Chat history is temporary. Agent memory is unreliable. Human memory is incomplete.
+* project design;
+* repository initialization;
+* implementation.
 
-**The repository is the durable place where knowledge must converge.**
+It is intentionally tool-agnostic and can be used with Cursor, Codex CLI, Claude Code, ChatGPT, or future AI development tools.
 
-Documentation drives implementation. Plans authorize change. Architecture evolves intentionally. Validation is part of the work — not an afterthought.
+This repository is a **template**, not a finished application.
 
-For the full philosophy, see [METHODOLOGY.md](METHODOLOGY.md).
+---
 
-## Repository Structure
+# Who This Is For
 
-```text
-.
-├── README.md              # Human entry point (start here)
-├── AGENTS.md              # Rules for AI agents
-├── REPOSITORY_MAP.md      # Navigation guide for all knowledge
-├── METHODOLOGY.md         # Engineering principles
-├── KNOWLEDGE_MODEL.md     # How knowledge is organized
-│
-├── docs/
-│   ├── project/           # Your project-specific documentation
-│   │   ├── adr/           # Architecture Decision Records
-│   │   └── plans/         # backlog / active / completed
-│   └── templates/         # Reusable document templates
-│
-└── skills/                # Reusable engineering procedures for agents
-```
+* Engineering leads designing AI-assisted development workflows
+* Software architects who want traceable engineering decisions
+* Developers starting new projects with AI assistance
+* Teams using multiple AI coding tools
+* Anyone who wants repository knowledge instead of chat-dependent development
 
-| Location | Purpose |
-|----------|---------|
-| Root `.md` files | Framework rules, methodology, and navigation |
-| `docs/templates/` | Blank structures to copy into `docs/project/` |
-| `docs/project/` | Living project knowledge (vision, roadmap, architecture, plans, ADRs) |
-| `skills/` | Step-by-step workflows (discovery, planning, implementation, review) |
+---
 
-For detailed navigation, see [REPOSITORY_MAP.md](REPOSITORY_MAP.md).
+# Core Philosophy
 
-## Minimal Workflow
+Chat history is temporary.
 
-A typical project follows this flow:
+Agent memory is unreliable.
+
+Human memory is incomplete.
+
+**The repository is the permanent system of record.**
+
+Documentation drives implementation.
+
+Engineering decisions are documented before code exists.
+
+Implementation follows approved plans.
+
+Validation is part of the development process.
+
+---
+
+# Project Lifecycle
+
+Projects built with this framework follow the lifecycle below.
 
 ```text
 Idea
-  → PROJECT.md          (what and why)
-  → ROADMAP.md          (phases and delivery strategy)
-  → ARCHITECTURE.md     (system structure and boundaries)
-  → Implementation Plan (authorized scope in plans/active/)
-  → Implementation
-  → Validation
-  → PROGRESS.md         (record what was completed)
+        ↓
+Project Discovery
+        ↓
+PROJECT.md
+
+Roadmap Creation
+        ↓
+ROADMAP.md
+
+Architecture Design
+        ↓
+ARCHITECTURE.md
+
+Engineering Design
+        ↓
+ENGINEERING.md
+
+Repository Initialization
+        ↓
+Initialized Repository
+
+Plan Creation
+        ↓
+PLAN.md
+
+Plan Review
+        ↓
+
+Plan Implementation
+        ↓
+
+Code Review
 ```
 
-Architectural decisions can happen at any stage and are recorded as ADRs in `docs/project/adr/`.
+---
 
-Key rules:
+# Repository Structure
 
-1. **Clarify before coding** — shared understanding precedes implementation
-2. **Only implement active plans** — plans in `plans/active/` define the current boundary
-3. **Keep the repository consistent** — update documentation when intent or architecture changes
-4. **Record significant decisions** — use ADRs for choices that affect future work
+```text
+.
+├── README.md
+├── AGENTS.md
+├── METHODOLOGY.md
+├── KNOWLEDGE_MODEL.md
+├── REPOSITORY_MAP.md
+├── VERSION.md
+│
+├── docs/
+│   ├── project/
+│   │   ├── adr/
+│   │   └── plans/
+│   └── templates/
+│
+├── skills/
+│
+├── .agents/
+│
+├── .cursor/
+│
+└── .codex/
+```
 
-## Where to Start
+| Location          | Purpose                                |
+| ----------------- | -------------------------------------- |
+| Root documents    | Framework documentation                |
+| `docs/templates/` | Templates used during project creation |
+| `docs/project/`   | Project-specific documentation         |
+| `skills/`         | Reusable engineering procedures        |
+| `.agents/`        | Specialized AI agent definitions       |
+| `.cursor/`        | Cursor configuration                   |
+| `.codex/`         | Codex configuration                    |
 
-### Using this template for a new project
+---
 
-1. Copy templates from `docs/templates/` into `docs/project/` (e.g. `PROJECT.md`, `ROADMAP.md`, `ARCHITECTURE.md`)
-2. Fill in `PROJECT.md` with vision, goals, scope, and non-goals
-3. Define phases in `ROADMAP.md`
-4. Create your first implementation plan in `docs/project/plans/active/` using the plan template
-5. Point your AI agent at `AGENTS.md` so it follows repository conventions
+# Repository Workflow
 
-### Joining an existing project that uses this framework
+A typical project evolves as follows:
 
-Read in this order:
+1. Define the project vision (`PROJECT.md`)
+2. Create the delivery roadmap (`ROADMAP.md`)
+3. Design the architecture (`ARCHITECTURE.md`)
+4. Define engineering standards (`ENGINEERING.md`)
+5. Initialize the repository
+6. Create implementation plans
+7. Implement incrementally
+8. Review implementation
+9. Record completed work
 
-1. [AGENTS.md](AGENTS.md) — agent and contributor rules
-2. [REPOSITORY_MAP.md](REPOSITORY_MAP.md) — where everything lives
-3. [METHODOLOGY.md](METHODOLOGY.md) — engineering principles
-4. [KNOWLEDGE_MODEL.md](KNOWLEDGE_MODEL.md) — knowledge hierarchy
-5. `docs/project/PROJECT.md` — what the project is building
-6. `docs/project/ROADMAP.md` — current direction
-7. Active plans in `docs/project/plans/active/`
+Architectural decisions are recorded as ADRs throughout the project.
 
-### For AI agents
+---
 
-Start with [AGENTS.md](AGENTS.md), then follow the read-first order defined there.
+# Getting Started
 
-## Further Reading
+## Creating a New Project
 
-| Document | Description |
-|----------|-------------|
-| [METHODOLOGY.md](METHODOLOGY.md) | Core engineering principles |
-| [KNOWLEDGE_MODEL.md](KNOWLEDGE_MODEL.md) | Conceptual model of repository knowledge |
-| [REPOSITORY_MAP.md](REPOSITORY_MAP.md) | Complete navigation guide |
-| [AGENTS.md](AGENTS.md) | Universal rules for AI agents |
+1. Complete Project Discovery.
+2. Create:
+
+   * `PROJECT.md`
+   * `ROADMAP.md`
+   * `ARCHITECTURE.md`
+   * `ENGINEERING.md`
+3. Run Repository Initialization.
+4. Create the first implementation plan.
+5. Begin implementation.
+
+---
+
+## Joining an Existing Project
+
+Read in the following order:
+
+1. `AGENTS.md`
+2. `REPOSITORY_MAP.md`
+3. `METHODOLOGY.md`
+4. `KNOWLEDGE_MODEL.md`
+5. `docs/project/PROJECT.md`
+6. `docs/project/ROADMAP.md`
+7. `docs/project/ARCHITECTURE.md`
+8. `docs/project/ENGINEERING.md`
+9. Active implementation plans
+
+---
+
+## For AI Agents
+
+Always begin with `AGENTS.md`.
+
+Follow the documentation read order defined there before making repository changes.
+
+---
+
+# Framework Documentation
+
+| Document             | Purpose                          |
+| -------------------- | -------------------------------- |
+| `AGENTS.md`          | Universal rules for AI agents    |
+| `METHODOLOGY.md`     | Complete development methodology |
+| `KNOWLEDGE_MODEL.md` | Repository knowledge model       |
+| `REPOSITORY_MAP.md`  | Repository navigation            |
+| `VERSION.md`         | Framework version history        |

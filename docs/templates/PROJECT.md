@@ -1,139 +1,228 @@
-# PROJECT.md
-
 # Project Overview
 
 ## Purpose
 
-This document defines the project at the conceptual level.
+This document captures the shared understanding of the project before implementation begins.
 
-It captures the shared understanding of what the project is, why it exists, who it is for, and what outcomes it should achieve.
+It defines:
 
-This document should not describe how the project will be built.
+* why the project exists;
+* what will be built;
+* who it serves;
+* which problems it solves;
+* what success looks like.
 
-Implementation details belong in architecture, roadmap, decision records, and implementation plans.
+This document describes **project intent**, not implementation.
+
+Architecture, engineering decisions, and implementation belong in later lifecycle stages.
 
 ---
 
-## Background
+# Project Context
 
-Explain why the project exists.
+Describe the background that led to the project.
 
-Describe:
+Include:
 
 * the original motivation;
-* the problem or opportunity;
-* current pain points;
-* observations that led to the idea.
+* current problems;
+* opportunities identified;
+* observations from the discovery process.
 
-This section should capture the reasoning that existed before implementation planning.
+This section explains why the project should exist.
 
 ---
 
-## Core Idea
+# Core Idea
 
 Describe the project in one or two concise paragraphs.
 
-This section should answer:
+Answer:
 
-"What is the fundamental idea behind this project?"
+> What is the fundamental idea behind this project?
 
-Avoid implementation details.
-
----
-
-## Vision
-
-Describe why this project exists.
-
-Explain the problem it solves and the value it provides.
+Avoid discussing implementation.
 
 ---
 
-## Goals
+# Vision
 
-List the primary objectives of the project.
+Describe the desired future state.
 
-These goals define what success looks like.
+Explain:
 
----
-
-## Non-Goals
-
-Explicitly describe what is intentionally out of scope.
-
-This section helps prevent scope creep during development.
+* why this project matters;
+* what value it should create;
+* how success changes the current situation.
 
 ---
 
-## Target Users
+# Goals
 
-Describe who will use the system.
+List the primary project goals.
 
-Include the primary user groups and their needs.
+Goals describe what the project should achieve.
 
----
+Examples:
 
-## Main Use Cases
-
-Describe the primary scenarios the system must support.
-
-Focus on user outcomes rather than implementation.
+* improve developer productivity;
+* automate repetitive work;
+* reduce operational complexity.
 
 ---
 
-## MVP
+# Non-Goals
 
-Describe the smallest useful version of the project.
+Explicitly define what is outside the project scope.
+
+Clear non-goals reduce scope creep during implementation.
+
+---
+
+# Target Users
+
+Describe the intended users.
+
+For each user group describe:
+
+* who they are;
+* their needs;
+* how the project helps them.
+
+---
+
+# Primary Use Cases
+
+Describe the most important user scenarios.
+
+Focus on desired outcomes rather than implementation.
+
+Examples:
+
+* create a new project;
+* analyze repository architecture;
+* execute implementation plans.
+
+---
+
+# Success Criteria
+
+Describe what success means for the project.
+
+Focus on outcomes rather than implementation details.
+
+Examples:
+
+* solves the intended problem;
+* improves user workflow;
+* achieves adoption goals;
+* reduces operational effort.
+
+Detailed acceptance criteria belong in implementation plans.
+
+---
+
+# MVP
+
+Describe the smallest version of the project that delivers meaningful value.
 
 Focus on:
 
-* the minimum capabilities;
-* what must exist before the project can provide value.
+* essential capabilities;
+* required functionality;
+* minimum user value.
 
-Do not describe future phases.
+Avoid describing future phases.
 
 ---
 
-## Constraints
+# Constraints
 
 Describe known project constraints.
 
-Examples include:
+Examples:
 
-* available infrastructure;
-* third-party dependencies;
-* regulatory requirements;
+* infrastructure;
+* budget;
+* deadlines;
 * compatibility requirements;
-* delivery deadlines;
-* budget limitations.
+* external dependencies;
+* regulatory requirements.
 
 ---
 
-## Success Vision
+# Assumptions
 
-Describe what a successful project looks like.
+Document assumptions made during discovery.
 
-Focus on long-term outcomes rather than measurable acceptance criteria.
+Examples:
 
-Examples include:
+* expected user behavior;
+* available infrastructure;
+* technology availability;
+* organizational assumptions.
 
-* expected user impact;
-* operational improvements;
-* engineering outcomes;
-* business value.
-
-This section should describe the desired future state, not implementation verification.
+These assumptions should be revisited if they become invalid.
 
 ---
 
-## Related Documents
+# Risks
 
-As the project evolves, related documentation should be added here.
+Describe known project risks.
 
-Typical documents include:
+Examples:
 
-* Architecture
-* Roadmap
-* Decision Records
-* Active Plans
-* Development Progress
+* technical uncertainty;
+* organizational risk;
+* external dependencies;
+* adoption risk.
+
+High-risk items may later become implementation plans or ADRs.
+
+---
+
+# Repository Relationships
+
+This document is the foundation of the project lifecycle.
+
+Subsequent documents build upon it.
+
+| Document          | Relationship                                |
+| ----------------- | ------------------------------------------- |
+| `ROADMAP.md`      | Defines how the project evolves             |
+| `ARCHITECTURE.md` | Defines how the system is organized         |
+| `ENGINEERING.md`  | Defines how the project will be implemented |
+| ADRs              | Record significant engineering decisions    |
+| Plans             | Implement the project incrementally         |
+
+---
+
+# Change Management
+
+Update this document only when project intent changes.
+
+Examples:
+
+* project goals;
+* project scope;
+* target users;
+* success definition;
+* major constraints.
+
+Implementation progress should **not** modify this document.
+
+Project intent should remain relatively stable throughout the project.
+
+---
+
+# Summary
+
+This document answers the fundamental questions:
+
+* Why does this project exist?
+* What problem does it solve?
+* Who is it for?
+* What outcomes should it achieve?
+* What is intentionally out of scope?
+
+Everything else in the repository builds upon the shared understanding established here.

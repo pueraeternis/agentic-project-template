@@ -1,40 +1,37 @@
-# KNOWLEDGE_MODEL.md
-
 # Knowledge Model
 
 ## Purpose
 
 This document defines the conceptual model of repository knowledge.
 
-It explains how project knowledge is organized, why different types of documents exist, and how humans and AI agents should use the repository as a shared engineering workspace.
+It explains how knowledge is organized, how it evolves throughout a project, and how humans and AI agents use the repository as a shared engineering workspace.
 
-This document describes the structure of repository knowledge rather than project implementation.
+The repository stores engineering knowledge, not merely source code.
 
 ---
 
 # Core Concept
 
-The repository is the shared working memory of humans and AI agents.
+The repository is the permanent engineering memory of the project.
 
-It is not merely a source code repository.
+It contains:
 
-It is the place where project intent, architecture, implementation, decisions, plans, and historical context converge into a durable and discoverable system.
+* project intent;
+* implementation strategy;
+* architecture;
+* engineering decisions;
+* implementation plans;
+* project history.
 
-The repository should remain understandable without relying on:
-
-- chat history;
-- private notes;
-- temporary IDE sessions;
-- individual human memory;
-- individual agent memory.
+Knowledge should be explicit, discoverable, and independent of temporary conversations.
 
 ---
 
-# Repository Layers
+# Knowledge Layers
 
-The repository is organized into several conceptual layers.
+Repository knowledge is organized into layers.
 
-Each layer has a different purpose and evolves at a different pace.
+Higher layers change less frequently and guide lower layers.
 
 ---
 
@@ -42,17 +39,16 @@ Each layer has a different purpose and evolves at a different pace.
 
 Purpose:
 
-Define the engineering philosophy.
+Define the engineering methodology.
 
 Typical artifacts:
 
-- METHODOLOGY.md
+* `METHODOLOGY.md`
 
 Answers:
 
-- What principles guide development?
-- What do we believe?
-- How should humans and AI agents collaborate?
+* How do projects evolve?
+* What engineering principles guide development?
 
 Changes:
 
@@ -60,21 +56,20 @@ Very rarely.
 
 ---
 
-## Layer 2 — Agent Rules
+## Layer 2 — Framework Rules
 
 Purpose:
 
-Define universal rules for AI agents working with the repository.
+Define repository-wide rules.
 
 Typical artifacts:
 
-- AGENTS.md
+* `AGENTS.md`
 
 Answers:
 
-- How should an agent approach the repository?
-- Which documents should be read first?
-- What execution rules should be followed?
+* How should humans and AI agents work with the repository?
+* Which documents define project intent?
 
 Changes:
 
@@ -86,22 +81,24 @@ Rarely.
 
 Purpose:
 
-Provide reusable engineering workflows.
+Define reusable engineering workflows.
 
-Typical artifacts include skills for:
+Typical skills include:
 
-- Project Discovery;
-- Roadmap Creation;
-- Architecture Design;
-- Plan Creation;
-- Plan Review;
-- Plan Implementation;
-- Code Review.
+* Project Discovery
+* Roadmap Creation
+* Architecture Design
+* Engineering Design
+* Repository Initialization
+* Plan Creation
+* Plan Review
+* Plan Implementation
+* Code Review
 
 Answers:
 
-- How is a specific engineering workflow executed?
-- What inputs, outputs, and completion criteria apply?
+* How is a lifecycle stage performed?
+* What are its inputs and outputs?
 
 Changes:
 
@@ -113,73 +110,57 @@ Occasionally.
 
 Purpose:
 
-Provide reusable document structures.
+Define reusable document structures.
 
-Typical artifacts include templates for:
+Typical templates:
 
-- project definition;
-- roadmap;
-- architecture;
-- implementation plans;
-- decision records.
+* PROJECT
+* ROADMAP
+* ARCHITECTURE
+* ENGINEERING
+* PLAN
+* ADR
+* RUNBOOK
+* PROGRESS
 
 Templates define document structure rather than project knowledge.
 
-Changes:
-
-Occasionally.
-
 ---
 
-## Layer 5 — Project Knowledge
+## Layer 5 — Project Design
 
 Purpose:
 
-Describe the actual project.
+Describe what is being built.
 
-Typical artifacts may include:
+Artifacts:
 
-- project definition;
-- roadmap;
-- architecture;
-- decision records;
-- operational procedures.
+* `PROJECT.md`
+* `ROADMAP.md`
+* `ARCHITECTURE.md`
+* `ENGINEERING.md`
 
-Answers:
+These documents are produced before implementation begins.
 
-- What is being built?
-- Why is it being built?
-- How is the system organized?
-
-Changes:
-
-Throughout the lifetime of the project.
+They define the project.
 
 ---
 
-## Layer 6 — Implementation
+## Layer 6 — Project Execution
 
 Purpose:
 
-Capture work in progress.
+Capture implementation work.
 
-Typical artifacts include:
+Artifacts:
 
-- implementation plans;
-- validation reports;
-- review artifacts;
-- implementation history.
+* implementation plans;
+* completed plans;
+* ADRs;
+* progress logs;
+* review artifacts.
 
-Answers:
-
-- What is currently being implemented?
-- What has already been completed?
-
-Changes:
-
-Frequently.
-
-Implementation plans authorize work after roadmap and architecture are defined in Layer 5.
+These documents evolve throughout development.
 
 ---
 
@@ -187,165 +168,144 @@ Implementation plans authorize work after roadmap and architecture are defined i
 
 Purpose:
 
-Store reproducible machine-generated artifacts.
+Store reproducible generated artifacts.
 
-Examples include:
+Examples:
 
-- API inventories;
-- schema documentation;
-- generated reports;
-- generated reference documentation.
+* API documentation;
+* inventories;
+* generated reports;
+* generated reference documentation.
 
-Generated artifacts should not be edited manually.
+Generated artifacts should never become the primary source of truth.
 
-They should be regenerated from their source.
+They should always be reproducible.
 
 ---
 
 # Knowledge Lifetime
 
-Different knowledge has different expected lifetimes.
-
----
+Different repository knowledge has different expected lifetimes.
 
 ## Permanent Knowledge
 
+Examples:
+
+* methodology;
+* framework rules;
+* reusable skills.
+
 Changes very rarely.
 
-Examples:
-
-- methodology;
-- engineering principles;
-- agent rules.
-
 ---
 
-## Project Knowledge
-
-Exists throughout the project.
+## Project Design Knowledge
 
 Examples:
 
-- project vision;
-- goals;
-- roadmap.
-
----
-
-## Architectural Knowledge
+* project vision;
+* roadmap;
+* architecture;
+* engineering decisions.
 
 Changes occasionally.
-
-Examples:
-
-- architecture;
-- decision records;
-- component responsibilities.
 
 ---
 
 ## Operational Knowledge
 
-Changes frequently.
-
 Examples:
 
-- implementation plans;
-- validation reports;
-- review notes.
+* implementation plans;
+* ADRs;
+* progress records.
+
+Changes frequently.
 
 ---
 
 ## Generated Knowledge
 
-Can always be regenerated.
-
 Examples:
 
-- API documentation;
-- schema inventories;
-- generated reports.
+* inventories;
+* generated documentation;
+* reports.
+
+Always reproducible.
 
 ---
 
 ## Ephemeral Knowledge
 
-Exists only temporarily.
-
 Examples:
 
-- conversations;
-- prompts;
-- brainstorming sessions;
-- temporary notes.
+* conversations;
+* brainstorming;
+* temporary prompts;
+* exploratory notes.
 
-Ephemeral knowledge should not be relied upon for future development.
-
-If it becomes important, it should be promoted into repository documentation.
+Ephemeral knowledge should never become the only place where important information exists.
 
 ---
 
-# Repository Knowledge Flow
+# Knowledge Evolution
 
-Knowledge should mature over time.
+Knowledge matures over time.
 
-Typical progression:
-
-```text
+```text id="iqnpur"
 Conversation
         ↓
-Decision
+Project Documentation
         ↓
-Project Knowledge
-        ↓
-Template
+Framework Template
         ↓
 Skill
         ↓
 Automation
 ```
 
-Repeated work should become increasingly structured.
+Repeated knowledge should become increasingly reusable.
 
-Project knowledge should mature into durable repository knowledge.
+---
+
+# Knowledge Flow
+
+Project knowledge follows the lifecycle.
+
+```text id="8mv83n"
+PROJECT
+        ↓
+ROADMAP
+        ↓
+ARCHITECTURE
+        ↓
+ENGINEERING
+        ↓
+Repository Initialization
+        ↓
+Implementation Plans
+        ↓
+Implementation
+        ↓
+Progress
+```
+
+Each stage consumes knowledge from the previous stage and produces knowledge for the next.
 
 ---
 
 # Source of Truth
 
-Repository artifacts are the authoritative source of project knowledge.
+Repository documentation is authoritative.
 
-When conflicts exist, repository documentation has priority over conversational context.
+When conflicts exist:
 
-Important project knowledge should never exist exclusively in conversations.
+Repository documentation overrides conversations.
 
----
+Project documentation overrides assumptions.
 
-# What Does Not Belong in Repository Memory
-
-Not every conversation should become documentation.
-
-Avoid documenting:
-
-- temporary brainstorming;
-- speculative ideas;
-- abandoned approaches;
-- one-time implementation details;
-- transient debugging notes.
-
-Documentation should preserve durable knowledge rather than transient thinking.
-
----
-
-# Evolution of the Repository
-
-The repository should evolve intentionally.
-
-New document types should be introduced only when they represent recurring and reusable knowledge.
-
-Avoid creating documents for isolated situations.
-
-A document should exist because it improves clarity, discoverability, or long-term maintainability.
+Implementation should remain consistent with documented project knowledge.
 
 ---
 
@@ -353,23 +313,26 @@ A document should exist because it improves clarity, discoverability, or long-te
 
 A high-quality repository is:
 
-- understandable by humans;
-- understandable by AI agents;
-- internally consistent;
-- easy to navigate;
-- explicit rather than implicit;
-- resilient to changes in tools and technologies.
-
-The repository should remain useful even as programming languages, frameworks, IDEs, and AI coding assistants evolve.
+* understandable by humans;
+* understandable by AI agents;
+* internally consistent;
+* lifecycle-oriented;
+* documentation-driven;
+* easy to navigate;
+* resilient to changes in tools and technologies.
 
 ---
 
 # Summary
 
-The repository is more than a codebase.
+The repository is the long-term engineering memory of the project.
 
-It is the durable engineering memory of the project.
+Knowledge evolves from conversation into durable documentation.
 
-Source code is only one part of that memory.
+Documentation defines the project.
 
-Documentation, decisions, plans, generated artifacts, and engineering principles collectively define the project and enable effective collaboration between humans and AI agents over time.
+Plans authorize implementation.
+
+Implementation produces new repository knowledge.
+
+The repository remains the single source of truth throughout the entire project lifecycle.

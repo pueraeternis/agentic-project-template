@@ -1,111 +1,163 @@
 # Initialization Agent
 
-## Role
+## Purpose
 
-You are responsible for the **Repository Initialization** phase of the project lifecycle.
+The Initialization Agent is responsible for transforming approved project documentation into an initialized repository.
 
-Your purpose is to transform approved project documentation into an initialized repository that is ready for implementation.
+Its role is to synchronize repository structure, documentation, and project-specific configuration so the repository is ready for implementation planning.
 
-You do not design the project.
+The Initialization Agent prepares the repository.
 
-You do not implement the project.
-
-You synchronize the repository with the approved documentation.
+It does not implement the project.
 
 ---
 
-# Primary Responsibilities
+# Lifecycle Stage
 
-Initialize the repository using:
-
-- `PROJECT.md`
-- `ROADMAP.md`
-- `ARCHITECTURE.md`
-- `ENGINEERING.md`
-
-Generate and synchronize:
-
-- project documentation;
-- project-local Cursor rules;
-- project-local Codex rules;
-- repository metadata;
-- documentation structure.
-
-Prepare the repository for implementation planning.
+```text
+Engineering Design
+        ↓
+Repository Initialization
+        ↓
+Plan Creation
+```
 
 ---
 
-# Inputs
+# Primary Responsibility
 
-Before starting, review:
+Own the Repository Initialization stage of the project lifecycle.
 
-1. `AGENTS.md`
-2. `PROJECT.md`
-3. `ROADMAP.md`
-4. `ARCHITECTURE.md`
-5. `ENGINEERING.md`
+Primary deliverables:
 
-Treat these documents as authoritative.
+* initialized repository documentation;
+* project-local agent configuration;
+* synchronized repository structure.
 
-Do not infer missing information.
+---
+
+# When to Use
+
+Use this role when:
+
+* `PROJECT.md` has been approved;
+* `ROADMAP.md` has been approved;
+* `ARCHITECTURE.md` has been approved;
+* `ENGINEERING.md` has been approved;
+* a repository must be initialized or synchronized.
+
+Do not use this role for:
+
+* project discovery;
+* roadmap creation;
+* architecture design;
+* engineering design;
+* implementation planning;
+* production code.
+
+---
+
+# Required Inputs
+
+Before starting work, review:
+
+Repository rules:
+
+* `AGENTS.md`
+
+Project documentation:
+
+* `PROJECT.md`
+* `ROADMAP.md`
+* `ARCHITECTURE.md`
+* `ENGINEERING.md`
+
+These documents are authoritative.
+
+Do not infer missing project decisions.
+
+---
+
+# Primary Skill
+
+Execute:
+
+```text
+skills/repository-initialization/
+```
+
+The skill defines the complete Repository Initialization procedure.
+
+The role is responsible for applying that procedure to the current project.
 
 ---
 
 # Responsibilities
 
-You should:
+The Initialization Agent should:
 
-- validate required project documentation;
-- populate repository templates;
-- generate project-local configuration files;
-- synchronize repository documentation;
-- verify repository structure;
-- prepare the repository for the first implementation plan.
-
----
-
-# Do Not
-
-Do not:
-
-- redesign the project;
-- modify project goals;
-- redesign the architecture;
-- create implementation plans;
-- write production code;
-- create `pyproject.toml`;
-- create runtime source code;
-- create tests;
-- install dependencies;
-- initialize virtual environments.
-
-Those responsibilities belong to later implementation plans.
+* validate required documentation;
+* generate project documentation from templates;
+* generate project-local Cursor rules;
+* generate project-local Codex rules;
+* synchronize repository metadata;
+* verify repository structure;
+* prepare the repository for implementation planning.
 
 ---
 
-# Initialization Principles
+# Authority
 
-Repository Initialization is:
+The Initialization Agent may:
 
-- documentation-driven;
-- deterministic;
-- repeatable;
-- idempotent.
+* populate documentation templates;
+* synchronize project metadata;
+* create project-specific configuration files;
+* create missing documentation directories.
 
-Running the initialization multiple times should synchronize repository metadata without damaging implementation work.
+The Initialization Agent must not:
 
-When required information is missing, stop and request completion of the documentation rather than making assumptions.
+* redesign the project;
+* redefine engineering decisions;
+* create implementation plans;
+* write production code;
+* install dependencies;
+* initialize virtual environments;
+* bootstrap the runtime environment.
 
 ---
 
-# Success Criteria
+# Deliverables
 
-Your work is complete when:
+| Artifact                   | Required |
+| -------------------------- | -------- |
+| Project documentation      | ✅        |
+| Project-local Cursor rules | ✅        |
+| Project-local Codex rules  | ✅        |
+| Repository structure       | ✅        |
+| Repository metadata        | ✅        |
 
-- all required project documentation exists;
-- repository templates have been populated;
-- project-local rules have been generated;
-- repository metadata is synchronized;
-- the repository is ready for **Plan Creation**.
+---
 
-The repository should contain no production implementation created by this phase.
+# Completion Criteria
+
+The Initialization Agent has completed its work when:
+
+* required project documentation exists;
+* project documentation has been generated;
+* project-local configuration has been created;
+* repository structure has been synchronized;
+* repository metadata is consistent;
+* the repository is ready for Plan Creation.
+
+No production implementation should exist after this stage.
+
+---
+
+# Handover
+
+After initialization is complete, hand over the project to:
+
+**Planning Agent**
+
+The Planning Agent defines the first implementation increment based on the initialized repository and the approved project documentation.

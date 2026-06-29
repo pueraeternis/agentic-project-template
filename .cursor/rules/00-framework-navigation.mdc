@@ -1,15 +1,52 @@
 ---
+
 description: Framework navigation and repository entry point
 alwaysApply: true
----
+-----------------
 
 # AI Engineering Framework
 
-This repository follows a documentation-driven engineering framework.
+This repository follows the Agentic Engineering Methodology.
+
+The repository is the shared working memory for humans and AI agents.
 
 Repository documentation is the primary source of truth.
 
 Chat history is temporary context and must not be treated as persistent project knowledge.
+
+---
+
+# Engineering Lifecycle
+
+Every project follows the same lifecycle:
+
+```text
+Project Discovery
+        ↓
+Roadmap Creation
+        ↓
+Architecture Design
+        ↓
+Engineering Design
+        ↓
+Repository Initialization
+        ↓
+Plan Creation
+        ↓
+Plan Review
+        ↓
+Plan Implementation
+        ↓
+Code Review
+        ↓
+Progress Update
+```
+
+Each stage has:
+
+* an engineering role;
+* a reusable skill;
+* one or more repository artifacts.
 
 ---
 
@@ -24,9 +61,10 @@ Before starting any work, read the repository documentation in the following ord
 5. `docs/project/PROJECT.md`
 6. `docs/project/ROADMAP.md`
 7. `docs/project/ARCHITECTURE.md`
-8. Active plans in `docs/project/plans/active/`
+8. `docs/project/ENGINEERING.md`
 9. Relevant ADRs in `docs/project/adr/`
-10. `docs/project/PROGRESS.md`
+10. Active plans in `docs/project/plans/active/`
+11. `docs/project/PROGRESS.md`
 
 If a document does not exist, continue with the next available document.
 
@@ -34,16 +72,16 @@ If a document does not exist, continue with the next available document.
 
 # Repository Philosophy
 
-The repository is organized around knowledge rather than source code.
+The repository is organized around durable engineering knowledge rather than source code.
 
 Documentation defines:
 
-- project vision;
-- implementation strategy;
-- architecture;
-- engineering decisions;
-- implementation scope;
-- project history.
+* project intent;
+* implementation strategy;
+* system architecture;
+* engineering decisions;
+* implementation scope;
+* engineering history.
 
 Implementation follows documentation.
 
@@ -57,10 +95,11 @@ When information conflicts, use the following priority:
 
 1. `docs/project/PROJECT.md`
 2. `docs/project/ARCHITECTURE.md`
-3. Relevant ADRs
-4. Active implementation plans
-5. `docs/project/PROGRESS.md`
-6. Chat context
+3. `docs/project/ENGINEERING.md`
+4. Relevant ADRs
+5. Active implementation plans
+6. `docs/project/PROGRESS.md`
+7. Chat context
 
 Repository documentation always overrides conversational context.
 
@@ -70,32 +109,32 @@ Repository documentation always overrides conversational context.
 
 Always assume:
 
-- documentation is authoritative;
-- architecture evolves intentionally;
-- implementation follows approved plans;
-- project history is preserved;
-- knowledge should exist inside the repository.
+* documentation is authoritative;
+* architecture evolves intentionally;
+* engineering decisions are documented;
+* implementation follows approved plans;
+* project history is preserved;
+* durable knowledge belongs inside the repository.
 
 Do not rely on:
 
-- chat history;
-- external discussions;
-- undocumented assumptions.
+* chat history;
+* external discussions;
+* undocumented assumptions.
 
 ---
 
-# Navigation
+# Repository Navigation
 
-Use repository documents according to their responsibilities.
-
-| Document | Purpose |
-|----------|---------|
-| `PROJECT.md` | Project vision and scope |
-| `ROADMAP.md` | Long-term implementation strategy |
+| Document          | Purpose                            |
+| ----------------- | ---------------------------------- |
+| `PROJECT.md`      | Project vision and scope           |
+| `ROADMAP.md`      | Long-term implementation strategy  |
 | `ARCHITECTURE.md` | System organization and boundaries |
-| ADRs | Architectural decisions |
-| Plans | Authorized implementation work |
-| `PROGRESS.md` | Completed engineering history |
+| `ENGINEERING.md`  | Engineering decisions and tooling  |
+| ADRs              | Architectural decisions            |
+| Plans             | Authorized implementation work     |
+| `PROGRESS.md`     | Completed engineering history      |
 
 ---
 
@@ -103,12 +142,17 @@ Use repository documents according to their responsibilities.
 
 Before making implementation changes:
 
-- understand the project;
-- identify the requested scope;
-- locate the relevant implementation plan;
-- respect architectural boundaries;
-- update documentation when permanent knowledge changes.
+* understand the current lifecycle stage;
+* identify the requested scope;
+* read the required project documentation;
+* locate the relevant implementation plan;
+* respect architectural and engineering boundaries;
+* update documentation whenever repository knowledge changes.
 
-Do not implement undocumented architectural changes.
+Do not:
+
+* implement undocumented architectural changes;
+* invent engineering decisions;
+* expand implementation scope.
 
 When requirements are ambiguous, ask for clarification instead of guessing.

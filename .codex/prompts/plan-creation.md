@@ -2,47 +2,52 @@
 
 Create the next implementation plan using the Agentic Engineering Methodology.
 
-## Objectives
+---
+
+# Objective
 
 Produce one bounded implementation plan that:
 
-* advances the roadmap;
-* has explicit scope;
-* is independently reviewable;
+* advances the current roadmap phase;
+* remains consistent with the documented architecture;
+* follows the documented engineering conventions;
 * authorizes exactly one implementation increment.
 
 ---
 
-## Before Planning
+# Repository Context
 
-Review:
+Review the repository in the following order:
 
 1. `AGENTS.md`
-2. `PROJECT.md`
-3. `ROADMAP.md`
-4. `ARCHITECTURE.md`
-5. Relevant ADRs
-6. Completed implementation plans
-7. `PROGRESS.md`
+2. `docs/project/PROJECT.md`
+3. `docs/project/ROADMAP.md`
+4. `docs/project/ARCHITECTURE.md`
+5. `docs/project/ENGINEERING.md`
+6. Relevant ADRs
+7. Completed implementation plans
+8. `docs/project/PROGRESS.md`
 
-Understand the current project state before proposing new work.
+Understand the current repository state before proposing new work.
 
 ---
 
-## Planning Rules
+# Planning Rules
 
 Create exactly one implementation plan.
 
 The plan should:
 
-* implement one logical increment;
-* have explicit boundaries;
+* implement one logical engineering increment;
+* have explicit implementation boundaries;
 * define measurable acceptance criteria;
-* identify risks;
-* describe validation.
+* identify implementation risks;
+* define validation requirements;
+* remain consistent with the engineering decisions documented in `ENGINEERING.md`.
 
 Do not:
 
+* redesign the project;
 * redesign the architecture;
 * combine multiple roadmap phases;
 * introduce speculative work;
@@ -50,24 +55,26 @@ Do not:
 
 ---
 
-## Scope
+# Scope
 
 Clearly define:
 
-* what is included;
-* what is excluded;
+* included work;
+* excluded work;
 * dependencies;
-* assumptions.
+* assumptions;
+* engineering constraints.
 
-The implementation agent should not need to guess the intended scope.
+The implementation agent should not need to infer the intended scope.
 
 ---
 
-## Acceptance Criteria
+# Acceptance Criteria
 
-Acceptance criteria must be:
+Acceptance criteria should be:
 
 * objective;
+* measurable;
 * testable;
 * observable;
 * unambiguous.
@@ -76,9 +83,11 @@ A reviewer should be able to determine whether the implementation satisfies the 
 
 ---
 
-## Validation
+# Validation
 
-Specify how the implementation will be validated.
+Define how the implementation will be validated.
+
+Use the validation strategy documented in `ENGINEERING.md`.
 
 Examples include:
 
@@ -86,12 +95,12 @@ Examples include:
 * integration tests;
 * manual verification;
 * documentation review;
-* quality commands.
+* project validation commands.
 
 ---
 
-## Deliverable
+# Deliverable
 
-Produce a completed implementation plan using the repository plan template.
+Produce a complete implementation plan using the repository plan template.
 
-The plan should be ready for review without requiring additional design work.
+The resulting plan should be ready for review without requiring additional engineering or architectural design.

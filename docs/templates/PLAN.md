@@ -1,8 +1,6 @@
-# PLAN.md
-
 # Plan NNN — <Short Title>
 
-**File:** `NNN-short-title.md` (e.g. `001-user-authentication.md`)
+**File:** `NNN-short-title.md`
 
 **Status:** Draft | Approved | In Progress | Completed | Superseded
 
@@ -14,82 +12,123 @@
 
 ---
 
+# Purpose
+
+This document authorizes one bounded implementation increment.
+
+A plan defines:
+
+* what will be implemented;
+* why it is needed;
+* what is intentionally excluded;
+* how completion will be verified.
+
+Implementation should never extend beyond the approved plan.
+
+---
+
+# Relationship to the Project Lifecycle
+
+Implementation plans are created after the project design is complete.
+
+Typical lifecycle:
+
+```text
+PROJECT
+        ↓
+ROADMAP
+        ↓
+ARCHITECTURE
+        ↓
+ENGINEERING
+        ↓
+PLAN
+        ↓
+IMPLEMENTATION
+```
+
+Plans translate long-term project design into small implementation increments.
+
+---
+
 # Objective
 
 Describe the objective of this implementation increment.
 
-The objective should explain what this plan accomplishes and why it is needed.
+Explain both:
+
+* what will be delivered;
+* why this work is needed now.
 
 ---
 
 # Context
 
-Describe the current project state that motivates this plan.
+Describe the current project state.
 
-Reference:
+Reference, when applicable:
 
 * roadmap phase;
-* previous implementation plans;
-* architectural constraints;
-* relevant ADRs.
+* architecture;
+* engineering decisions;
+* ADRs;
+* previous implementation plans.
 
-The context should explain why this work is the logical next step.
+The context should explain why this is the logical next step.
 
 ---
 
 # Scope
 
-Describe exactly what is included in this implementation.
+Describe exactly what belongs to this plan.
 
-Be explicit.
-
-The implementation agent should never need to guess what belongs to the plan.
+The implementation agent should never need to guess.
 
 ---
 
 # Out of Scope
 
-Explicitly list what is **not** included.
+Explicitly list work that is excluded.
 
-This section prevents scope creep and clarifies implementation boundaries.
-
-Examples:
+Typical examples:
 
 * future improvements;
 * unrelated refactoring;
-* optimization work;
+* optimizations;
 * additional features.
+
+Clear boundaries prevent scope creep.
 
 ---
 
 # Architectural Impact
 
-Describe whether this plan changes the architecture.
+Describe whether this implementation changes the architecture.
 
-If applicable, identify:
+If applicable describe:
 
 * affected components;
 * dependency changes;
 * integration changes;
-* new architectural constraints.
+* ownership changes.
 
-If significant architectural changes are introduced, create or update an ADR.
+Significant architectural changes should result in an ADR.
 
 ---
 
 # Risks
 
-Identify implementation risks.
+Describe implementation risks.
 
 Examples:
 
-* compatibility risks;
-* migration risks;
-* performance risks;
-* operational risks;
-* validation risks.
+* compatibility;
+* migration;
+* performance;
+* operational;
+* validation.
 
-If no meaningful risks exist, explicitly state so.
+If no meaningful risks exist, state so explicitly.
 
 ---
 
@@ -103,26 +142,26 @@ Acceptance criteria should be:
 
 Examples:
 
-* required functionality works;
+* required functionality implemented;
 * tests pass;
-* documentation is updated;
-* validation succeeds.
+* documentation updated;
+* validation successful.
 
-A reviewer should be able to determine whether the implementation satisfies the plan.
+A reviewer should be able to determine whether the plan has been completed.
 
 ---
 
 # Validation
 
-Describe how the implementation will be validated.
+Describe how completion will be verified.
 
 Examples:
 
 * unit tests;
 * integration tests;
 * manual verification;
-* performance validation;
-* documentation review.
+* documentation review;
+* performance validation.
 
 ---
 
@@ -132,21 +171,20 @@ Examples:
 * [ ] Task 2
 * [ ] Task 3
 
-The checklist should represent implementation progress.
+The checklist tracks implementation progress.
 
-Do not use it as a brainstorming list.
+It is not a brainstorming list.
 
 ---
 
 # Related Documents
 
-Reference relevant project documentation.
+Typical references:
 
-Examples:
-
-* PROJECT.md
-* ROADMAP.md
-* ARCHITECTURE.md
+* `PROJECT.md`
+* `ROADMAP.md`
+* `ARCHITECTURE.md`
+* `ENGINEERING.md`
 * ADRs
 * previous plans
 
@@ -154,17 +192,15 @@ Examples:
 
 # Completion Notes
 
-Complete this section only after implementation has finished.
+Complete this section only after implementation.
 
-Summarize:
+Record:
 
 * completed work;
-* deviations from the original plan;
-* follow-up work (if any).
+* deviations from the plan;
+* follow-up work.
 
-Do not rewrite the plan.
-
-Document only factual outcomes.
+Do not rewrite historical sections.
 
 ---
 
@@ -172,7 +208,7 @@ Document only factual outcomes.
 
 ## File Naming
 
-Plans use a sequential three-digit prefix and a short kebab-case title:
+Plans use:
 
 ```text
 NNN-short-title.md
@@ -180,66 +216,67 @@ NNN-short-title.md
 
 Examples:
 
-* `001-user-authentication.md`
-* `002-api-rate-limiting.md`
+```text
+001-project-bootstrap.md
+002-agent-routing.md
+```
 
-Assign the next available number when creating a plan. Do not reuse numbers.
+Plan numbers are sequential and never reused.
+
+---
 
 ## Status Lifecycle
 
-A plan moves through the following statuses:
-
 ```text
-Draft → Approved → In Progress → Completed
-                              ↘ Superseded
+Draft
+        ↓
+Approved
+        ↓
+In Progress
+        ↓
+Completed
+        ↘
+     Superseded
 ```
 
-| Status | Meaning |
-| --- | --- |
-| **Draft** | Plan is being written or revised. Does not authorize implementation. |
-| **Approved** | Plan has been reviewed and accepted. Ready to move to `active/`. |
-| **In Progress** | Implementation is underway. |
-| **Completed** | Implementation finished and validated. |
-| **Superseded** | Plan replaced by a newer plan. Preserved for history. |
+Only Approved and In Progress plans authorize implementation.
 
-Update the **Status** field and relevant dates when the plan transitions.
+---
 
 ## Folder Lifecycle
 
-Plan files move between folders as work progresses:
-
 ```text
-docs/project/plans/backlog/  →  docs/project/plans/active/  →  docs/project/plans/completed/
+backlog
+        ↓
+active
+        ↓
+completed
 ```
-
-| Folder | When to use |
-| --- | --- |
-| `backlog/` | Future work. Plan is a **Draft** or not yet scheduled. |
-| `active/` | Authorized work. Plan is **Approved** or **In Progress**. |
-| `completed/` | Finished or obsolete work. Plan is **Completed** or **Superseded**. |
 
 Typical transitions:
 
-1. Create the plan in `backlog/` with status **Draft**.
-2. After review, set status to **Approved** and move the file to `active/`.
-3. When implementation starts, set status to **In Progress**.
-4. When implementation finishes, set status to **Completed** and move the file to `completed/`.
-5. If a plan is replaced, set status to **Superseded** and move the file to `completed/`.
+1. Create in `backlog/` as Draft.
+2. Review and approve.
+3. Move to `active/`.
+4. Implement.
+5. Move to `completed/`.
 
-## Implementation Authorization
+---
 
-Only plans that are **both** in `active/` **and** have status **Approved** or **In Progress** authorize implementation.
+# Repository Relationships
 
-Do not implement work described in:
+Planning uses:
 
-* plans in `backlog/` or `completed/`;
-* plans with status **Draft** or **Superseded**.
+* `PROJECT.md`
+* `ROADMAP.md`
+* `ARCHITECTURE.md`
+* `ENGINEERING.md`
 
-Every implementation increment should be authorized by exactly one active approved plan.
+Implementation follows the plan.
 
-A completed plan becomes part of the project's engineering history.
+Review verifies completion.
 
-It should not be rewritten after completion except to correct factual errors.
+`PROGRESS.md` records delivered work.
 
 ---
 
@@ -247,10 +284,25 @@ It should not be rewritten after completion except to correct factual errors.
 
 A good implementation plan is:
 
+* small;
 * focused;
-* bounded;
-* incremental;
 * independently reviewable;
-* directly traceable to the roadmap.
+* directly traceable to the roadmap;
+* independently deliverable.
 
-Prefer one small implementation increment over one large implementation effort.
+Prefer multiple small plans over one large implementation effort.
+
+---
+
+# Definition of Done
+
+A plan is complete when:
+
+* implementation is finished;
+* acceptance criteria are satisfied;
+* validation has passed;
+* documentation has been updated when required;
+* completion notes have been written;
+* the plan has been moved to `completed/`.
+
+Completed plans become part of the project's permanent engineering history.

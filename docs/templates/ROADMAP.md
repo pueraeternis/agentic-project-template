@@ -1,16 +1,40 @@
-# ROADMAP.md
-
 # Roadmap
 
 ## Purpose
 
-This document defines the long-term implementation strategy for the project.
+This document defines the long-term evolution of the project.
 
-It translates the project vision into a sequence of major implementation phases.
+It translates the project vision into a sequence of implementation phases.
 
-The roadmap answers one question:
+The roadmap answers the question:
 
-> **In what order should the project be built?**
+> **How will the project evolve over time?**
+
+The roadmap describes capabilities rather than implementation tasks.
+
+Implementation details belong in implementation plans.
+
+---
+
+# Relationship to the Project Lifecycle
+
+The roadmap is created after `PROJECT.md` and before architectural design.
+
+Typical lifecycle:
+
+```text
+PROJECT
+        ↓
+ROADMAP
+        ↓
+ARCHITECTURE
+        ↓
+ENGINEERING
+        ↓
+Implementation Plans
+```
+
+The roadmap defines the overall direction for all subsequent work.
 
 ---
 
@@ -19,14 +43,14 @@ The roadmap answers one question:
 A roadmap should:
 
 * describe project evolution;
+* deliver value incrementally;
 * remain relatively stable;
-* focus on capabilities rather than implementation;
-* support incremental delivery;
-* minimize unnecessary dependencies.
+* define capabilities rather than implementation tasks;
+* minimize unnecessary dependencies between phases.
 
-The roadmap is not a task list.
+The roadmap is not a backlog.
 
-Implementation details belong in implementation plans.
+The roadmap is not a task tracker.
 
 ---
 
@@ -34,9 +58,9 @@ Implementation details belong in implementation plans.
 
 Current phase:
 
-**Phase X — <Name>**
+**Phase N — <Name>**
 
-Roadmap status:
+Overall status:
 
 * Planned
 * In Progress
@@ -44,53 +68,45 @@ Roadmap status:
 
 ---
 
-# Phase N — <Phase Name>
+# Phase Template
 
-## Goal
+## Phase N — <Phase Name>
 
-Describe the purpose of this phase.
+### Goal
 
-## Expected Outcome
+Describe the purpose of the phase.
 
-Describe what the project will be capable of after this phase.
+### Expected Outcome
 
-## Major Capabilities
+Describe what the project will be capable of after completing this phase.
 
-List the primary capabilities introduced during this phase.
+### Major Capabilities
 
-## Dependencies
+List the primary capabilities introduced.
 
-Identify prerequisite phases if any.
+### Dependencies
 
-## Exit Criteria
+List prerequisite phases, if any.
 
-Describe how to determine that this phase is complete and the project is ready to move to the next phase.
+### Risks
 
-This template should be repeated by project authors as needed.
+Describe significant risks associated with this phase.
+
+### Exit Criteria
+
+Describe how to determine that the phase is complete and the project is ready for the next phase.
+
+Repeat this structure for each roadmap phase.
 
 ---
 
-# Future Phases
+# Future Direction
 
 Describe future phases at a high level.
 
-Avoid unnecessary detail.
+Avoid unnecessary implementation detail.
 
 Future phases are expected to evolve as the project matures.
-
----
-
-# Roadmap Planning Guidelines
-
-A roadmap should:
-
-* describe capabilities rather than implementation tasks;
-* define logical project evolution;
-* remain stable as implementation plans change;
-* avoid implementation details;
-* provide enough information for implementation plans to be derived.
-
-A roadmap should not become a backlog or task tracker.
 
 ---
 
@@ -98,13 +114,7 @@ A roadmap should not become a backlog or task tracker.
 
 Each roadmap phase is implemented through one or more implementation plans.
 
-One roadmap phase usually consists of multiple implementation plans.
-
-Plans are expected to evolve more frequently than the roadmap.
-
-Plans may change without requiring roadmap updates.
-
-Typical relationship:
+Typical structure:
 
 ```text
 Roadmap Phase
@@ -115,22 +125,38 @@ Roadmap Phase
         └── ...
 ```
 
-Implementation plans define individual engineering increments.
+The roadmap defines **what capabilities are delivered**.
 
-The roadmap defines long-term direction.
+Implementation plans define **how each capability is implemented**.
+
+---
+
+# Repository Relationships
+
+This document should be read together with:
+
+| Document          | Purpose                             |
+| ----------------- | ----------------------------------- |
+| `PROJECT.md`      | Defines why the project exists      |
+| `ARCHITECTURE.md` | Defines the target system structure |
+| `ENGINEERING.md`  | Defines implementation conventions  |
+| Plans             | Deliver roadmap phases              |
+| `PROGRESS.md`     | Records completed phases            |
 
 ---
 
 # Roadmap Evolution
 
-The roadmap may evolve when:
+Update this document only when project direction changes.
 
-* project vision changes;
-* priorities change significantly;
-* architecture requires a different long-term strategy;
-* major capabilities are added or removed.
+Examples:
 
-Routine implementation progress should not modify the roadmap.
+* new major capability;
+* significant reprioritization;
+* project scope changes;
+* architectural strategy changes.
+
+Routine implementation work should not modify the roadmap.
 
 ---
 
@@ -139,6 +165,22 @@ Routine implementation progress should not modify the roadmap.
 A roadmap is successful when:
 
 * project direction is clear;
-* implementation order is logical;
+* implementation phases are logically ordered;
 * each phase delivers meaningful value;
-* implementation plans can be derived without redefining project strategy.
+* implementation plans can be derived naturally from roadmap phases;
+* project evolution remains understandable throughout its lifecycle.
+
+---
+
+# Summary
+
+The roadmap connects project vision to implementation.
+
+It answers:
+
+* What major capabilities will be delivered?
+* In what order will they be delivered?
+* How does the project evolve over time?
+* Which phase is currently active?
+
+The roadmap should remain stable while implementation plans evolve beneath it.

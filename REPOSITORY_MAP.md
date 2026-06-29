@@ -1,167 +1,49 @@
-# REPOSITORY_MAP.md
-
 # Repository Map
 
 ## Purpose
 
-This document explains how knowledge is organized within the repository.
+This document is the navigation guide for the repository.
 
-It serves as the primary navigation guide for both humans and AI agents.
+It explains where information lives, how repository knowledge is organized, and which documents should be used at each stage of the project lifecycle.
 
-When looking for information, start here.
-
----
-
-# Repository Philosophy
-
-The repository is organized around knowledge rather than code.
-
-Each document has a single responsibility.
-
-Knowledge should have one authoritative location.
-
-Avoid duplicating information across documents.
+Use this document whenever you need to locate project information.
 
 ---
 
-# Repository Structure
+# Repository Organization
+
+The repository consists of six major areas.
 
 ```text
 .
-├── AGENTS.md
-├── REPOSITORY_MAP.md
-├── METHODOLOGY.md
-├── KNOWLEDGE_MODEL.md
-├── README.md
-│
-├── docs/
-│   ├── project/
-│   └── templates/
-│
-└── skills/
+├── Framework Documentation
+├── Project Documentation
+├── Skills
+├── Agents
+├── Tool Configuration
+└── Templates
 ```
 
----
-
-# Repository Entry Points
-
-## README.md
-
-Purpose:
-
-Repository introduction.
-
-Audience:
-
-* humans
+Each area has a single responsibility.
 
 ---
 
-## AGENTS.md
+# Framework Documentation
 
-Purpose:
+Located in the repository root.
 
-Instructions for AI agents.
+These documents define the framework itself.
 
-Defines:
+| Document             | Purpose                    |
+| -------------------- | -------------------------- |
+| `README.md`          | Framework overview         |
+| `AGENTS.md`          | Universal AI agent rules   |
+| `METHODOLOGY.md`     | Development methodology    |
+| `KNOWLEDGE_MODEL.md` | Repository knowledge model |
+| `REPOSITORY_MAP.md`  | Repository navigation      |
+| `VERSION.md`         | Framework version          |
 
-* repository conventions;
-* execution workflow;
-* read-first order.
-
-Audience:
-
-* AI agents
-
----
-
-## REPOSITORY_MAP.md
-
-Purpose:
-
-Repository navigation.
-
-Explains where project knowledge lives.
-
-Audience:
-
-* humans;
-* AI agents
-
----
-
-## METHODOLOGY.md
-
-Purpose:
-
-Defines the engineering philosophy behind the repository.
-
-Explains:
-
-* development principles;
-* engineering workflow;
-* project lifecycle.
-
-Audience:
-
-* humans;
-* AI agents
-
----
-
-## KNOWLEDGE_MODEL.md
-
-Purpose:
-
-Defines how project knowledge is organized.
-
-Explains:
-
-* knowledge hierarchy;
-* document responsibilities;
-* relationships between project artifacts.
-
-Audience:
-
-* humans;
-* AI agents
-
----
-
-# Skills
-
-Location:
-
-```text
-skills/
-```
-
-Purpose:
-
-Reusable engineering procedures.
-
-Each skill defines:
-
-* purpose;
-* role;
-* inputs;
-* outputs;
-* execution procedure;
-* completion criteria.
-
-Current core skills:
-
-* Project Discovery
-* Roadmap Creation
-* Architecture Design
-* Plan Creation
-* Plan Review
-* Plan Implementation
-* Code Review
-
-Skills describe engineering processes.
-
-They are reusable across projects.
+These documents rarely change.
 
 ---
 
@@ -173,9 +55,7 @@ Location:
 docs/project/
 ```
 
-Purpose:
-
-Contains all documentation specific to a single project.
+These documents describe one specific software project.
 
 Typical contents:
 
@@ -183,113 +63,104 @@ Typical contents:
 PROJECT.md
 ROADMAP.md
 ARCHITECTURE.md
+ENGINEERING.md
+RUNBOOK.md
 PROGRESS.md
 adr/
 plans/
 ```
 
-Project documentation evolves throughout the project lifecycle.
+---
+
+## Project Design Documents
+
+Created before implementation begins.
+
+| Document          | Purpose                  |
+| ----------------- | ------------------------ |
+| `PROJECT.md`      | Project vision and scope |
+| `ROADMAP.md`      | Delivery roadmap         |
+| `ARCHITECTURE.md` | System architecture      |
+| `ENGINEERING.md`  | Engineering decisions    |
 
 ---
 
-## PROJECT.md
+## Project Execution Documents
 
-Defines:
+Created during implementation.
 
-* project vision;
-* goals;
-* scope;
-* MVP;
-* non-goals.
-
----
-
-## ROADMAP.md
-
-Defines:
-
-* implementation phases;
-* project evolution;
-* delivery strategy.
+| Document      | Purpose                       |
+| ------------- | ----------------------------- |
+| `RUNBOOK.md`  | Operational procedures        |
+| `PROGRESS.md` | Completed work                |
+| `adr/`        | Architecture Decision Records |
+| `plans/`      | Implementation plans          |
 
 ---
 
-## ARCHITECTURE.md
+# Skills
 
-Defines:
-
-* system architecture;
-* component boundaries;
-* dependency rules;
-* architectural principles.
-
----
-
-## PROGRESS.md
-
-Records:
-
-* completed implementation increments;
-* engineering milestones;
-* project history.
-
----
-
-## adr/
-
-Contains individual Architecture Decision Records (ADRs).
-
-Each ADR documents:
-
-* context;
-* decision;
-* rationale;
-* consequences.
-
----
-
-## plans/
-
-Contains implementation plans that authorize and track implementation work.
-
-Structure:
+Location:
 
 ```text
-plans/
-├── backlog/
-├── active/
-└── completed/
+skills/
 ```
 
-### Naming Convention
+Skills describe reusable engineering workflows.
 
-Plan files use a sequential three-digit prefix and a short kebab-case title:
+Current lifecycle skills:
+
+* Project Discovery
+* Roadmap Creation
+* Architecture Design
+* Engineering Design
+* Repository Initialization
+* Plan Creation
+* Plan Review
+* Plan Implementation
+* Code Review
+
+Skills are reusable across projects.
+
+---
+
+# Agents
+
+Location:
 
 ```text
-NNN-short-title.md
+.agents/
 ```
 
-Examples: `001-user-authentication.md`, `002-api-rate-limiting.md`.
+Agents specialize in executing skills.
 
-See `docs/templates/PLAN.md` for the full plan template, status lifecycle, and folder transition rules.
+Each agent is responsible for one engineering workflow.
 
-### backlog/
+Agents do not define methodology.
 
-Holds future implementation plans.
+They execute it.
 
-Plans here are **Draft** or not yet scheduled. They do not authorize implementation.
+---
 
-### active/
+# Tool Configuration
 
-Holds approved work ready for or currently in implementation.
+Tool-specific configuration lives outside the framework documentation.
 
-Only plans in this folder with status **Approved** or **In Progress** authorize implementation.
+Examples:
 
-### completed/
+```text
+.cursor/
+.codex/
+```
 
-Holds finished or superseded plans.
+These directories contain:
 
-Plans here have status **Completed** or **Superseded**. They are preserved for traceability and must not authorize new implementation.
+* shared framework configuration;
+* project-local configuration;
+* prompts;
+* templates.
+
+Tool-specific rules should never replace repository documentation.
 
 ---
 
@@ -301,76 +172,100 @@ Location:
 docs/templates/
 ```
 
-Purpose:
+Templates define reusable project documents.
 
-Reusable document templates.
+Typical templates:
 
-Templates are copied into `docs/project/` when initializing a new project.
+* PROJECT
+* ROADMAP
+* ARCHITECTURE
+* ENGINEERING
+* PLAN
+* ADR
+* RUNBOOK
+* PROGRESS
 
-Templates define document structure, not project content.
+Templates define document structure only.
 
 ---
 
-# Knowledge Flow
+# Repository Lifecycle
 
-Knowledge evolves through the following lifecycle:
+Projects move through the following lifecycle.
 
 ```text
 Idea
-    │
-    ▼
-PROJECT.md
-    │
-    ▼
-ROADMAP.md
-    │
-    ▼
-ARCHITECTURE.md
-    │
-    ▼
-Implementation Plan
-    │
-    ▼
-Plan Review
-    │
-    ▼
+        ↓
+PROJECT
+        ↓
+ROADMAP
+        ↓
+ARCHITECTURE
+        ↓
+ENGINEERING
+        ↓
+Repository Initialization
+        ↓
+Implementation Plans
+        ↓
 Implementation
-    │
-    ▼
-PROGRESS.md
+        ↓
+Progress
 ```
 
-Significant architectural decisions are recorded as ADRs in `docs/project/adr/`.
-Architecture may be updated when roadmap phases introduce new structural requirements.
+Each stage creates repository knowledge for the next stage.
 
 ---
 
 # Read Order
 
-When joining an existing project, read documents in the following order:
+## Repository Onboarding
 
-1. AGENTS.md
-2. REPOSITORY_MAP.md
-3. METHODOLOGY.md
-4. KNOWLEDGE_MODEL.md
-5. `docs/project/PROJECT.md`
-6. `docs/project/ROADMAP.md`
-7. `docs/project/ARCHITECTURE.md`
-8. Active plans in `docs/project/plans/active/`
-9. Relevant ADRs in `docs/project/adr/`
-10. `docs/project/PROGRESS.md`
+Read:
+
+1. `README.md`
+2. `REPOSITORY_MAP.md`
+3. `METHODOLOGY.md`
+4. `KNOWLEDGE_MODEL.md`
+5. `AGENTS.md`
 
 ---
 
-# Design Principles
+## Project Onboarding
+
+Read:
+
+1. `PROJECT.md`
+2. `ROADMAP.md`
+3. `ARCHITECTURE.md`
+4. `ENGINEERING.md`
+5. Relevant ADRs
+6. Active plans
+7. `PROGRESS.md`
+
+---
+
+## Implementation
+
+During implementation consult:
+
+* active plans;
+* relevant ADRs;
+* engineering documentation.
+
+Follow the read order defined in `AGENTS.md`.
+
+---
+
+# Repository Principles
 
 The repository is organized around the following principles:
 
-* one document, one responsibility;
-* knowledge has a single source of truth;
-* documentation drives implementation;
-* implementation follows approved plans;
-* architecture evolves intentionally;
-* project history is preserved.
+* one responsibility per document;
+* one source of truth for every piece of knowledge;
+* documentation before implementation;
+* reusable engineering workflows;
+* explicit project lifecycle;
+* long-term maintainability.
 
-The repository should remain understandable to both humans and AI agents, regardless of project size.
+The repository should remain understandable to both humans and AI agents throughout the lifetime of the project.

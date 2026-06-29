@@ -1,237 +1,245 @@
-# SKILL.md
-
 # Plan Implementation
 
 ## Purpose
 
-This skill implements an approved implementation plan.
+This skill implements one approved implementation plan.
 
 Implementation is the execution of an approved engineering contract.
 
-The implementation agent realizes documented project intent rather than making design decisions.
+The objective is to translate documented project intent into production-ready implementation while preserving architecture, engineering conventions, and repository consistency.
 
-The implementation agent translates the approved engineering plan into production-ready code while preserving architecture and repository consistency.
-
-The implementation should satisfy the acceptance criteria without introducing unrelated changes.
+Implementation should satisfy the approved plan without introducing unrelated work.
 
 ---
 
-## Role
+# Lifecycle Stage
 
-Implementation Agent
+```text
+Plan Review
+        ↓
+Plan Implementation
+        ↓
+Code Review
+```
+
+Plan Implementation realizes the approved implementation increment.
+
+It does not redesign the project.
 
 ---
 
-## When to Use
+# Role
+
+Primary role:
+
+**Implementation Agent**
+
+---
+
+# When to Use
 
 Use this skill when:
 
-- an implementation plan has been approved;
-- all required project documentation is available;
-- implementation is authorized.
+* an implementation plan has been approved;
+* implementation has been authorized;
+* required project documentation exists.
 
-Do not use this skill before the implementation plan has been reviewed and approved.
-
----
-
-## Inputs
-
-The skill requires:
-
-- the approved implementation plan — the authoritative engineering contract;
-- `PROJECT.md` — project intent, Background, Core Idea, and MVP;
-- `ROADMAP.md` — current delivery strategy and implementation priorities;
-- `ARCHITECTURE.md` — component boundaries and dependency rules;
-- relevant ADRs — architectural decisions that must be respected;
-- the current repository state — the current implementation baseline.
+Do not begin implementation before Plan Review has approved the plan.
 
 ---
 
-## Outputs
+# Inputs
 
-The skill produces:
+Required:
 
-- production-ready implementation;
-- tests where appropriate;
-- documentation updates when required;
-- completed implementation checklist;
-- implementation ready for code review.
+* approved implementation plan;
+* `PROJECT.md`;
+* `ROADMAP.md`;
+* `ARCHITECTURE.md`;
+* `ENGINEERING.md`.
 
----
+Additional references:
 
-## Procedure
+* ADRs;
+* completed plans;
+* current repository state.
 
-### Step 1 — Understand the Engineering Contract
-
-Read the implementation plan completely.
-
-Explicitly verify:
-
-- objective;
-- scope;
-- acceptance criteria;
-- implementation constraints;
-- validation requirements;
-- architectural assumptions.
-
-Implementation must not begin until the approved contract is fully understood.
+The approved implementation plan is the authoritative engineering contract.
 
 ---
 
-### Step 2 — Review Project Knowledge
+# Outputs
 
-Review the repository documentation necessary for the current work.
+Produce:
 
-Explicitly review:
+* production-ready implementation;
+* tests where appropriate;
+* updated documentation when required;
+* completed implementation checklist;
+* implementation ready for Code Review.
 
-- `PROJECT.md`;
-- `ROADMAP.md`;
-- `ARCHITECTURE.md`;
-- relevant ADRs;
-- current repository state.
+---
 
-The objective is to understand why the implementation exists before changing code.
+# Procedure
+
+## Step 1 — Understand the Engineering Contract
+
+Review the implementation plan.
+
+Verify:
+
+* objective;
+* scope;
+* out-of-scope items;
+* acceptance criteria;
+* validation requirements;
+* implementation constraints.
+
+Implementation must not begin until the contract is fully understood.
+
+---
+
+## Step 2 — Build Project Context
+
+Review:
+
+* project definition;
+* roadmap;
+* architecture;
+* engineering design;
+* ADRs;
+* current implementation.
 
 Understand:
 
-- existing architecture;
-- component ownership;
-- previous implementation decisions;
-- coding conventions.
+* why the implementation exists;
+* architectural boundaries;
+* engineering conventions;
+* existing repository structure.
 
-Avoid making assumptions.
+Avoid assumptions.
 
 ---
 
-### Step 3 — Implement the Approved Scope
+## Step 3 — Implement the Approved Scope
 
-Implement only the approved scope.
-
-Before implementing a significant change, verify that it can be traced to:
-
-- the approved implementation plan;
-- the documented architecture;
-- an accepted ADR (when applicable).
-
-Do not introduce undocumented functionality.
+Implement only the approved work.
 
 Respect:
 
-- architectural boundaries;
-- component ownership;
-- project conventions.
+* project intent;
+* roadmap;
+* architecture;
+* engineering conventions;
+* implementation plan.
 
 Keep the implementation as simple as possible.
 
+If additional work is discovered, stop and recommend a new or updated implementation plan.
+
 ---
 
-### Step 4 — Validate the Implementation
+## Step 4 — Validate the Implementation
 
 Verify that:
 
-- acceptance criteria are satisfied;
-- tests pass;
-- validation requirements are met;
-- no regressions have been introduced.
+* acceptance criteria are satisfied;
+* validation commands succeed;
+* tests pass;
+* repository standards are satisfied;
+* no regressions have been introduced.
 
-Resolve issues before considering the implementation complete.
-
----
-
-### Step 5 — Update Documentation
-
-Update project documentation whenever implementation changes repository knowledge.
-
-Examples include:
-
-- architecture changes;
-- ADR implementation;
-- completed checklist;
-- generated documentation.
-
-Documentation should remain synchronized with implementation.
-
-Documentation updates should be part of the same change.
+Validation should follow the engineering workflow defined in `ENGINEERING.md`.
 
 ---
 
-### Step 6 — Prepare for Review
+## Step 5 — Update Documentation
 
-Before handing the work to the Review Agent, verify:
+Update repository documentation whenever implementation changes repository knowledge.
 
-- implementation is complete;
-- validation has been performed;
-- documentation is consistent;
-- no unrelated changes remain;
-- implementation remains within approved scope;
-- repository documentation is internally consistent;
-- no undocumented architectural changes have been introduced.
+Typical updates include:
 
-The implementation should be ready for review without additional cleanup.
+* completed implementation checklist;
+* architecture (when approved changes were implemented);
+* ADR references;
+* generated documentation.
+
+Documentation and implementation should remain synchronized.
 
 ---
 
-## Rules
+## Step 6 — Prepare for Review
 
-Implement only the approved plan.
+Before handover verify:
+
+* implementation is complete;
+* validation has been performed;
+* documentation is consistent;
+* no unrelated changes remain;
+* implementation remains within approved scope;
+* engineering conventions have been followed.
+
+The repository should be ready for independent review.
+
+---
+
+# Rules
+
+Do:
+
+* implement the approved plan;
+* preserve repository consistency;
+* follow engineering conventions;
+* update documentation when necessary;
+* keep implementation simple.
 
 Do not:
 
-- expand project scope;
-- redesign the architecture;
-- introduce unrelated refactoring;
-- implement future roadmap phases;
-- silently change requirements.
+* redesign the project;
+* redefine architecture;
+* modify engineering decisions;
+* expand scope;
+* introduce speculative improvements;
+* implement future roadmap phases.
 
-If additional work is discovered:
-
-- stop implementation;
-- document the finding;
-- recommend creating or updating a plan.
-
-Do not continue outside the approved scope.
+Implementation follows the approved engineering contract.
 
 ---
 
-## Implementation Principles
+# Principles
 
-Prefer:
+Implementation should be:
 
-- simple solutions;
-- explicit logic;
-- maintainable code;
-- small commits;
-- minimal complexity;
-- implement documented intent before introducing optimization;
-- preserve engineering traceability;
-- prefer explicit implementation over implicit behavior.
+* simple;
+* maintainable;
+* explicit;
+* traceable;
+* architecture-compliant;
+* engineering-compliant.
 
-Avoid:
+Prefer the simplest implementation that satisfies the documented requirements.
 
-- speculative engineering;
-- premature optimization;
-- unnecessary abstractions;
-- hidden behavior;
-- scope creep.
-
-The simplest correct implementation is usually the best implementation.
+Avoid unnecessary abstractions and premature optimization.
 
 ---
 
-## Success Criteria
+# Success Criteria
 
 The skill is complete when:
 
-- the approved scope has been fully implemented;
-- acceptance criteria are satisfied;
-- validation has been completed;
-- documentation has been updated when necessary;
-- the implementation is ready for independent review.
+* the approved implementation has been completed;
+* acceptance criteria are satisfied;
+* validation has passed;
+* documentation has been updated where required;
+* engineering conventions have been followed;
+* the implementation is ready for independent Code Review.
 
 ---
 
-## Next Skill
+# Handover
 
 After implementation is complete, continue with:
 
 **Code Review**
+
+The Review Agent validates that the implementation satisfies the approved plan, preserves repository consistency, and is ready to become part of the project's engineering history.

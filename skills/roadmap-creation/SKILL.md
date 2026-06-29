@@ -1,201 +1,208 @@
-# SKILL.md
-
 # Roadmap Creation
 
 ## Purpose
 
-This skill transforms shared project understanding into a long-term implementation strategy.
+This skill transforms an approved project definition into a long-term project evolution strategy.
 
-It takes an approved `PROJECT.md` and produces a high-level roadmap that describes how the project evolves from the MVP toward the complete vision.
+It produces a roadmap that defines the major capability increments required to evolve the project from the MVP to the complete vision.
 
-The roadmap defines the major phases of project evolution and provides the foundation for future implementation plans.
-
-The roadmap bridges project vision and engineering execution while remaining implementation-independent.
+The roadmap bridges project intent and system design while remaining implementation-independent.
 
 ---
 
-## Role
+# Lifecycle Stage
 
-Reasoning Agent
+```text
+Project Discovery
+        ↓
+Roadmap Creation
+        ↓
+Architecture Design
+```
+
+Roadmap Creation defines **how the project will evolve**.
+
+Architecture Design later defines **how those capabilities will be organized into a system**.
 
 ---
 
-## When to Use
+# Role
+
+Primary role:
+
+**Roadmap Agent**
+
+This skill may also be executed by another reasoning-capable agent acting in the Roadmap Agent role.
+
+---
+
+# When to Use
 
 Use this skill when:
 
-- a new `PROJECT.md` has been approved;
-- the overall implementation strategy needs to be defined;
-- the project scope changes significantly.
+* `PROJECT.md` has been approved;
+* the project implementation strategy must be defined;
+* project scope changes significantly;
+* major capabilities need to be reorganized.
 
-Do not use this skill for implementation planning or technical design.
+Do not use this skill for:
 
----
-
-## Inputs
-
-The skill requires:
-
-- an approved `PROJECT.md`.
-
-`PROJECT.md` provides the conceptual artifacts from which the roadmap is derived:
-
-- Background;
-- Core Idea;
-- Vision;
-- Goals;
-- MVP;
-- Constraints.
-
-The project vision should already be stable before roadmap creation begins.
+* project discovery;
+* architecture design;
+* engineering design;
+* implementation planning;
+* production code.
 
 ---
 
-## Outputs
+# Inputs
 
-The skill produces:
+Required:
 
-- a completed `ROADMAP.md`;
-- a sequence of implementation phases;
-- a high-level implementation strategy;
-- phase dependencies;
-- an incremental delivery path from MVP to project completion.
+* `PROJECT.md`
 
-The roadmap should provide enough structure to begin writing implementation plans.
+The project definition should already be approved and stable.
 
 ---
 
-## Procedure
+# Outputs
 
-### Step 1 — Build Project Context
+Produce:
 
-Review the project definition and explicitly examine:
+* `ROADMAP.md`
 
-- Background;
-- Core Idea;
-- Vision;
-- Goals;
-- MVP;
-- Constraints.
+The roadmap should define:
 
-The objective is to understand the intended evolution of the project before defining implementation phases.
+* major project phases;
+* capability evolution;
+* phase dependencies;
+* incremental delivery strategy.
 
-The roadmap should remain aligned with the approved project vision.
+The roadmap should provide sufficient structure for Architecture Design.
 
 ---
 
-### Step 2 — Identify Major Milestones
+# Procedure
+
+## Step 1 — Understand the Project
+
+Review:
+
+* project vision;
+* goals;
+* MVP;
+* target users;
+* constraints;
+* assumptions;
+* risks.
+
+The roadmap must remain aligned with the approved project definition.
+
+---
+
+## Step 2 — Identify Major Capabilities
 
 Break the project into a small number of meaningful phases.
 
-Each phase should represent a significant step in the evolution of the product.
+Each phase should:
+
+* deliver clear user value;
+* build upon previous phases;
+* remain independently understandable.
+
+Describe capabilities rather than implementation work.
+
+---
+
+## Step 3 — Organize Evolution
+
+Arrange phases into a logical sequence.
+
+Verify:
+
+* MVP appears early;
+* dependencies are minimized;
+* each phase naturally enables the next.
+
+Avoid implementation-driven ordering.
+
+---
+
+## Step 4 — Validate
 
 Verify that:
 
-- every phase delivers meaningful new capability;
-- the MVP appears as an explicit early phase;
-- later phases build naturally upon earlier phases.
-
-Avoid implementation details.
-
-The roadmap should describe capability evolution rather than implementation activities.
-
-Think in terms of capabilities rather than code.
-
----
-
-### Step 3 — Define Dependencies
-
-Arrange the phases in a logical implementation order.
-
-Earlier phases should enable later ones.
-
-Introduce dependencies only when they simplify implementation or reflect genuine capability prerequisites.
-
-Avoid creating artificial phase dependencies.
-
-Minimize unnecessary dependencies.
-
-The roadmap should support incremental development.
-
----
-
-### Step 4 — Validate the Roadmap
-
-Review the roadmap for:
-
-- logical progression;
-- realistic scope;
-- independent milestones;
-- clear MVP delivery path;
-- every phase supports the documented project vision;
-- every phase can be traced back to documented project goals;
-- no phase exists solely because of implementation convenience.
+* every phase supports project goals;
+* the roadmap remains implementation-independent;
+* capability progression is logical;
+* future work is not overplanned.
 
 Every phase should move the project meaningfully forward.
 
-The roadmap should remain product-driven rather than implementation-driven.
+---
+
+## Step 5 — Produce Documentation
+
+Complete `ROADMAP.md`.
+
+The resulting roadmap should allow Architecture Design to begin without redefining project strategy.
 
 ---
 
-### Step 5 — Produce ROADMAP.md
+# Rules
 
-Populate the roadmap template.
+Do:
 
-Describe each phase clearly enough that future implementation plans can be created without redefining project strategy.
+* focus on project evolution;
+* describe capabilities;
+* prioritize incremental value;
+* minimize dependencies;
+* keep the roadmap stable.
 
----
+Do not:
 
-## Rules
+* define architecture;
+* select technologies;
+* define repository structure;
+* create implementation plans;
+* discuss engineering tooling.
 
-During Roadmap Creation:
-
-- focus on project evolution rather than implementation;
-- describe capabilities, not code;
-- avoid frameworks, libraries, and technologies;
-- avoid implementation tasks;
-- avoid architectural details;
-- avoid file-level planning.
-
-The roadmap defines *what* should be built first, not *how* it will be implemented.
-
----
-
-## Roadmap Principles
-
-A roadmap should be:
-
-- incremental;
-- easy to understand;
-- stable;
-- implementation-independent;
-- focused on delivering value;
-- beginning with the MVP;
-- evolving capabilities incrementally;
-- justified by project value in every phase.
-
-One roadmap phase will typically require multiple implementation plans.
-
-The roadmap should remain relatively stable throughout the project.
-
-Individual implementation plans are expected to evolve much more frequently.
+Those responsibilities belong to later lifecycle stages.
 
 ---
 
-## Success Criteria
+# Principles
+
+A good roadmap is:
+
+* incremental;
+* value-driven;
+* stable;
+* implementation-independent;
+* easy to understand;
+* directly traceable to project goals.
+
+One roadmap phase will usually require multiple implementation plans.
+
+---
+
+# Success Criteria
 
 The skill is complete when:
 
-- the implementation strategy is clear;
-- project phases are logically ordered;
-- dependencies are understood;
-- the roadmap supports incremental delivery;
-- the human approves the resulting `ROADMAP.md`.
+* `ROADMAP.md` is complete;
+* project phases are clearly defined;
+* capability progression is logical;
+* dependencies are understood;
+* the roadmap supports Architecture Design;
+* the human approves the roadmap.
 
 ---
 
-## Next Skill
+# Handover
 
-After Roadmap Creation is complete, continue with:
+After Roadmap Creation is approved, continue with:
 
 **Architecture Design**
+
+The Architecture Agent will translate roadmap phases into a stable system architecture while preserving the project direction established during discovery.

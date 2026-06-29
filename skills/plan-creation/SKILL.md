@@ -1,247 +1,248 @@
-# SKILL.md
-
 # Plan Creation
 
 ## Purpose
 
-This skill transforms the current project state into one implementation increment.
+This skill transforms the current project state into a single implementation increment.
 
-The implementation increment should be derived from:
+Each implementation plan defines one bounded, reviewable, and executable unit of work.
 
-- project vision;
-- roadmap;
-- architecture;
-- completed work.
-
-The goal is to define one bounded, reviewable, and implementable increment of work.
-
-The plan becomes the engineering contract for the next implementation iteration and serves as the contract between planning, implementation, and review.
+The resulting plan becomes the engineering contract between planning, implementation, and review.
 
 ---
 
-## Role
+# Lifecycle Stage
 
-Planning Agent
+```text
+Repository Initialization
+        ↓
+Plan Creation
+        ↓
+Plan Review
+```
+
+Plan Creation defines **what will be implemented next**.
+
+It does not perform implementation.
 
 ---
 
-## When to Use
+# Role
+
+Primary role:
+
+**Planning Agent**
+
+---
+
+# When to Use
 
 Use this skill when:
 
-- an approved `ROADMAP.md` exists;
-- the next implementation increment needs to be defined;
-- a previous implementation plan has been completed.
+* project initialization has been completed;
+* the next implementation increment must be defined;
+* a previous implementation plan has been completed;
+* implementation priorities need to be adjusted.
 
-Do not use this skill to implement code.
+Do not use this skill for:
 
-Do not use this skill to redesign the project.
-
----
-
-## Inputs
-
-The skill requires the following inputs. Planning should reconcile all of them before creating a new plan.
-
-**`PROJECT.md`** provides:
-
-- Background;
-- Core Idea;
-- Vision;
-- MVP.
-
-**`ROADMAP.md`** provides:
-
-- current phase;
-- delivery strategy.
-
-**`ARCHITECTURE.md`** provides:
-
-- component boundaries;
-- dependency rules.
-
-**Completed plans** provide:
-
-- implementation history.
-
-**Current implementation** provides:
-
-- actual repository state.
-
-The planning agent should understand the existing repository before creating a new plan.
+* project discovery;
+* architecture design;
+* engineering design;
+* production code;
+* code review.
 
 ---
 
-## Outputs
+# Inputs
 
-The skill produces one new implementation plan.
+Required:
 
-The plan should include:
+* `PROJECT.md`
+* `ROADMAP.md`
+* `ARCHITECTURE.md`
+* `ENGINEERING.md`
 
-- objective;
-- scope;
-- acceptance criteria;
-- implementation approach;
-- risks;
-- validation requirements;
-- implementation checklist.
+Additional context:
 
-The plan becomes the authoritative specification for the next implementation step.
+* ADRs;
+* completed plans;
+* current repository state.
+
+Planning should reconcile documentation with the actual implementation before producing a new plan.
 
 ---
 
-## Procedure
+# Outputs
 
-### Step 1 — Build Project Context
+Produce one implementation plan.
+
+The plan should define:
+
+* objective;
+* scope;
+* out-of-scope items;
+* acceptance criteria;
+* validation strategy;
+* implementation checklist;
+* risks.
+
+The plan becomes the authoritative specification for the next implementation increment.
+
+---
+
+# Procedure
+
+## Step 1 — Build Context
 
 Review:
 
-- PROJECT.md;
-- ROADMAP.md;
-- ARCHITECTURE.md;
-- relevant ADRs;
-- completed plans;
-- current implementation.
+* project definition;
+* roadmap;
+* architecture;
+* engineering design;
+* ADRs;
+* completed plans;
+* current implementation.
 
-The objective is to understand both project intent and implementation history.
-
-Understand what already exists.
-
-Avoid duplicating previous work.
+Understand both project intent and repository state.
 
 ---
 
-### Step 2 — Select the Next Increment
+## Step 2 — Select the Next Increment
 
-Choose the smallest meaningful increment that moves the project forward.
+Choose the smallest meaningful implementation increment.
 
 The increment should:
 
-- deliver measurable value;
-- have clear boundaries;
-- be independently reviewable;
-- be realistically implementable;
-- support the MVP or current roadmap phase;
-- not require unresolved architectural decisions;
-- have a clear dependency chain.
+* deliver measurable value;
+* support the current roadmap phase;
+* respect architecture;
+* follow engineering conventions;
+* remain independently reviewable.
 
-Avoid selecting work that is too large.
+Avoid large implementation batches.
 
 ---
 
-### Step 3 — Define Scope
+## Step 3 — Define Scope
 
 Clearly define:
 
-- what is included;
-- what is excluded;
-- assumptions;
-- dependencies.
+* included work;
+* excluded work;
+* dependencies;
+* assumptions.
 
-The implementation agent should never need to guess the scope.
-
----
-
-### Step 4 — Define Acceptance Criteria
-
-Acceptance criteria should be:
-
-- objective;
-- testable;
-- observable;
-- unambiguous.
-
-A reviewer should be able to determine whether the implementation satisfies the plan.
+Implementation should never require guessing the intended scope.
 
 ---
 
-### Step 5 — Consider Risks
+## Step 4 — Define Validation
 
-Identify:
+Document:
 
-- architectural risks;
-- implementation risks;
-- compatibility concerns;
-- migration requirements;
-- validation challenges.
+* acceptance criteria;
+* validation commands;
+* required testing;
+* documentation updates.
 
-Not every plan has significant risks, but they should always be considered.
-
----
-
-### Step 6 — Produce the Plan
-
-Before producing the plan, perform a traceability check.
-
-Verify that every major implementation item can be traced to:
-
-- PROJECT;
-- ROADMAP;
-- ARCHITECTURE;
-- or an approved ADR.
-
-The plan should never introduce undocumented work.
-
-Create a complete implementation plan.
-
-The plan should be immediately executable by an implementation agent without requiring additional design work.
+Validation should follow `ENGINEERING.md`.
 
 ---
 
-## Rules
+## Step 5 — Evaluate Risks
 
-A plan should describe one implementation increment.
+Consider:
+
+* implementation risks;
+* compatibility;
+* migration;
+* validation complexity;
+* architectural impact.
+
+Record only meaningful risks.
+
+---
+
+## Step 6 — Verify Traceability
+
+Verify that every major implementation item is traceable to one or more of:
+
+* `PROJECT.md`;
+* `ROADMAP.md`;
+* `ARCHITECTURE.md`;
+* `ENGINEERING.md`;
+* ADRs.
+
+The plan must not introduce undocumented project scope.
+
+---
+
+## Step 7 — Produce Documentation
+
+Complete the implementation plan.
+
+The document should allow an Implementation Agent to begin work without additional project design.
+
+---
+
+# Rules
+
+Do:
+
+* create one implementation increment;
+* keep scope explicit;
+* follow approved architecture;
+* follow engineering conventions;
+* preserve traceability.
 
 Do not:
 
-- redesign the project;
-- rewrite the roadmap;
-- introduce unrelated improvements;
-- combine multiple roadmap phases;
-- silently expand project scope.
+* redesign the project;
+* modify the roadmap;
+* redefine engineering decisions;
+* expand scope;
+* combine unrelated work.
 
-Every implementation decision should be traceable back to the roadmap.
+Planning authorizes implementation.
 
----
-
-## Planning Principles
-
-Prefer:
-
-- small plans;
-- explicit scope;
-- independent increments;
-- simple implementation paths;
-- measurable acceptance criteria;
-- every implementation increment traceable to documented project intent;
-- plans that minimize future redesign.
-
-Avoid:
-
-- speculative engineering;
-- unnecessary abstraction;
-- future-proofing beyond the current increment;
-- implementation details unrelated to the current scope.
-
-One plan should normally be implementable within a single development iteration.
+It does not perform implementation.
 
 ---
 
-## Success Criteria
+# Principles
+
+A good implementation plan is:
+
+* focused;
+* incremental;
+* independently reviewable;
+* architecture-compliant;
+* engineering-compliant;
+* fully traceable.
+
+Prefer multiple small plans over one large plan.
+
+---
+
+# Success Criteria
 
 The skill is complete when:
 
-- one implementation increment has been defined;
-- the scope is explicit;
-- acceptance criteria are measurable;
-- implementation boundaries are clear;
-- validation requirements are documented;
-- the human approves the resulting plan.
+* one implementation increment has been defined;
+* scope is explicit;
+* acceptance criteria are measurable;
+* validation requirements are documented;
+* engineering conventions are respected;
+* traceability has been verified;
+* the human approves the plan.
 
 ---
 
-## Next Skill
+# Handover
 
-After Plan Creation is complete, continue with:
+After Plan Creation is approved, continue with:
 
 **Plan Review**
+
+The Review Agent validates that the proposed implementation is complete, consistent, and aligned with the approved project documentation before implementation begins.

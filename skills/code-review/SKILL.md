@@ -1,235 +1,240 @@
-# SKILL.md
-
 # Code Review
 
 ## Purpose
 
-This skill reviews an implementation after development has been completed.
+This skill reviews completed implementation before it becomes part of the project's engineering history.
 
-The goal is to verify that the implementation satisfies the approved plan, maintains project quality, and does not introduce unintended changes.
+The objective is to verify that the implementation:
 
-The review focuses on correctness, consistency, maintainability, and compliance with the documented engineering process.
+* satisfies the approved implementation plan;
+* follows the documented architecture;
+* follows the approved engineering conventions;
+* preserves repository consistency;
+* introduces no unintended scope.
+
+Code Review is the final quality gate before recording project progress.
 
 ---
 
-## Role
+# Lifecycle Stage
 
-Review Agent
+```text
+Plan Implementation
+        ↓
+Code Review
+        ↓
+Progress Update
+```
+
+Code Review validates completed implementation.
+
+It does not redesign the project.
 
 ---
 
-## When to Use
+# Role
+
+Primary role:
+
+**Review Agent**
+
+---
+
+# When to Use
 
 Use this skill when:
 
-- implementation has been completed;
-- validation has been performed;
-- the implementation is ready for review.
+* implementation has been completed;
+* validation has been performed;
+* documentation has been updated;
+* implementation is ready for acceptance.
 
-The review should occur before merging or committing the changes.
-
----
-
-## Inputs
-
-The skill requires:
-
-- the approved implementation plan;
-- the implementation diff;
-- PROJECT.md;
-- ROADMAP.md;
-- architecture documentation (if available);
-- relevant decision records (if available).
+Perform Code Review before committing completed work to project history.
 
 ---
 
-## Outputs
+# Inputs
 
-The skill produces one of the following outcomes:
+Required:
 
-- Approved
-- Approved with Minor Suggestions
-- Changes Requested
+* approved implementation plan;
+* implementation changes;
+* `PROJECT.md`;
+* `ROADMAP.md`;
+* `ARCHITECTURE.md`;
+* `ENGINEERING.md`.
 
-The review should include clear reasoning for every requested change.
+Additional references:
+
+* ADRs;
+* completed plans;
+* current repository state.
 
 ---
 
-## Review Procedure
+# Outputs
 
-### Step 1 — Understand the Intent
+Produce one review outcome:
 
-Understand not only what was implemented, but why.
+* **Approved**
+* **Approved with Minor Suggestions**
+* **Changes Requested**
+
+Every requested change should include clear reasoning and evidence.
+
+---
+
+# Procedure
+
+## Step 1 — Understand the Intent
 
 Review:
 
-- the implementation plan;
-- acceptance criteria;
-- implementation scope.
+* implementation plan;
+* implementation scope;
+* acceptance criteria;
+* validation requirements.
 
-Verify that the implementation can be traced back to the approved plan.
-
-The reviewer should understand the approved engineering intent before evaluating the changes.
-
----
-
-### Step 2 — Review the Changes
-
-Inspect the implementation.
-
-Verify:
-
-- correctness;
-- completeness;
-- readability;
-- maintainability;
-- consistency with existing code.
-
-Look for unintended behavior.
+Understand the approved engineering intent before reviewing code.
 
 ---
 
-### Step 3 — Verify Scope Compliance
+## Step 2 — Review the Implementation
+
+Evaluate:
+
+* correctness;
+* completeness;
+* maintainability;
+* readability;
+* consistency.
+
+Look for unintended behavior and incomplete implementation.
+
+---
+
+## Step 3 — Verify Scope Compliance
 
 Confirm that:
 
-- only approved functionality has been implemented;
-- no unrelated changes have been introduced;
-- no hidden refactoring has been performed;
-- project boundaries have been respected;
-- every significant implementation change can be traced to an approved plan item or documented architectural decision.
+* only approved functionality has been implemented;
+* no undocumented features have been introduced;
+* no unrelated refactoring has occurred;
+* implementation remains within approved scope.
 
-Reject unnecessary scope expansion.
-
-Reject undocumented functionality, even if technically correct.
+Reject undocumented scope expansion.
 
 ---
 
-### Step 4 — Verify Engineering Quality
+## Step 4 — Verify Engineering Compliance
 
-Review:
+Verify consistency with:
 
-- code organization;
-- naming;
-- error handling;
-- testing;
-- documentation updates;
-- architectural consistency;
-- consistency with documented architecture;
-- consistency with relevant ADRs (when applicable).
+* architecture;
+* engineering conventions;
+* repository standards;
+* ADRs.
 
-Ensure the implementation follows repository conventions.
-
-Ensure the implementation remains aligned with documented project knowledge.
+Confirm that implementation follows the engineering workflow defined in `ENGINEERING.md`.
 
 ---
 
-### Step 5 — Evaluate Risks
+## Step 5 — Review Validation
 
-Identify:
+Confirm that:
 
-- bugs;
-- regressions;
-- missing validation;
-- architectural violations;
-- maintainability concerns.
+* validation commands succeeded;
+* tests passed;
+* documentation was updated where required;
+* repository remains internally consistent.
 
-Prioritize findings according to their impact.
+Review evidence rather than assumptions.
 
 ---
 
-### Step 6 — Produce the Review
+## Step 6 — Evaluate Findings
 
-Summarize the review.
+Classify findings as:
 
-Classify findings by severity:
+* Critical;
+* Major;
+* Minor;
+* Suggestion.
 
-- Critical
-- Major
-- Minor
-- Suggestion
+Prioritize findings by engineering impact.
 
-### Traceability Assessment
+---
+
+## Step 7 — Produce Review
 
 Summarize:
 
-- whether the implementation fully matches the approved plan;
-- whether undocumented functionality was introduced;
-- whether documentation updates appear sufficient.
+* implementation quality;
+* scope compliance;
+* engineering compliance;
+* validation results;
+* review outcome.
 
-This is not another approval decision.
-
-It is a short assessment of engineering traceability.
-
-Conclude with one of:
-
-- Approved
-- Approved with Minor Suggestions
-- Changes Requested
+Clearly state whether implementation is approved.
 
 ---
 
-## Rules
+# Rules
 
-Review the implementation against:
+Do:
 
-- the approved plan;
-- the documented architecture;
-- repository conventions.
+* review against approved documentation;
+* verify engineering compliance;
+* verify traceability;
+* provide objective, actionable feedback.
 
 Do not:
 
-- redesign the project;
-- introduce unrelated improvements;
-- request changes outside the approved scope;
-- recommend speculative refactoring.
+* redesign the project;
+* redefine architecture;
+* introduce new engineering decisions;
+* request unrelated improvements;
+* block approval because of personal preferences.
 
-Suggestions outside the approved scope may be recorded separately, but should not block approval.
+Suggestions outside the approved scope should remain optional.
 
 ---
 
-## Review Principles
-
-The purpose of review is to improve implementation quality.
-
-Not to redesign the project.
-
-Not to rewrite the implementation.
-
-Not to enforce personal coding preferences.
+# Principles
 
 A good review is:
 
-- objective;
-- actionable;
-- evidence-based;
-- proportional to the impact of the issue.
+* objective;
+* evidence-based;
+* proportional;
+* actionable;
+* traceable.
 
-Review documented intent before reviewing implementation details.
+Review implementation against documented intent rather than hypothetical future improvements.
 
-The reviewer should verify that the implementation solves the approved problem before evaluating coding style or optimization opportunities.
+Correctness takes priority over optimization.
 
-Focus on correctness before optimization.
-
-Focus on scope before future improvements.
+Scope compliance takes priority over feature requests.
 
 ---
 
-## Success Criteria
+# Success Criteria
 
 The skill is complete when:
 
-- the implementation has been evaluated against the approved plan;
-- all significant issues have been documented;
-- the review outcome is clearly communicated;
-- the human can confidently decide whether to approve the implementation.
+* implementation has been evaluated against the approved plan;
+* engineering conventions have been verified;
+* validation has been reviewed;
+* significant issues have been documented;
+* a review outcome has been produced;
+* the human can confidently approve or reject the implementation.
 
 ---
 
-## Next Skill
+# Handover
 
-After the implementation is approved:
+If the implementation is approved:
 
-- commit the changes;
-- update project progress if required;
-- continue with **Plan Creation** for the next implementation increment.
+1. Update `PROGRESS.md`.
+2. Move the implementation plan to `completed/`.
+3. Begin the next implementation cycle with **Plan Creation**.

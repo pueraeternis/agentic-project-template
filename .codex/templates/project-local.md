@@ -4,100 +4,80 @@
 
 This document contains Codex-specific guidance for this repository.
 
-It supplements the shared engineering methodology with project-specific instructions.
+Project-specific engineering decisions are defined in:
 
-Do not duplicate information already documented in:
+`docs/project/ENGINEERING.md`
 
-* `AGENTS.md`
-* `PROJECT.md`
-* `ROADMAP.md`
-* `ARCHITECTURE.md`
-
-Only record information that affects how Codex should work with this repository.
+Do not duplicate repository documentation here.
 
 ---
 
-# Repository Overview
+# Repository Context
 
-Briefly describe the repository.
+Codex should treat the following documents as authoritative:
 
-Examples:
+1. `AGENTS.md`
+2. `docs/project/PROJECT.md`
+3. `docs/project/ROADMAP.md`
+4. `docs/project/ARCHITECTURE.md`
+5. `docs/project/ENGINEERING.md`
+6. Relevant ADRs
+7. Active implementation plans
 
-* application type;
-* primary purpose;
-* major technologies.
-
----
-
-# Development Environment
-
-Document project-specific development requirements.
-
-Examples:
-
-* dependency manager;
-* runtime;
-* package manager;
-* build commands;
-* local services.
+Follow the documented engineering workflow.
 
 ---
 
-# Project Conventions
+# Engineering Conventions
 
-Document repository-specific conventions.
+Project-specific engineering conventions are documented in:
 
-Examples:
+`ENGINEERING.md`
 
-* directory layout;
-* configuration style;
-* naming conventions;
-* logging conventions;
-* dependency injection patterns.
+Examples include:
 
-Only include conventions that differ from the shared engineering framework.
+* language and runtime versions;
+* dependency management;
+* repository layout;
+* validation workflow;
+* testing strategy;
+* configuration strategy;
+* coding conventions.
 
----
-
-# Validation Commands
-
-Document the commands that Codex should execute before considering work complete.
-
-Examples:
-
-```bash
-uv run ruff format --check .
-uv run ruff check .
-uv run basedpyright
-uv run pytest
-```
-
-Include any project-specific validation commands.
+Do not redefine these conventions here.
 
 ---
 
-# Repository Constraints
+# Validation
 
-Document constraints that affect implementation.
+Execute the validation workflow documented in `ENGINEERING.md` before considering implementation complete.
 
-Examples:
-
-* supported Python version;
-* deployment environment;
-* compatibility requirements;
-* infrastructure limitations.
+Do not duplicate validation commands in this file.
 
 ---
 
-# Codex Notes
+# Codex-Specific Notes
 
-Document any additional guidance specific to Codex.
+This document should contain only guidance that is specific to Codex.
 
-Examples:
+Examples include:
 
-* preferred workflow;
 * sandbox considerations;
-* approval preferences;
-* repository-specific execution rules.
+* approval workflow;
+* repository navigation hints;
+* prompt-specific behavior.
 
-Keep this section focused on Codex-specific behavior rather than general project documentation.
+Do not duplicate:
+
+* repository documentation;
+* engineering methodology;
+* project documentation;
+* engineering decisions.
+
+---
+
+# General Rule
+
+The repository documentation is authoritative.
+
+This file exists only to adapt Codex to the repository, not to redefine the repository.

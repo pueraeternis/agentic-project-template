@@ -4,27 +4,35 @@
 
 This directory contains Codex-specific configuration for repositories using the Agentic Engineering Methodology.
 
-It adapts the shared engineering framework to Codex without duplicating repository documentation.
+Its purpose is to adapt Codex to the repository engineering workflow without duplicating repository knowledge.
 
-Repository knowledge remains in:
+The repository remains the authoritative source of project knowledge.
+
+---
+
+# Repository Knowledge
+
+Project knowledge lives outside `.codex`.
+
+Repository artifacts remain authoritative:
 
 * `AGENTS.md`
 * `docs/project/`
 * `.agents/`
 * `skills/`
 
-This directory contains only Codex-specific configuration and prompts.
+Codex configuration should reference these artifacts rather than redefine them.
 
 ---
 
 # Design Principles
 
-The Codex configuration should:
+The Codex integration should be:
 
-* remain minimal;
-* avoid duplicating repository documentation;
-* reuse the shared engineering workflow;
-* stay independent of any specific project.
+* minimal;
+* documentation-driven;
+* tool-specific only where necessary;
+* reusable across repositories.
 
 Whenever possible, repository documentation should be preferred over Codex-specific instructions.
 
@@ -40,26 +48,28 @@ Whenever possible, repository documentation should be preferred over Codex-speci
 └── templates/
 ```
 
-## `config.toml`
+---
 
-Defines Codex runtime configuration.
+## config.toml
 
-Examples:
+Contains Codex runtime configuration.
+
+Typical examples include:
 
 * model selection;
-* approval mode;
-* sandbox mode;
+* approval policy;
+* sandbox configuration;
 * subagent configuration.
 
-Avoid storing repository knowledge here.
+Do not store repository knowledge here.
 
 ---
 
-## `prompts/`
+## prompts/
 
-Contains reusable prompts for common engineering tasks.
+Reusable prompts for common engineering tasks.
 
-Typical prompts include:
+Examples:
 
 * implementation;
 * plan creation;
@@ -67,58 +77,63 @@ Typical prompts include:
 * code review;
 * repository audit.
 
-Prompts should complement the engineering methodology rather than redefine it.
+Prompts should invoke the repository workflow rather than replace it.
 
 ---
 
-## `templates/`
+## templates/
 
-Contains templates that are copied into new repositories during project bootstrap.
+Templates copied into newly initialized repositories.
 
-Templates are project-specific starting points rather than framework documentation.
+Examples:
+
+* project-local Codex configuration;
+* project bootstrap files.
+
+Templates should contain project-specific starting points rather than framework documentation.
+
+---
+
+# Relationship to the Engineering Framework
+
+The engineering workflow is defined by the repository.
+
+Typical execution flow:
+
+```text
+User Request
+        ↓
+Role (.agents/)
+        ↓
+Skill (skills/)
+        ↓
+Repository Documentation
+        ↓
+Codex Prompt (optional)
+        ↓
+Implementation
+```
+
+Codex prompts support the workflow.
+
+They do not define it.
 
 ---
 
 # Relationship to Other Directories
 
-## `AGENTS.md`
+| Location        | Responsibility                  |
+| --------------- | ------------------------------- |
+| `AGENTS.md`     | Repository rules and read order |
+| `.agents/`      | Engineering roles               |
+| `skills/`       | Engineering procedures          |
+| `docs/project/` | Project knowledge               |
+| `.cursor/`      | Cursor-specific integration     |
+| `.codex/`       | Codex-specific integration      |
 
-Repository entry point.
+Each directory has a single responsibility.
 
-Defines repository workflow and documentation hierarchy.
-
----
-
-## `.agents/`
-
-Defines reusable engineering roles.
-
-Examples:
-
-* Planning Agent
-* Review Agent
-* Implementation Agent
-
----
-
-## `skills/`
-
-Defines reusable engineering procedures.
-
-Examples:
-
-* Project Discovery
-* Roadmap Creation
-* Architecture Design
-* Plan Implementation
-
----
-
-## `.cursor/`
-
-Contains Cursor-specific rules.
-
-Both `.cursor/` and `.codex/` implement the same engineering methodology for different coding assistants.
+Avoid duplicating information between them.
 
 ---
 
@@ -126,6 +141,6 @@ Both `.cursor/` and `.codex/` implement the same engineering methodology for dif
 
 The engineering methodology is tool-independent.
 
-Codex should adapt to the methodology.
+Codex adapts to the methodology.
 
-The methodology should not adapt to Codex.
+The methodology never adapts to Codex.

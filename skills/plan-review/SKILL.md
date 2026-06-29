@@ -1,235 +1,242 @@
-# SKILL.md
-
 # Plan Review
 
 ## Purpose
 
-This skill reviews an implementation plan before any code is written.
+This skill validates an implementation plan before implementation begins.
 
-Plan Review validates the engineering contract before implementation authorization.
+The review confirms that the plan is complete, consistent, traceable, and ready for execution.
 
-The review ensures that:
-
-- the implementation increment is well-defined;
-- repository documentation is consistent;
-- implementation can proceed without additional design work.
-
-The review ensures that implementation begins from a high-quality engineering plan.
+Plan Review is the final quality gate before implementation authorization.
 
 ---
 
-## Role
+# Lifecycle Stage
 
-Review Agent
+```text
+Plan Creation
+        ↓
+Plan Review
+        ↓
+Plan Implementation
+```
+
+Plan Review determines whether implementation can safely begin.
 
 ---
 
-## When to Use
+# Role
+
+Primary role:
+
+**Review Agent**
+
+---
+
+# When to Use
 
 Use this skill when:
 
-- a new implementation plan has been created;
-- an existing plan has been significantly modified.
+* a new implementation plan has been created;
+* an implementation plan has been significantly revised;
+* implementation authorization is required.
 
 Always perform this review before implementation begins.
 
 ---
 
-## Inputs
+# Inputs
 
-The skill requires:
+Required:
 
-- the implementation plan;
-- `PROJECT.md`;
-- `ROADMAP.md`;
-- `ARCHITECTURE.md`;
-- relevant ADRs;
-- previous completed plans (when applicable).
+* implementation plan;
+* `PROJECT.md`;
+* `ROADMAP.md`;
+* `ARCHITECTURE.md`;
+* `ENGINEERING.md`.
 
-**`PROJECT.md`** provides:
+Additional references:
 
-- project intent;
-- Background;
-- Core Idea;
-- MVP.
-
-**`ROADMAP.md`** provides:
-
-- implementation strategy;
-- current phase.
-
-**`ARCHITECTURE.md`** provides:
-
-- system boundaries;
-- dependency rules.
-
-**ADRs** provide:
-
-- accepted architectural decisions.
+* ADRs;
+* completed plans;
+* current repository state (when relevant).
 
 The implementation plan is the proposed engineering contract.
 
 ---
 
-## Outputs
+# Outputs
 
-The skill produces one of two outcomes:
+Produce one review outcome:
 
-- **Approved** — the plan is ready for implementation.
-- **Changes Requested** — the plan requires revisions before implementation.
+* **Approved**
+* **Approved with Minor Suggestions**
+* **Changes Requested**
 
-When changes are requested, provide clear, actionable feedback.
-
----
-
-## Review Procedure
-
-### Step 1 — Build Project Context
-
-Explicitly review:
-
-- `PROJECT.md`;
-- `ROADMAP.md`;
-- `ARCHITECTURE.md`;
-- relevant ADRs;
-- previous completed plans (when applicable).
-
-The reviewer should understand why this implementation increment exists.
-
-Understand where this plan fits within the project.
+When revisions are required, provide clear, prioritized, and actionable feedback.
 
 ---
 
-### Step 2 — Verify Scope
+# Procedure
+
+## Step 1 — Build Context
+
+Review:
+
+* project definition;
+* roadmap;
+* architecture;
+* engineering design;
+* ADRs;
+* completed plans.
+
+Understand why this implementation increment exists.
+
+---
+
+## Step 2 — Verify Scope
 
 Confirm that:
 
-- the scope is clearly defined;
-- the implementation boundary is explicit;
-- the plan does not exceed the current roadmap phase;
-- no unrelated work has been introduced;
-- every major implementation item can be traced to `PROJECT.md`, `ROADMAP.md`, `ARCHITECTURE.md`, or an accepted ADR.
+* scope is explicit;
+* implementation boundaries are clear;
+* work fits the current roadmap phase;
+* engineering conventions are respected;
+* undocumented work has not been introduced.
 
-Reject undocumented implementation work.
-
----
-
-### Step 3 — Verify Completeness
-
-Confirm that the plan contains:
-
-- objective;
-- scope;
-- acceptance criteria;
-- implementation approach;
-- validation requirements;
-- implementation checklist.
-
-The implementation agent should not need to invent missing requirements.
+Every major implementation item should be traceable to approved project documentation.
 
 ---
 
-### Step 4 — Verify Consistency
+## Step 3 — Verify Completeness
 
-Check that the plan is consistent with:
+Confirm the plan contains:
 
-- project goals;
-- roadmap;
-- existing architecture;
-- previous engineering decisions.
+* objective;
+* scope;
+* out-of-scope items;
+* acceptance criteria;
+* validation strategy;
+* implementation checklist;
+* identified risks.
 
-Additionally verify that:
-
-- the plan supports the documented MVP or current roadmap phase;
-- no unresolved architectural decisions remain.
-
-Plans should not depend on architecture that has not yet been defined.
-
-Identify contradictions and ambiguities.
+Implementation should not require inventing missing requirements.
 
 ---
 
-### Step 5 — Evaluate Risks
+## Step 4 — Verify Consistency
 
-Review whether the plan introduces:
+Verify consistency with:
 
-- unnecessary complexity;
-- excessive implementation scope;
-- architectural inconsistency;
-- hidden assumptions;
-- unnecessary future-proofing.
+* project goals;
+* roadmap;
+* architecture;
+* engineering design;
+* ADRs.
 
-Encourage the simplest solution that satisfies the requirements.
+Confirm that:
+
+* no unresolved architectural issues remain;
+* no engineering decisions are contradicted;
+* implementation can begin without additional design work.
 
 ---
 
-### Step 6 — Produce the Review
+## Step 5 — Evaluate Risks
 
-### Traceability Assessment
+Review for:
+
+* excessive scope;
+* unnecessary complexity;
+* hidden assumptions;
+* compatibility concerns;
+* unnecessary future-proofing.
+
+Prefer the simplest implementation that satisfies the approved documentation.
+
+---
+
+## Step 6 — Verify Traceability
+
+Confirm that implementation items are justified by:
+
+* `PROJECT.md`;
+* `ROADMAP.md`;
+* `ARCHITECTURE.md`;
+* `ENGINEERING.md`;
+* ADRs.
+
+Reject undocumented scope expansion.
+
+---
+
+## Step 7 — Produce Review
 
 Summarize:
 
-- whether the implementation increment is fully justified by project documentation;
-- whether undocumented scope exists;
-- whether implementation can proceed without further architectural work.
+* strengths;
+* issues;
+* required changes (if any);
+* review outcome.
 
-Conclude with one of the following:
-
-- **Approved**
-- **Approved with Minor Suggestions**
-- **Changes Requested**
-
-Suggestions should be prioritized by importance.
+The review should clearly explain whether implementation may proceed.
 
 ---
 
-## Rules
+# Rules
 
-Do not redesign the project.
+Do:
 
-Do not introduce new roadmap phases.
+* review the proposed implementation increment;
+* verify consistency;
+* verify traceability;
+* verify engineering compliance;
+* provide actionable feedback.
 
-Do not expand project scope.
+Do not:
 
-Review the proposed plan, not an idealized future version of the project.
+* redesign the project;
+* redefine architecture;
+* rewrite engineering decisions;
+* expand implementation scope;
+* review hypothetical future work.
 
-Feedback should remain within the current implementation increment.
+Review the submitted plan, not the ideal project.
 
 ---
 
-## Review Principles
+# Principles
 
 A good implementation plan is:
 
-- clear;
-- complete;
-- bounded;
-- consistent;
-- implementable;
-- reviewable.
+* complete;
+* focused;
+* traceable;
+* architecture-compliant;
+* engineering-compliant;
+* immediately implementable.
 
-Review documented intent before reviewing implementation details.
-
-Every implementation increment should be traceable to documented project knowledge.
-
-The review should improve clarity rather than increase complexity.
+The review should improve clarity without introducing unnecessary complexity.
 
 ---
 
-## Success Criteria
+# Success Criteria
 
 The skill is complete when:
 
-- the implementation scope is validated;
-- acceptance criteria are sufficient;
-- implementation risks have been reviewed;
-- the plan is either approved or returned for revision;
-- the human understands the reasoning behind the review outcome.
+* implementation scope has been validated;
+* engineering conventions have been verified;
+* acceptance criteria are sufficient;
+* validation requirements are complete;
+* implementation risks have been reviewed;
+* a review outcome has been produced;
+* the human understands the review decision.
 
 ---
 
-## Next Skill
+# Handover
 
-If approved, continue with:
+If the plan is approved, continue with:
 
 **Plan Implementation**
+
+The Implementation Agent may now execute the approved implementation plan while remaining within the documented project, architecture, and engineering boundaries.

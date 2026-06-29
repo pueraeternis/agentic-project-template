@@ -1,53 +1,104 @@
 # Framework Version
 
-**Framework:** Agentic Engineering Methodology
+## Framework
 
-**Version:** 1.0
+**Agentic Engineering Framework**
 
-**Status:** Stable
+---
 
-**Released:** 2026-06-29
+## Version
+
+**1.0.0**
+
+Status: **Stable**
+
+Released: **2026-06-29**
 
 ---
 
 # Overview
 
-This repository contains the first stable version of the Agentic Engineering Methodology.
+Version 1.0.0 is the first stable release of the Agentic Engineering Framework.
 
-The methodology provides a documentation-first engineering framework for developing software with AI agents.
+The framework defines a complete lifecycle for AI-assisted software development, from project discovery through implementation and review.
 
-It is designed to be tool-agnostic and reusable across projects.
+It is documentation-driven, lifecycle-oriented, and tool-agnostic.
+
+---
+
+# Framework Lifecycle
+
+```text
+Idea
+        ↓
+Project Discovery
+        ↓
+PROJECT.md
+
+Roadmap Creation
+        ↓
+ROADMAP.md
+
+Architecture Design
+        ↓
+ARCHITECTURE.md
+
+Engineering Design
+        ↓
+ENGINEERING.md
+
+Repository Initialization
+        ↓
+Initialized Repository
+
+Plan Creation
+        ↓
+PLAN.md
+
+Plan Review
+        ↓
+
+Plan Implementation
+        ↓
+
+Code Review
+```
 
 ---
 
 # Included Components
 
-## Repository Foundation
+## Framework Documentation
 
-* Repository structure
-* Engineering methodology
-* Knowledge model
-* Repository navigation
-* Universal agent rules
+* AGENTS
+* README
+* METHODOLOGY
+* KNOWLEDGE_MODEL
+* REPOSITORY_MAP
+* VERSION
 
 ---
 
-## Documentation Templates
+## Project Templates
 
 * PROJECT
 * ROADMAP
 * ARCHITECTURE
-* ADR
+* ENGINEERING
 * PLAN
+* ADR
+* RUNBOOK
 * PROGRESS
 
 ---
 
-## Engineering Skills
+## Skills
 
 * Project Discovery
 * Roadmap Creation
 * Architecture Design
+* Engineering Design
+* Repository Initialization
 * Plan Creation
 * Plan Review
 * Plan Implementation
@@ -55,71 +106,86 @@ It is designed to be tool-agnostic and reusable across projects.
 
 ---
 
-## Engineering Roles
+## Agents
 
 * Discovery Agent
 * Roadmap Agent
 * Architecture Agent
+* Engineering Agent
+* Initialization Agent
 * Planning Agent
-* Review Agent
 * Implementation Agent
+* Review Agent
 
 ---
 
-# Current Workflow
+## AI Tool Support
 
-```text
-Idea
-    ↓
-Discovery
-    ↓
-Project
-    ↓
-Roadmap
-    ↓
-Architecture
-    ↓
-Planning
-    ↓
-Review
-    ↓
-Implementation
-    ↓
-Review
-    ↓
-Commit
-    ↓
-Progress
-```
+The framework includes reusable integration for:
+
+* Cursor
+* Codex CLI
+
+Project-specific configuration is generated during Repository Initialization.
 
 ---
 
-# Planned Features
+# Framework Principles
 
-The following capabilities are planned for future versions:
+Version 1.0.0 establishes the following principles:
 
-* Cursor integration
-* Codex integration
-* Example project
-* Repository bootstrap workflow
-* Tool-specific adapters
+* documentation before implementation;
+* repository as the system of record;
+* explicit project lifecycle;
+* reusable engineering workflows;
+* project-independent methodology;
+* tool-independent engineering process;
+* incremental implementation through plans.
 
 ---
 
 # Compatibility
 
-The methodology is intended to work with:
+The framework is intended to support:
 
 * ChatGPT
-* Codex CLI
 * Cursor
+* Codex CLI
 * Claude Code
-* Other AI coding assistants
+* future AI coding assistants
+
+The methodology does not depend on a specific programming language or technology stack.
 
 ---
 
-# Notes
+# Future Evolution
 
-This document tracks the evolution of the engineering framework itself.
+Future versions may introduce:
 
-It does not describe the version of any individual software project created using this methodology.
+* additional engineering skills;
+* additional AI tool integrations;
+* repository automation;
+* project generators;
+* engineering metrics;
+* workflow automation.
+
+The core methodology should remain stable while the framework evolves.
+
+---
+
+# Version History
+
+## 1.0.0 — 2026-06-29
+
+Initial stable release.
+
+Established:
+
+* complete project lifecycle;
+* repository knowledge model;
+* documentation templates;
+* engineering skills;
+* specialized agents;
+* Cursor integration;
+* Codex integration;
+* engineering methodology.

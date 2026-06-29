@@ -1,36 +1,38 @@
 ---
+
 description: General Python engineering standards
 globs: "**/*.py"
 alwaysApply: false
----
+------------------
 
 # Python Engineering Standards
 
 These rules apply to Python source code.
 
-Project-specific conventions take precedence where documented.
+Project-specific conventions documented in `ENGINEERING.md` take precedence over these defaults.
 
 ---
 
 # Type Safety
 
-Use type annotations for all public functions and methods.
+Use type annotations for all public functions, methods, and module-level constants where appropriate.
 
 Prefer explicit types over `Any`.
 
-Use structured models instead of untyped dictionaries whenever practical.
+Prefer structured domain models over untyped dictionaries.
 
 Prefer:
 
-- explicit return types;
-- typed collections;
-- domain models.
+* explicit return types;
+* typed collections;
+* dataclasses or Pydantic models where appropriate;
+* `Protocol` for behavioral interfaces.
 
 Avoid unnecessary use of:
 
-- `Any`;
-- `dict[str, Any]`;
-- untyped containers.
+* `Any`;
+* `dict[str, Any]`;
+* untyped containers.
 
 ---
 
@@ -38,29 +40,31 @@ Avoid unnecessary use of:
 
 Functions should:
 
-- perform one responsibility;
-- have explicit inputs;
-- have explicit outputs;
-- minimize side effects.
+* have a single responsibility;
+* have explicit inputs and outputs;
+* minimize side effects;
+* remain reasonably small.
 
-Prefer small, composable functions.
+Prefer pure functions whenever practical.
 
-Avoid generic functions such as:
+Use descriptive names that express business intent.
+
+Avoid vague names such as:
 
 ```python
 def process(data):
     ...
 ```
 
-Use descriptive names that reflect the business responsibility.
-
 ---
 
-# Classes
+# Class Design
 
 Classes should have a single responsibility.
 
 Prefer composition over inheritance.
+
+Prefer dependency injection over hidden global state.
 
 Avoid deep inheritance hierarchies unless clearly justified.
 
@@ -68,9 +72,9 @@ Avoid deep inheritance hierarchies unless clearly justified.
 
 # Error Handling
 
-Use explicit exception types.
+Raise exceptions that accurately describe failures.
 
-Raise exceptions that accurately describe the failure.
+Catch only exceptions that can be handled meaningfully.
 
 Never silently ignore exceptions.
 
@@ -81,7 +85,7 @@ except Exception:
     pass
 ```
 
-Catch only exceptions that can be handled meaningfully.
+Exception messages should help diagnose the problem.
 
 ---
 
@@ -89,11 +93,9 @@ Catch only exceptions that can be handled meaningfully.
 
 Use the project's logging framework.
 
-Prefer structured or parameterized logging.
+Prefer parameterized logging.
 
-Avoid string interpolation in logging calls.
-
-Prefer:
+Example:
 
 ```python
 logger.info("Created task %s", task_id)
@@ -105,7 +107,7 @@ Avoid:
 logger.info(f"Created task {task_id}")
 ```
 
-Do not use `print()` outside CLI or explicitly interactive utilities.
+Never use `print()` outside CLI utilities or interactive scripts.
 
 ---
 
@@ -115,11 +117,13 @@ Keep imports at module level.
 
 Avoid:
 
-- dynamic imports;
-- import-time side effects;
-- circular dependencies.
+* circular dependencies;
+* import-time side effects;
+* unnecessary dynamic imports.
 
-Use `TYPE_CHECKING` when type-only imports would otherwise create dependency cycles.
+Use `TYPE_CHECKING` for type-only imports that would otherwise create dependency cycles.
+
+Group imports according to PEP 8.
 
 ---
 
@@ -127,61 +131,66 @@ Use `TYPE_CHECKING` when type-only imports would otherwise create dependency cyc
 
 Do not hardcode:
 
-- credentials;
-- secrets;
-- endpoints;
-- environment-specific values.
+* credentials;
+* secrets;
+* endpoints;
+* environment-specific values.
 
-Configuration should come from the project's configuration mechanism.
+Configuration should come from the project's documented configuration mechanism.
 
 ---
 
 # Documentation
 
-Public APIs should include docstrings.
+Document public APIs.
 
-Internal helpers should be documented only when the intent is not obvious.
+Write docstrings when they explain intent rather than implementation.
 
-Prefer concise documentation over repeating the implementation.
+Avoid comments that merely repeat the code.
+
+Prefer comments that explain **why**, not **what**.
 
 ---
 
-# Package Structure
+# Package Organization
 
-Keep modules focused.
+Organize packages around responsibilities.
 
 Avoid generic packages such as:
 
 ```text
-utils
-helpers
-common
-misc
+utils/
+helpers/
+common/
+misc/
 ```
 
-Prefer packages that represent explicit responsibilities.
+Prefer domain-oriented package names.
 
 ---
 
-# Maintainability
+# Code Quality
 
 Prefer:
 
-- readability;
-- explicit behavior;
-- deterministic code;
-- simple implementations.
+* readability;
+* explicit behavior;
+* deterministic execution;
+* maintainable solutions;
+* low coupling;
+* high cohesion.
 
 Avoid:
 
-- premature optimization;
-- unnecessary abstraction;
-- speculative engineering.
+* premature optimization;
+* speculative engineering;
+* unnecessary abstractions;
+* hidden control flow.
 
 ---
 
 # General Rule
 
-Write code that is easy to understand, review, and maintain.
+Write production-ready Python that is easy to understand, review, test, and maintain.
 
 Clarity is preferred over cleverness.

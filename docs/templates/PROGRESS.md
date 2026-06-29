@@ -1,19 +1,37 @@
-# PROGRESS.md
-
 # Progress
 
 ## Purpose
 
 This document is the chronological engineering journal of the project.
 
-It records completed implementation increments.
+It records completed implementation increments and significant engineering milestones.
 
-It does not describe future work.
+It documents **what has been delivered**, not **what is planned**.
 
 Future work belongs in:
 
-* ROADMAP.md
+* `ROADMAP.md`
 * implementation plans
+
+---
+
+# Relationship to the Project Lifecycle
+
+Progress is the final stage of the implementation lifecycle.
+
+Typical flow:
+
+```text
+PLAN
+        ↓
+IMPLEMENTATION
+        ↓
+REVIEW
+        ↓
+PROGRESS
+```
+
+Each completed implementation plan should result in one progress entry.
 
 ---
 
@@ -24,7 +42,8 @@ Each entry should be:
 * factual;
 * chronological;
 * concise;
-* implementation-oriented.
+* implementation-oriented;
+* traceable to a completed plan.
 
 Record outcomes.
 
@@ -32,9 +51,11 @@ Do not record intentions.
 
 ---
 
+# Entry Template
+
 ## YYYY-MM-DD
 
-### Plan XXX — <Title>
+### Plan NNN — <Title>
 
 **Status**
 
@@ -44,28 +65,29 @@ Completed
 
 ### Summary
 
-Briefly describe what was accomplished.
+Briefly describe what was delivered.
 
 Examples:
 
 * implemented feature X;
+* completed roadmap phase;
 * introduced component Y;
-* completed repository foundation;
-* added validation workflow.
+* established engineering workflow.
 
 ---
 
 ### Artifacts
 
-List important artifacts produced.
+List important repository artifacts produced or updated.
 
 Examples:
 
-* new modules;
+* source modules;
 * documentation;
 * ADRs;
-* project templates;
-* skills.
+* templates;
+* skills;
+* configuration.
 
 ---
 
@@ -78,62 +100,95 @@ Examples:
 * unit tests passed;
 * integration tests passed;
 * manual verification completed;
-* documentation updated;
+* documentation reviewed;
 * code review completed.
 
-This section should record validation evidence rather than implementation details.
+Record validation evidence rather than implementation details.
 
 ---
 
 ### Related Documents
 
-Reference related project artifacts.
+Typical references:
 
-Examples:
-
-* Plan XXX
-* ADR-XXX
-* ARCHITECTURE.md
+* implementation plan;
+* ADRs;
+* `ARCHITECTURE.md`;
+* `ENGINEERING.md`.
 
 ---
 
 ### Notes
 
-Optional implementation notes.
-
-Record only information that may be useful when reviewing project history.
+Optional observations that may help future contributors understand the project history.
 
 Avoid repeating implementation details already documented elsewhere.
 
 ---
 
-# Progress Rules
+# Repository Relationships
+
+`PROJECT.md`
+
+: defines project intent.
+
+`ROADMAP.md`
+
+: defines long-term direction.
+
+Implementation Plans
+
+: authorize work.
+
+ADRs
+
+: explain significant engineering decisions.
+
+`PROGRESS.md`
+
+: records completed implementation history.
+
+Together these documents provide a complete history of project evolution.
+
+---
+
+# Change Rules
+
+Update this document only after meaningful implementation milestones.
+
+Typical examples:
+
+* completed implementation plan;
+* completed roadmap phase;
+* completed architectural milestone;
+* completed repository initialization.
+
+Do not update this document for:
+
+* work in progress;
+* draft plans;
+* temporary experiments;
+* intermediate implementation states.
+
+---
+
+# Progress Principles
 
 Do:
 
 * record completed work;
-* summarize implementation;
-* reference important artifacts;
-* preserve chronological history.
+* reference implementation plans;
+* reference important repository artifacts;
+* preserve chronological order.
 
 Do not:
 
 * record future work;
-* include TODO lists;
-* rewrite history;
-* modify previous entries except to correct factual errors.
+* maintain TODO lists;
+* rewrite previous entries;
+* duplicate implementation details.
 
----
-
-# Relationship to Other Documents
-
-* PROJECT.md defines what is being built.
-* ROADMAP.md defines the long-term implementation strategy.
-* Implementation plans define authorized work.
-* ADRs explain significant engineering decisions.
-* PROGRESS.md records completed engineering history.
-
-Together these documents provide a complete view of the project's evolution.
+Previous entries should only be modified to correct factual errors.
 
 ---
 
@@ -141,7 +196,23 @@ Together these documents provide a complete view of the project's evolution.
 
 A progress journal is successful when:
 
-* every completed implementation increment is recorded;
-* project history can be understood chronologically;
-* engineering milestones are easy to trace;
-* important implementation artifacts are easy to locate.
+* every completed implementation plan is recorded;
+* project history is easy to follow;
+* engineering milestones are traceable;
+* important repository artifacts are discoverable;
+* repository evolution can be understood without reading commit history.
+
+---
+
+# Summary
+
+`PROGRESS.md` is the permanent engineering history of the project.
+
+It answers questions such as:
+
+* What has already been delivered?
+* When was it delivered?
+* Which plan introduced it?
+* How was it validated?
+
+The document should provide a concise chronological history of project evolution throughout its lifetime.

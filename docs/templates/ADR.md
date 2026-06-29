@@ -4,7 +4,43 @@
 
 **Date:** YYYY-MM-DD
 
-**Superseded by:** ADR-NNN (optional, when status is Superseded)
+**Superseded by:** ADR-NNN (optional)
+
+---
+
+# Purpose
+
+This Architecture Decision Record documents a significant engineering or architectural decision.
+
+ADRs explain **why** the system looks the way it does.
+
+They complement `ARCHITECTURE.md`, which describes **what** the current architecture is.
+
+---
+
+# When to Create
+
+Create an ADR when a decision:
+
+* changes system architecture;
+* introduces a new architectural pattern;
+* changes component ownership or boundaries;
+* establishes a long-term engineering convention;
+* resolves a significant trade-off;
+* is expensive to reverse.
+
+Do **not** create ADRs for:
+
+* local implementation details;
+* temporary experiments;
+* trivial refactorings;
+* easily reversible decisions.
+
+ADRs are typically created during:
+
+* Architecture Design;
+* Engineering Design;
+* Plan Implementation (when architectural changes emerge).
 
 ---
 
@@ -17,9 +53,10 @@ Include:
 * the problem or opportunity;
 * relevant constraints;
 * current project state;
-* forces that influence the decision.
+* competing forces;
+* assumptions that influenced the decision.
 
-Provide enough background so a future reader can understand why the decision was needed without relying on chat history or prior conversations.
+Provide enough background so that future contributors can understand the decision without relying on chat history.
 
 ---
 
@@ -31,9 +68,9 @@ Use active voice.
 
 Example:
 
-> We will use PostgreSQL as the primary data store for the application.
+> We will use PostgreSQL as the primary relational database.
 
-The decision should be specific enough to guide implementation and future architectural work.
+The decision should guide future implementation.
 
 ---
 
@@ -43,130 +80,124 @@ Explain why this decision was made.
 
 Describe:
 
-* how the decision addresses the context;
-* which goals or constraints it satisfies;
-* why this approach is appropriate for the project at this time.
+* how it addresses the context;
+* which project goals it supports;
+* why it was preferred over alternatives;
+* why it is appropriate at this stage of the project.
 
-Focus on reasoning, not implementation details.
+Focus on engineering reasoning rather than implementation details.
 
 ---
 
 # Alternatives Considered
 
-List other options that were evaluated.
+List realistic alternatives that were evaluated.
 
-For each alternative, briefly describe:
+| Alternative | Reason Not Chosen |
+| ----------- | ----------------- |
+| Option A    | ...               |
+| Option B    | ...               |
 
-* what it is;
-* why it was not chosen.
-
-Example:
-
-| Alternative | Reason Rejected |
-|-------------|-----------------|
-| SQLite | Insufficient concurrency for expected load |
-| MongoDB | Team lacks operational experience; relational model fits domain |
-
-If no serious alternatives were considered, state that explicitly and explain why.
+If no meaningful alternatives were considered, explain why.
 
 ---
 
 # Consequences
 
-Describe the expected impact of this decision.
+Describe the expected impact of the decision.
 
-Include:
+## Positive
 
-**Positive:**
-
-* benefits gained;
+* benefits introduced;
 * problems solved;
-* simplifications introduced.
+* simplifications gained.
 
-**Negative:**
+## Negative
 
 * trade-offs accepted;
-* new constraints introduced;
-* operational or maintenance costs.
+* new constraints;
+* operational costs;
+* maintenance implications.
 
-**Neutral:**
+## Follow-up
 
-* follow-up work required;
-* areas that need monitoring or future review.
-
-Be honest about trade-offs. Consequences help future contributors evaluate whether the decision still holds.
+* additional work required;
+* documentation updates;
+* implementation considerations;
+* future review points.
 
 ---
 
 # Related Documents
 
-Reference project artifacts connected to this decision.
+Reference repository artifacts related to this decision.
 
-Examples:
+Typical references:
 
-* ARCHITECTURE.md
-* Plan XXX
-* ADR-NNN
-* ROADMAP.md (phase reference)
-
-Link to documents that this decision affects or that motivated it.
+* `PROJECT.md`
+* `ROADMAP.md`
+* `ARCHITECTURE.md`
+* `ENGINEERING.md`
+* relevant implementation plans
+* related ADRs
 
 ---
 
-# ADR Guidelines
+# ADR Lifecycle
 
-## When to Write an ADR
-
-Create an ADR when a decision:
-
-* affects system architecture or component boundaries;
-* is difficult or costly to reverse;
-* establishes a pattern that future work will follow;
-* resolves a significant trade-off;
-* needs to be understood by future contributors or agents.
-
-Do not create ADRs for trivial or easily reversible choices.
-
-## Title Format
-
-Use the format:
+Typical lifecycle:
 
 ```text
-ADR-NNN — <Short Title>
+Proposed
+        ↓
+Accepted
+        ↓
+Deprecated
+        ↓
+Superseded
 ```
 
-Where:
+Only **Accepted** ADRs represent the authoritative architecture.
 
-* `NNN` is a zero-padded sequential number (e.g. `001`, `002`);
-* `<Short Title>` is a brief, descriptive name for the decision.
+Deprecated and Superseded ADRs remain in the repository for historical traceability.
 
-## Status Values
+---
 
-| Status | Meaning |
-|--------|---------|
-| Proposed | Under discussion; not yet authoritative |
-| Accepted | Approved and in effect |
-| Deprecated | No longer recommended; retained for history |
-| Superseded | Replaced by a newer ADR |
+# Repository Relationships
 
-## File Location
+`ARCHITECTURE.md`
 
-Store project ADRs in:
+: describes the current system architecture.
 
-```text
-docs/project/adr/
-```
+`ENGINEERING.md`
 
-Use a filename that matches the title, for example:
+: describes engineering conventions that may result from this decision.
 
-```text
-docs/project/adr/ADR-001-database-selection.md
-```
+Implementation Plans
 
-## Relationship to Other Documents
+: implement the decision.
 
-* **ARCHITECTURE.md** describes the current system structure; ADRs explain why it looks that way.
-* **Implementation plans** may reference ADRs when work depends on a recorded decision.
-* **PROGRESS.md** may reference ADRs when recording completed work that enacted a decision.
+`PROGRESS.md`
 
-When a decision changes architecture, update ARCHITECTURE.md after the ADR is accepted.
+: records when the decision was delivered.
+
+---
+
+# Writing Guidelines
+
+Use concise, factual language.
+
+Describe:
+
+* why the decision exists;
+* what alternatives were considered;
+* what trade-offs were accepted.
+
+Avoid:
+
+* implementation details;
+* speculative discussion;
+* temporary design ideas;
+* conversational history.
+
+An ADR should remain understandable years after it was written.

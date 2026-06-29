@@ -1,13 +1,14 @@
 ---
+
 description: Documentation-driven development workflow
 alwaysApply: true
----
+-----------------
 
 # Documentation Workflow
 
-Documentation is a first-class engineering artifact.
+Documentation is the primary engineering artifact.
 
-Implementation and documentation evolve together.
+Implementation follows documented intent.
 
 Permanent project knowledge must be recorded in the repository.
 
@@ -15,45 +16,52 @@ Permanent project knowledge must be recorded in the repository.
 
 # Documentation Responsibilities
 
-Use each document according to its purpose.
+Each document has a single responsibility.
 
-| Document | Responsibility |
-|----------|----------------|
-| `PROJECT.md` | Project vision, goals, scope |
-| `ROADMAP.md` | Long-term implementation strategy |
-| `ARCHITECTURE.md` | System organization and boundaries |
-| ADRs | Significant architectural decisions |
-| Plans | Authorized implementation increments |
-| `PROGRESS.md` | Completed engineering history |
-| `RUNBOOK.md` | Operational procedures and project-specific commands |
+| Document          | Responsibility                                         |
+| ----------------- | ------------------------------------------------------ |
+| `PROJECT.md`      | Project vision, goals, scope and MVP                   |
+| `ROADMAP.md`      | Long-term implementation strategy                      |
+| `ARCHITECTURE.md` | System organization and architectural boundaries       |
+| `ENGINEERING.md`  | Engineering decisions, tooling and project conventions |
+| ADRs              | Significant architectural decisions                    |
+| Plans             | Authorized implementation increments                   |
+| `PROGRESS.md`     | Completed engineering history                          |
+| `RUNBOOK.md`      | Operational procedures                                 |
 
 Avoid duplicating information across documents.
 
-Each piece of knowledge should have one authoritative location.
+Every piece of knowledge should have one authoritative location.
 
 ---
 
 # Documentation Lifecycle
 
-Project knowledge evolves through the following stages:
+Project knowledge matures through the following lifecycle:
 
 ```text
 Idea
-    ↓
+        ↓
 PROJECT.md
-    ↓
+        ↓
 ROADMAP.md
-    ↓
+        ↓
 ARCHITECTURE.md
-    ↓
+        ↓
+ENGINEERING.md
+        ↓
+Repository Initialization
+        ↓
 Implementation Plan
-    ↓
+        ↓
 Implementation
-    ↓
+        ↓
+Code Review
+        ↓
 PROGRESS.md
 ```
 
-Significant architectural decisions should be recorded as ADRs.
+Architecture decisions should be recorded as ADRs whenever appropriate.
 
 ---
 
@@ -61,13 +69,34 @@ Significant architectural decisions should be recorded as ADRs.
 
 Update documentation whenever:
 
-- project goals change;
-- architecture changes;
-- implementation workflow changes;
-- repository structure changes;
-- new permanent project knowledge appears.
+* project goals change;
+* roadmap changes;
+* architecture changes;
+* engineering decisions change;
+* repository structure changes;
+* operational procedures change;
+* new durable project knowledge appears.
 
 Do not leave important decisions only in chat history.
+
+---
+
+# Engineering Decisions
+
+`ENGINEERING.md` records project-specific engineering decisions.
+
+Examples include:
+
+* language and runtime versions;
+* dependency management;
+* quality tooling;
+* repository layout;
+* validation commands;
+* testing strategy;
+* configuration strategy;
+* operational assumptions.
+
+Do not duplicate architectural decisions in `ENGINEERING.md`.
 
 ---
 
@@ -75,10 +104,11 @@ Do not leave important decisions only in chat history.
 
 Create or update an ADR when a decision:
 
-- changes component boundaries;
-- introduces a new architectural pattern;
-- establishes a long-term engineering convention;
-- is difficult or costly to reverse.
+* changes architectural boundaries;
+* introduces a long-term architectural pattern;
+* changes integration strategy;
+* establishes an important architectural convention;
+* is difficult or costly to reverse.
 
 Do not create ADRs for ordinary implementation details.
 
@@ -90,16 +120,16 @@ Do not create ADRs for ordinary implementation details.
 
 Record:
 
-- completed implementation increments;
-- engineering milestones;
-- important artifacts;
-- completed architectural work.
+* completed implementation increments;
+* engineering milestones;
+* important artifacts;
+* completed architectural or engineering work.
 
 Do not record:
 
-- future work;
-- TODO lists;
-- implementation ideas.
+* future work;
+* TODO lists;
+* implementation ideas.
 
 ---
 
@@ -109,25 +139,28 @@ Repository documentation should remain internally consistent.
 
 When updating one document, verify whether related documents also require updates.
 
-Examples:
+Typical examples:
 
-- Architecture changes may require ADR updates.
-- Completed plans should be reflected in `PROGRESS.md`.
-- Project scope changes may require updates to both `PROJECT.md` and `ROADMAP.md`.
+* `PROJECT.md` → `ROADMAP.md`
+* `ROADMAP.md` → implementation plans
+* `ARCHITECTURE.md` → ADRs
+* `ENGINEERING.md` → `RUNBOOK.md`
+* completed plans → `PROGRESS.md`
 
 ---
 
 # Repository Knowledge Rule
 
-If a discussion results in:
+Promote durable knowledge into the repository.
 
-- a permanent engineering decision;
-- a project convention;
-- an architectural rule;
-- a repeatable workflow;
-- a significant implementation strategy;
+Examples include:
 
-document it in the repository.
+* engineering decisions;
+* architectural rules;
+* project conventions;
+* repeatable workflows;
+* implementation strategies;
+* operational procedures.
 
 Do not rely on conversational memory.
 
@@ -137,4 +170,6 @@ Do not rely on conversational memory.
 
 Documentation drives implementation.
 
-Implementation should not become the only source of project knowledge.
+Implementation should never become the only source of project knowledge.
+
+Repository knowledge should remain explicit, discoverable, and consistent throughout the project lifecycle.

@@ -1,29 +1,38 @@
-# ARCHITECTURE.md
-
 # Architecture
 
 ## Purpose
 
-This document describes the long-term architecture of the project.
+This document defines the long-term architecture of the project.
 
-It defines the major system components, their responsibilities, architectural boundaries, dependency rules, and interactions.
+It describes:
 
-This document describes **how the system is organized**, not **how individual features are implemented**.
+* system structure;
+* major components;
+* responsibilities;
+* dependency rules;
+* integration boundaries;
+* architectural constraints.
+
+It does **not** describe implementation details or engineering conventions.
+
+Technology choices belong in `ENGINEERING.md`.
 
 Implementation details belong in implementation plans.
 
 ---
 
-# Overview
+# Architecture Overview
 
-Provide a short description of the overall system.
+Provide a concise description of the overall system.
 
 Describe:
 
 * the architectural style;
-* the primary purpose of the system;
-* the major building blocks;
-* important design constraints.
+* the primary responsibilities of the system;
+* major architectural building blocks;
+* important architectural constraints.
+
+This section should explain the system in a few paragraphs.
 
 ---
 
@@ -37,102 +46,81 @@ Examples:
 * maintainability;
 * scalability;
 * observability;
-* extensibility;
 * reliability;
 * security;
+* extensibility;
 * deterministic behavior.
 
-Only include goals that are relevant to the project.
+Only include goals that matter for this project.
 
 ---
 
 # High-Level Architecture
 
-Provide a high-level diagram of the system.
+Provide a simple diagram.
 
 Example:
 
-```text
+```text id="7l8n2m"
 User
-    │
-    ▼
-Client
-    │
-    ▼
+        ↓
 Application
-    │
-    ├────────────► External Service A
-    ├────────────► External Service B
-    └────────────► Storage
+        ↓
+API
+        ↓
+Core Services
+        ↓
+Storage
 ```
 
-The diagram should help readers understand the overall system structure in a few seconds.
+The diagram should communicate the overall structure in seconds.
 
 ---
 
 # Core Components
 
-Describe every major architectural component.
+Document each major component.
 
-Each component should include:
+For every component include:
 
-## Component Name
+## Component
 
 ### Purpose
 
-What the component is responsible for.
-
 ### Responsibilities
-
-Examples:
-
-* orchestration;
-* business logic;
-* persistence;
-* communication;
-* validation.
 
 ### Inputs
 
-What the component receives.
-
 ### Outputs
-
-What the component produces.
 
 ### Dependencies
 
-Which components it is allowed to communicate with.
-
 ### Constraints
 
-What the component must **not** do.
+Constraints are often more important than responsibilities.
 
-Clearly defining constraints is often more important than listing responsibilities.
-
-Repeat this structure for every major component.
+Repeat for every architectural component.
 
 ---
 
-# External Systems
+# Integration Boundaries
 
-Describe external dependencies.
+Describe communication with external systems.
 
-Examples:
+Typical examples:
 
 * databases;
-* APIs;
 * LLM providers;
+* external APIs;
 * MCP servers;
 * message brokers;
-* object storage;
-* authentication providers.
+* authentication systems.
 
-For each external system describe:
+For each integration describe:
 
-* purpose;
-* interaction model;
-* ownership boundary.
+* ownership;
+* communication model;
+* trust boundary.
 
 ---
 
@@ -142,10 +130,10 @@ Describe how data moves through the system.
 
 Focus on:
 
-* primary execution paths;
+* ownership;
+* major execution paths;
 * state transitions;
-* data ownership;
-* validation points.
+* validation boundaries.
 
 Avoid implementation details.
 
@@ -153,7 +141,7 @@ Avoid implementation details.
 
 # Control Flow
 
-Describe how execution flows through the system.
+Describe how work moves through the architecture.
 
 Examples:
 
@@ -163,28 +151,7 @@ Examples:
 * approval workflows;
 * background execution.
 
-The objective is to explain how work moves through the architecture.
-
----
-
-# Source Layout
-
-Describe the intended repository structure.
-
-Example:
-
-```text
-src/
-├── application/
-├── domain/
-├── infrastructure/
-├── interfaces/
-└── shared/
-```
-
-Briefly explain the responsibility of each major directory.
-
-Avoid documenting every file.
+Explain responsibilities rather than implementation.
 
 ---
 
@@ -194,7 +161,7 @@ Document allowed dependency directions.
 
 Example:
 
-```text
+```text id="qej0co"
 Presentation
         ↓
 Application
@@ -204,117 +171,83 @@ Domain
 Infrastructure
 ```
 
-Also document prohibited dependencies.
+Document prohibited dependencies as well.
 
 Examples:
 
-```text
+```text id="c6rk4v"
 Infrastructure → Presentation
 Domain → Infrastructure
-Adapters → Business Logic
 ```
 
-Clear dependency rules prevent architectural erosion.
+Architectural boundaries should remain explicit.
 
 ---
 
-# Validation and Safety
+# Architectural Constraints
 
-Describe architectural validation points.
-
-Examples:
-
-* approval workflows;
-* validation before execution;
-* permission checks;
-* policy enforcement;
-* safety boundaries.
-
-Identify which operations require explicit validation before execution.
-
----
-
-# Observability
-
-Describe how the system should be observed.
+Document rules that must always be respected.
 
 Examples:
 
-* logs;
-* metrics;
-* traces;
-* execution history;
-* audit events.
+* ownership boundaries;
+* communication rules;
+* dependency restrictions;
+* state ownership;
+* security boundaries.
 
-Include only long-term observability requirements.
-
-Implementation details belong elsewhere.
-
----
-
-# Architectural Principles
-
-Document the architectural principles that guide the project.
-
-Examples:
-
-* simplicity over unnecessary complexity;
-* explicit boundaries;
-* composition over coupling;
-* deterministic workflows before autonomous workflows;
-* validation before execution;
-* documentation as the system of record.
-
-These principles should remain stable throughout the project.
+These constraints should remain stable throughout the project.
 
 ---
 
 # Deferred Decisions
 
-Document architectural questions that are intentionally postponed.
+List architectural topics intentionally postponed.
 
-For each deferred decision include:
+For each topic describe:
 
-* the topic;
-* why it is deferred;
+* what is deferred;
+* why;
 * when it should be revisited.
 
-Avoid solving problems before they become relevant.
+Avoid solving speculative problems.
 
 ---
 
-# Change Management
+# Architecture Evolution
 
-Update this document whenever:
+Update this document only when the architecture changes.
 
-* major components are added or removed;
-* architectural boundaries change;
-* dependency rules change;
-* integration patterns change;
-* core system responsibilities change.
+Examples:
 
-Do not update this document for ordinary implementation changes.
+* components added or removed;
+* dependency rules changed;
+* ownership boundaries changed;
+* integration patterns changed.
 
-Those belong in implementation plans.
+Do not update this document for ordinary implementation work.
 
 ---
 
-# Relationship to Other Documents
+# Repository Relationships
 
 This document should be read together with:
 
-* `PROJECT.md` — defines what is being built.
-* `ROADMAP.md` — defines the implementation strategy.
-* Implementation plans — define individual implementation increments.
-* Decision records — explain why significant architectural decisions were made.
+| Document         | Purpose                                       |
+| ---------------- | --------------------------------------------- |
+| `PROJECT.md`     | Defines project goals                         |
+| `ROADMAP.md`     | Defines project evolution                     |
+| `ENGINEERING.md` | Defines implementation conventions            |
+| ADRs             | Explain why architectural decisions were made |
+| Plans            | Implement architectural changes               |
 
-Together these documents provide a complete understanding of the system.
+Together these documents describe both the architecture and its evolution.
 
 ---
 
 # Summary
 
-The purpose of this document is to describe the stable architecture of the project.
+This document describes the stable architecture of the project.
 
 It should answer questions such as:
 
@@ -322,6 +255,6 @@ It should answer questions such as:
 * What are the major components?
 * Where are the architectural boundaries?
 * How do components interact?
-* What architectural rules must always be respected?
+* Which architectural rules must always be respected?
 
-The document should remain stable and evolve only when the architecture itself evolves.
+The document should evolve only when the architecture itself evolves.

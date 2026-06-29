@@ -4,103 +4,145 @@ Perform a read-only engineering audit of the repository.
 
 Do not modify any files.
 
-## Objectives
+---
 
-Evaluate the current state of the repository with respect to:
+# Objectives
 
-* documentation;
-* architecture;
-* implementation;
-* engineering process;
-* repository consistency.
+Evaluate the repository with respect to:
 
-The purpose is to identify issues, not to fix them.
+* documentation quality;
+* engineering consistency;
+* architectural consistency;
+* implementation quality;
+* repository organization;
+* engineering process.
+
+The objective is to identify issues, not to fix them.
 
 ---
 
-## Audit Context
+# Repository Context
 
-Review the repository documentation in the following order:
+Review the repository in the following order:
 
 1. `AGENTS.md`
-2. `PROJECT.md`
-3. `ROADMAP.md`
-4. `ARCHITECTURE.md`
-5. Relevant ADRs
-6. Active implementation plans
-7. `PROGRESS.md`
+2. `docs/project/PROJECT.md`
+3. `docs/project/ROADMAP.md`
+4. `docs/project/ARCHITECTURE.md`
+5. `docs/project/ENGINEERING.md`
+6. Relevant ADRs
+7. Active implementation plans
+8. `docs/project/PROGRESS.md`
 
 Then inspect the implementation.
 
 ---
 
-## Audit Checklist
+# Audit Checklist
 
 Evaluate:
 
 * documentation completeness;
+* project consistency;
+* engineering consistency;
 * architectural consistency;
 * dependency boundaries;
 * implementation quality;
-* project structure;
 * repository organization;
-* testing coverage;
+* testing strategy;
 * validation workflow.
 
 ---
 
-## Documentation Audit
+# Documentation Audit
 
 Verify that:
 
-* documentation is internally consistent;
+* repository documentation is internally consistent;
+* project documentation is complete;
 * architecture matches the implementation;
-* completed work is recorded in `PROGRESS.md`;
-* active plans reflect current implementation;
-* important engineering decisions are documented.
+* engineering decisions match the implementation;
+* completed work is reflected in `PROGRESS.md`;
+* active plans match the current implementation;
+* significant engineering decisions are documented.
 
 ---
 
-## Implementation Audit
+# Engineering Audit
+
+Verify that the implementation follows the documented engineering decisions.
+
+Examples include:
+
+* language and runtime versions;
+* repository layout;
+* dependency management;
+* configuration strategy;
+* testing strategy;
+* validation workflow;
+* coding conventions.
+
+Do not infer undocumented engineering conventions.
+
+---
+
+# Architecture Audit
 
 Review:
 
 * component organization;
 * dependency direction;
+* architectural boundaries;
+* ownership rules;
+* integration points.
+
+Recommend architectural changes only when supported by repository evidence.
+
+Avoid speculative redesign.
+
+---
+
+# Implementation Audit
+
+Review:
+
 * code quality;
 * maintainability;
 * unnecessary complexity;
 * technical debt;
-* opportunities to simplify the implementation.
+* testing quality;
+* documentation updates.
 
-Do not recommend speculative redesign.
+Focus on observable repository evidence.
 
 ---
 
-## Findings
+# Findings
 
-Classify findings by severity:
+Classify findings as:
 
 * Critical
 * Major
 * Minor
 * Suggestion
 
-Support every finding with evidence from the repository.
+Support every finding with repository evidence.
 
 Avoid subjective preferences.
 
 ---
 
-## Deliverable
+# Deliverable
 
 Produce:
 
-1. Executive summary.
-2. Repository strengths.
-3. Findings by severity.
-4. Recommended next actions.
+1. Executive Summary
+2. Repository Strengths
+3. Findings by Severity
+4. Recommended Next Actions
+
+Recommendations should remain within the documented project scope.
+
+Future ideas should be clearly identified as recommendations rather than required changes.
 
 Do not modify the repository.
-
-Do not propose work outside the documented project scope unless clearly identified as a future recommendation.

@@ -2,52 +2,69 @@
 
 Implement the requested changes using the Agentic Engineering Methodology.
 
-## Objectives
+---
 
-* Implement only the approved scope.
-* Preserve repository consistency.
-* Respect documented architecture.
-* Produce production-ready code.
+# Objective
+
+Implement the approved engineering contract.
+
+The implementation should:
+
+* remain within the approved scope;
+* preserve repository consistency;
+* respect the documented architecture;
+* follow the documented engineering conventions;
+* produce production-ready code.
 
 ---
 
-## Before Implementation
+# Repository Context
 
-Read the repository documentation in the required order:
+Before implementation, review the repository in the following order:
 
 1. `AGENTS.md`
-2. `PROJECT.md`
-3. `ROADMAP.md`
-4. `ARCHITECTURE.md`
-5. Relevant ADRs
-6. Active implementation plan
-7. `PROGRESS.md`
+2. `docs/project/PROJECT.md`
+3. `docs/project/ROADMAP.md`
+4. `docs/project/ARCHITECTURE.md`
+5. `docs/project/ENGINEERING.md`
+6. Relevant ADRs
+7. Active implementation plan
+8. `docs/project/PROGRESS.md`
 
 Confirm that implementation is authorized by an active approved plan.
 
 ---
 
-## Implementation Rules
+# Implementation Rules
 
 Implement only the approved scope.
+
+Respect:
+
+* architectural boundaries;
+* engineering conventions;
+* repository organization;
+* project validation requirements.
 
 Do not:
 
 * redesign the architecture;
+* modify project goals;
 * introduce unrelated refactoring;
 * implement future roadmap phases;
 * add speculative abstractions;
 * silently expand scope.
 
-Prefer the simplest solution that satisfies the documented requirements.
+Prefer the simplest implementation that satisfies the documented requirements.
 
 ---
 
-## Documentation
+# Documentation
 
 If implementation changes:
 
 * architecture;
+* engineering decisions;
 * repository workflow;
 * permanent project knowledge;
 
@@ -57,24 +74,25 @@ Do not leave the repository in an inconsistent state.
 
 ---
 
-## Validation
+# Validation
 
-Before considering the task complete:
+Before considering the implementation complete:
 
 * verify the acceptance criteria;
-* run the required validation commands;
+* execute the validation workflow defined in `ENGINEERING.md`;
 * ensure documentation is consistent;
 * confirm no unrelated changes remain.
 
 ---
 
-## Deliverable
+# Deliverable
 
 Provide:
 
-1. A concise summary of the implementation.
-2. Files changed.
-3. Validation performed.
-4. Any follow-up work that requires a new implementation plan.
+1. Implementation Summary
+2. Files Changed
+3. Validation Performed
+4. Documentation Updated
+5. Follow-up Work Requiring a New Implementation Plan
 
 Do not propose additional features unless explicitly requested.

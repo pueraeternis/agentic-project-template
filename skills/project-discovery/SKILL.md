@@ -1,204 +1,229 @@
-# SKILL.md
-
 # Project Discovery
 
 ## Purpose
 
-This skill guides a collaborative reasoning process between the human and the AI agent.
+This skill guides a collaborative discovery process between the human and the AI agent.
 
-Its objective is to build shared understanding before any architectural or implementation decisions are made.
+Its objective is to establish a shared understanding of the project before architecture or implementation begins.
 
-The primary artifact remains `PROJECT.md`.
-
-Project Discovery is the foundation of the engineering process.
+Project Discovery produces the foundation for all subsequent engineering work.
 
 ---
 
-## Role
+# Lifecycle Stage
 
-Reasoning Agent
+```text
+Idea
+        ↓
+Project Discovery
+        ↓
+Roadmap Creation
+```
+
+Project Discovery defines **what should be built**.
+
+It intentionally avoids defining **how it will be implemented**.
 
 ---
 
-## When to Use
+# Role
+
+Primary role:
+
+**Discovery Agent**
+
+---
+
+# When to Use
 
 Use this skill when:
 
-- starting a new project;
-- exploring a new product idea;
-- evaluating whether an idea is worth implementing;
-- defining the scope of an MVP.
+* starting a new project;
+* evaluating a new idea;
+* defining an MVP;
+* clarifying project scope;
+* exploring requirements.
 
-Do not use this skill for implementation planning or technical design.
+Do not use this skill for:
 
----
-
-## Inputs
-
-The skill accepts any available project context, including:
-
-- an initial idea;
-- user discussions;
-- business goals;
-- known constraints;
-- expected users;
-- existing systems;
-- assumptions.
-
-The inputs may be incomplete.
-
-Part of the skill is discovering the missing information.
+* architecture design;
+* engineering decisions;
+* implementation planning;
+* repository initialization;
+* production code.
 
 ---
 
-## Outputs
+# Inputs
 
-The skill produces:
+Discovery may begin with any amount of information.
 
-- a completed `PROJECT.md`.
+Typical inputs include:
 
-`PROJECT.md` should capture:
+* an initial idea;
+* business goals;
+* user discussions;
+* existing systems;
+* constraints;
+* assumptions;
+* desired outcomes.
 
-- Background;
-- Core Idea;
-- Vision;
-- Goals;
-- Non-Goals;
-- MVP;
-- Project Boundaries.
+Inputs may be incomplete.
 
-The document should represent shared understanding rather than a product specification.
-
-The output should be sufficient to begin roadmap creation.
+A major purpose of this skill is discovering the missing information.
 
 ---
 
-## Procedure
+# Outputs
 
-### Step 1 — Understand the Problem
+Produce:
 
-Understand:
+* `PROJECT.md`
 
-- why the project should exist;
-- whose problem it solves;
-- what value success creates;
-- why the idea matters.
+Optionally identify engineering assumptions that will later become inputs for `ENGINEERING.md`.
 
-Do not discuss implementation.
-
-Focus on understanding.
+The discovery process should produce sufficient understanding for roadmap creation.
 
 ---
 
-### Step 2 — Build Shared Understanding
+# Procedure
 
-Work together with the human through collaborative reasoning.
+## Step 1 — Understand the Problem
+
+Identify:
+
+* the problem;
+* target users;
+* expected value;
+* project motivation.
+
+Focus entirely on understanding.
+
+---
+
+## Step 2 — Build Shared Understanding
+
+Work collaboratively.
 
 The agent should:
 
-- ask clarifying questions;
-- challenge assumptions;
-- identify simplifications;
-- surface risks;
-- refine the idea together with the human.
+* ask clarifying questions;
+* challenge assumptions;
+* simplify ideas;
+* identify risks;
+* refine project boundaries.
 
-The goal is understanding, not immediate documentation.
-
-Avoid premature technical decisions.
+Avoid technical implementation discussions.
 
 ---
 
-### Step 3 — Define the MVP
+## Step 3 — Define the MVP
 
-Identify the smallest version of the project that delivers meaningful value.
+Identify the smallest version that delivers meaningful value.
 
-Clearly distinguish between:
+Clearly distinguish:
 
-- MVP functionality;
-- future improvements.
+* MVP;
+* future capabilities.
 
-Additionally verify:
-
-- the MVP directly supports the Core Idea;
-- every MVP capability has a clear purpose;
-- unnecessary functionality is removed.
-
-The MVP should remain intentionally minimal.
+Remove unnecessary scope.
 
 ---
 
-### Step 4 — Define Project Boundaries
+## Step 4 — Define Project Boundaries
 
 Document:
 
-- what belongs in the project;
-- what explicitly does not belong;
-- assumptions;
-- constraints;
-- open questions that should be resolved later.
+* goals;
+* non-goals;
+* assumptions;
+* constraints;
+* risks;
+* open questions.
 
-Not every uncertainty needs to be solved during Project Discovery.
-
-Clear boundaries reduce future scope creep.
-
----
-
-### Step 5 — Produce PROJECT.md
-
-Populate the project template with the agreed project vision.
-
-`PROJECT.md` is the result of the discussion rather than its starting point.
-
-The document should capture the agreed understanding, not replace the conversation.
-
-The document should represent shared understanding rather than implementation details.
+Not every uncertainty must be resolved during discovery.
 
 ---
 
-## Rules
+## Step 5 — Capture Engineering Assumptions
+
+When obvious engineering decisions are already known, record them as assumptions for future Engineering Design.
+
+Examples:
+
+* primary programming language;
+* deployment environment;
+* expected technology stack;
+* runtime assumptions.
+
+Do not fully design the engineering solution.
+
+Simply preserve knowledge discovered during discussion.
+
+---
+
+## Step 6 — Produce PROJECT.md
+
+Populate the project template.
+
+The document should capture the agreed understanding rather than the discussion itself.
+
+---
+
+# Rules
 
 During Project Discovery:
 
-- avoid choosing frameworks;
-- avoid selecting libraries;
-- avoid discussing implementation details;
-- avoid designing the complete architecture;
-- avoid writing code.
+Do:
 
-The objective is understanding, not implementation.
+* understand the problem;
+* clarify goals;
+* identify users;
+* define MVP;
+* identify risks;
+* identify assumptions.
 
----
+Do not:
 
-## Discovery Principles
-
-Project Discovery should:
-
-- prioritize understanding over solution design;
-- explore before deciding;
-- challenge assumptions constructively;
-- keep implementation discussions out of discovery;
-- converge toward a shared understanding;
-- define the smallest meaningful MVP.
-
-A successful discovery session produces clarity rather than technical detail.
+* design the architecture;
+* define repository structure;
+* choose engineering tooling in detail;
+* create implementation plans;
+* write production code.
 
 ---
 
-## Success Criteria
+# Principles
+
+Discovery should:
+
+* prioritize understanding over design;
+* challenge assumptions constructively;
+* simplify rather than expand scope;
+* defer implementation decisions;
+* converge toward shared understanding.
+
+The objective is clarity, not technical completeness.
+
+---
+
+# Success Criteria
 
 The skill is complete when:
 
-- the project vision is clear;
-- the MVP is defined;
-- project goals are explicit;
-- non-goals are documented;
-- project boundaries are understood;
-- the human approves the resulting `PROJECT.md`.
+* project goals are clear;
+* MVP is defined;
+* project boundaries are understood;
+* assumptions are documented;
+* risks are identified;
+* `PROJECT.md` has been approved.
 
 ---
 
-## Next Skill
+# Handover
 
 After Project Discovery is complete, continue with:
 
 **Roadmap Creation**
+
+Engineering assumptions identified during discovery become useful inputs for later Engineering Design but should not replace it.

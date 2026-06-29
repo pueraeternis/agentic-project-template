@@ -2,25 +2,53 @@
 
 ## Purpose
 
-This document describes the operational procedures for the project.
+This document describes how to operate the project.
 
-It explains how to prepare the development environment, configure the system, run its components, validate changes, troubleshoot common issues, and safely operate the project.
+It explains how to:
 
-Unlike architecture documentation, the runbook focuses on **how to operate the system**, not **how the system is designed**.
+* prepare the development environment;
+* configure the system;
+* run project components;
+* validate changes;
+* perform common operational tasks;
+* troubleshoot operational issues.
+
+Unlike `ENGINEERING.md`, this document focuses on **operating the project**, not **designing or implementing it**.
+
+---
+
+# Relationship to the Project Lifecycle
+
+The runbook evolves alongside implementation.
+
+Typical lifecycle:
+
+```text
+PROJECT
+        ↓
+ENGINEERING
+        ↓
+IMPLEMENTATION
+        ↓
+RUNBOOK
+```
+
+As new operational procedures appear, they should be documented here.
 
 ---
 
 # Current State
 
-Describe the current operational state of the project.
+Describe the current operational maturity of the project.
 
 Examples:
 
 * development only;
 * local runtime available;
-* production deployment available;
-* background workers implemented;
-* API available.
+* production deployment supported;
+* background workers available;
+* API available;
+* monitoring implemented.
 
 This section helps contributors understand which operational procedures are currently relevant.
 
@@ -33,106 +61,103 @@ Describe how to prepare a development environment.
 Include:
 
 * required software;
-* package manager;
-* dependency installation;
-* virtual environment (if applicable);
-* local services required for development.
+* dependency manager;
+* virtual environment;
+* local services;
+* installation steps.
 
-Do not duplicate information already maintained elsewhere.
-
-Reference other documentation when appropriate.
+Reference other documentation instead of duplicating information.
 
 ---
 
 # Configuration
 
-Describe how the project is configured.
+Describe runtime configuration.
 
-Examples include:
+Typical topics:
 
 * environment variables;
 * configuration files;
 * secrets management;
-* local configuration overrides.
+* local overrides.
 
-Never store credentials or secrets in this document.
-
-Document only how configuration should be provided.
+Never include credentials or secrets.
 
 ---
 
 # Runtime Components
 
-Describe the executable parts of the system.
+Describe executable components.
 
 Examples:
 
 * API server;
 * CLI;
-* background workers;
+* workers;
 * schedulers;
 * MCP servers;
-* web frontend.
+* frontend.
 
 For each component describe:
 
 * purpose;
-* how to start it;
-* required dependencies.
+* startup procedure;
+* dependencies.
 
 ---
 
 # Validation Commands
 
-Describe the commands required to verify the project.
+Describe the standard validation workflow.
 
-Typical examples include:
+Typical examples:
 
 * formatting;
 * linting;
 * type checking;
-* unit tests;
-* integration tests;
+* tests;
 * build verification.
 
-This section should provide the standard validation workflow for contributors.
+This section should provide the commands contributors run before considering work complete.
 
 ---
 
-# State and Persistence
+# Operational State
 
-Describe where operational state is stored.
+Describe persistent operational state.
 
 Examples:
 
-* local databases;
-* generated files;
-* cache directories;
-* workflow state;
-* uploaded assets.
+* databases;
+* caches;
+* generated artifacts;
+* uploaded files;
+* indexes;
+* workflow state.
 
-Explain which data is persistent and which data may be safely deleted.
+Clearly distinguish between persistent and disposable state.
 
 ---
 
 # Reset Procedures
 
-Describe how to safely reset the development environment.
+Describe how to safely reset the local environment.
 
 Examples:
 
-* removing temporary state;
-* recreating local databases;
-* clearing caches;
-* regenerating derived artifacts.
+* recreate databases;
+* remove generated artifacts;
+* clear caches;
+* rebuild indexes;
+* reset local state.
 
-Reset procedures should never require reading implementation code.
+Contributors should not need to inspect implementation code to perform a reset.
 
 ---
 
 # Operational Procedures
 
-Document common operational tasks.
+Document recurring operational tasks.
 
 Examples:
 
@@ -140,17 +165,18 @@ Examples:
 * importing data;
 * rebuilding indexes;
 * rotating logs;
-* refreshing generated artifacts.
+* refreshing generated artifacts;
+* deployment preparation.
 
-Each procedure should contain only the information necessary to perform the operation safely.
+Each procedure should contain only the information required to perform the operation safely.
 
 ---
 
 # Troubleshooting
 
-Document common operational issues.
+Document common operational problems.
 
-For each issue include:
+For each issue describe:
 
 * symptoms;
 * likely causes;
@@ -161,35 +187,48 @@ Keep troubleshooting concise and actionable.
 
 ---
 
-# Incident Principles
-
-Describe general operational principles.
+# Operational Principles
 
 Examples:
 
 * investigate before restarting services;
 * preserve logs before cleanup;
-* avoid modifying production data without approval;
-* verify system state before retrying failed operations.
+* verify system state before retrying;
+* avoid destructive operations without approval;
+* validate changes after operational procedures.
 
 These principles should remain stable throughout the project.
 
 ---
 
-# Related Documents
+# Repository Relationships
 
-Reference relevant project documentation.
+| Document          | Purpose                              |
+| ----------------- | ------------------------------------ |
+| `PROJECT.md`      | Defines why the project exists       |
+| `ARCHITECTURE.md` | Describes system structure           |
+| `ENGINEERING.md`  | Describes implementation conventions |
+| Plans             | Describe implementation work         |
+| `PROGRESS.md`     | Records completed milestones         |
 
-Typical references include:
+The runbook complements these documents by describing how to operate the project after it has been implemented.
 
-* `PROJECT.md`
-* `ROADMAP.md`
-* `ARCHITECTURE.md`
-* `PROGRESS.md`
-* relevant ADRs
-* active implementation plans
+---
 
-The runbook complements those documents by describing how to operate the system rather than how it is designed.
+# Change Management
+
+Update this document whenever operational procedures change.
+
+Examples:
+
+* new runtime component;
+* deployment changes;
+* configuration changes;
+* validation workflow changes;
+* operational troubleshooting;
+* reset procedures.
+
+Do not update the runbook for architectural or implementation changes unless they affect project operation.
 
 ---
 
@@ -198,10 +237,25 @@ The runbook complements those documents by describing how to operate the system 
 A runbook is successful when a contributor can:
 
 * prepare the development environment;
-* configure the project correctly;
-* start all runtime components;
+* configure the project;
+* start every runtime component;
 * validate changes;
 * reset the local environment safely;
-* diagnose common operational problems;
+* troubleshoot common operational issues;
 
 without relying on chat history or undocumented tribal knowledge.
+
+---
+
+# Summary
+
+The runbook is the operational guide for the project.
+
+It answers questions such as:
+
+* How do I run the project?
+* How do I configure it?
+* How do I validate my changes?
+* How do I recover from common operational problems?
+
+Operational knowledge should become part of the runbook rather than remaining in conversations or personal notes.

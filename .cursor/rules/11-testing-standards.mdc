@@ -1,13 +1,16 @@
 ---
+
 description: General testing and validation standards
 alwaysApply: false
----
+------------------
 
 # Testing Standards
 
-Testing is part of implementation.
+Testing is an integral part of implementation.
 
 New functionality should be accompanied by appropriate validation.
+
+Project-specific testing requirements are defined in `ENGINEERING.md`.
 
 ---
 
@@ -15,14 +18,15 @@ New functionality should be accompanied by appropriate validation.
 
 Tests should verify:
 
-- business behavior;
-- domain rules;
-- validation logic;
-- system interactions.
+* business behavior;
+* domain rules;
+* validation logic;
+* component interactions;
+* observable system behavior.
 
 Avoid testing implementation details.
 
-Prefer testing observable behavior.
+Prefer behavior over implementation.
 
 ---
 
@@ -32,11 +36,11 @@ Use the lowest practical testing level.
 
 Typical hierarchy:
 
-- Unit tests
-- Integration tests
-- End-to-end or system tests
+* Unit tests
+* Integration tests
+* End-to-end or system tests
 
-Keep fast tests separate from slower integration tests whenever practical.
+Prefer fast, isolated tests whenever practical.
 
 ---
 
@@ -44,58 +48,60 @@ Keep fast tests separate from slower integration tests whenever practical.
 
 Unit tests should:
 
-- run quickly;
-- be deterministic;
-- avoid external dependencies;
-- test one unit of behavior.
+* run quickly;
+* be deterministic;
+* test one behavior;
+* avoid external dependencies.
 
 Unit tests should not require:
 
-- network access;
-- external APIs;
-- production databases;
-- live LLMs.
+* network access;
+* external APIs;
+* production databases;
+* live LLMs;
+* external infrastructure.
 
 ---
 
 # Integration Tests
 
-Integration tests verify interaction between components.
+Integration tests verify interactions between components.
 
-Examples include:
+Typical examples:
 
-- service integrations;
-- persistence;
-- external adapters;
-- messaging;
-- API boundaries.
+* persistence;
+* service integrations;
+* API boundaries;
+* external adapters;
+* messaging;
+* workflow execution.
 
-Use isolated test environments whenever possible.
+Use isolated environments whenever practical.
 
 ---
 
-# Determinism
+# Deterministic Testing
 
-Tests should produce the same result on every execution.
+Tests should produce identical results on every execution.
 
 Avoid dependencies on:
 
-- current time;
-- execution order;
-- random values without fixed seeds;
-- mutable external state.
+* current time;
+* execution order;
+* random values without fixed seeds;
+* mutable external state.
 
-Prefer fixtures and controlled test data.
+Use fixtures and controlled test data.
 
 ---
 
 # Regression Testing
 
-Every bug fix should include a regression test whenever practical.
+Whenever practical, every bug fix should include a regression test.
 
 Preferred workflow:
 
-```text
+```text id="oqgye4"
 Failing Test
       ↓
 Implement Fix
@@ -103,68 +109,68 @@ Implement Fix
 Passing Test
 ```
 
-The test should reproduce the original issue.
+The regression test should reproduce the original issue.
 
 ---
 
 # Validation
 
-Before completing implementation, perform the project's required validation.
+Before completing implementation:
 
-Typical validation includes:
+* execute the project's validation commands;
+* run applicable tests;
+* review acceptance criteria;
+* verify repository consistency.
 
-- formatting;
-- static analysis;
-- automated tests;
-- manual verification.
-
-Project-specific validation procedures are documented separately.
+Use the validation workflow documented in `ENGINEERING.md`.
 
 ---
 
 # Test Design
 
-Prefer tests that are:
+Tests should be:
 
-- readable;
-- focused;
-- independent;
-- maintainable.
+* readable;
+* focused;
+* independent;
+* deterministic;
+* maintainable.
 
-Avoid duplicated test logic.
+Prefer reusable fixtures over duplicated setup logic.
 
-Prefer reusable fixtures over repeated setup code.
+Avoid unnecessary coupling between tests.
 
 ---
 
 # External Systems
 
-Mock or isolate external systems during automated testing whenever practical.
+Isolate or mock external systems whenever practical.
 
-Examples include:
+Typical examples:
 
-- databases;
-- web services;
-- LLM providers;
-- message brokers;
-- cloud services.
+* databases;
+* web services;
+* LLM providers;
+* message brokers;
+* cloud services.
 
-Tests should remain stable regardless of external availability.
+Automated tests should remain reliable regardless of external availability.
 
 ---
 
 # Coverage Philosophy
 
-Coverage is an indicator, not a goal.
+Coverage is an indicator, not an objective.
 
 Prioritize testing:
 
-- critical business logic;
-- validation rules;
-- safety mechanisms;
-- important workflows.
+* critical business logic;
+* architectural boundaries;
+* validation rules;
+* safety mechanisms;
+* important workflows.
 
-Avoid writing tests solely to increase coverage metrics.
+Do not write tests solely to improve coverage metrics.
 
 ---
 
@@ -172,15 +178,15 @@ Avoid writing tests solely to increase coverage metrics.
 
 Implementation is not complete until:
 
-- required tests have been added or updated;
-- validation has been performed;
-- regressions have been considered;
-- project-specific quality requirements have been satisfied.
+* required tests have been added or updated;
+* validation has been completed;
+* regressions have been considered;
+* project-specific quality requirements have been satisfied.
 
 ---
 
 # General Rule
 
-Tests should increase confidence in the implementation.
+Tests exist to increase confidence in the implementation.
 
-Prefer meaningful tests over a large number of superficial tests.
+Prefer a small number of meaningful, deterministic tests over a large number of superficial tests.

@@ -4,75 +4,115 @@
 
 This directory defines reusable engineering roles for AI agents.
 
-A role describes **who an agent is acting as** during a task.
+A role defines **who an agent is** within the engineering process.
 
-Roles are independent of any specific AI tool or model.
+Roles are independent of AI models, IDEs, and coding tools.
 
-They are intended to work with:
+They describe responsibilities, decision boundaries, and expected outputs.
 
-* Codex CLI
-* Cursor
-* Claude Code
-* ChatGPT
-* future AI coding agents
-
-A role does **not** describe how to perform work.
-
-Reusable engineering procedures are defined in `skills/`.
+Execution procedures are defined separately as reusable skills.
 
 ---
 
-# Relationship to Skills
+# Roles and Skills
 
-Roles and skills have different responsibilities.
+Roles and skills serve different purposes.
 
-A role defines:
+A **role** defines:
 
 * responsibilities;
 * authority;
+* decision boundaries;
 * expected inputs;
-* expected outputs;
-* decision boundaries.
+* expected outputs.
 
-A skill defines:
+A **skill** defines:
 
 * execution procedure;
+* lifecycle stage;
 * engineering workflow;
 * completion criteria.
 
-Roles use skills.
+Roles perform work.
 
-Skills do not define roles.
+Skills describe how that work is performed.
 
 ---
 
 # Engineering Model
 
-The engineering workflow follows a simple hierarchy.
+Projects follow a lifecycle.
+
+Each lifecycle stage is executed by a specialized role using a corresponding skill.
 
 ```text
 Task
-    ↓
+        ↓
+Lifecycle Stage
+        ↓
 Assigned Role
-    ↓
+        ↓
 Selected Skill
-    ↓
+        ↓
 Repository Artifacts
 ```
 
-A task assigns an agent to a role.
+This separation keeps engineering workflows reusable while allowing different AI tools to execute the same methodology.
 
-The role determines which skill should be executed.
+---
 
-The skill produces or updates repository artifacts.
+# Repository Relationship
+
+Roles never replace repository documentation.
+
+Before performing work, every role should read:
+
+1. `AGENTS.md`
+2. Project documentation
+3. Relevant skills
+
+Repository documentation remains the authoritative source of project knowledge.
+
+---
+
+# Current Roles
+
+| Role                 | Primary Responsibility                              |
+| -------------------- | --------------------------------------------------- |
+| Discovery Agent      | Produce `PROJECT.md`                                |
+| Roadmap Agent        | Produce `ROADMAP.md`                                |
+| Architecture Agent   | Produce `ARCHITECTURE.md` and ADRs                  |
+| Engineering Agent    | Produce `ENGINEERING.md`                            |
+| Initialization Agent | Initialize a repository from approved documentation |
+| Planning Agent       | Produce implementation plans                        |
+| Implementation Agent | Implement approved plans                            |
+| Review Agent         | Review plans and implementation                     |
+
+Each role has a single primary responsibility.
+
+---
+
+# Lifecycle Mapping
+
+| Lifecycle Stage           | Role                 | Primary Artifact       |
+| ------------------------- | -------------------- | ---------------------- |
+| Project Discovery         | Discovery Agent      | `PROJECT.md`           |
+| Roadmap Creation          | Roadmap Agent        | `ROADMAP.md`           |
+| Architecture Design       | Architecture Agent   | `ARCHITECTURE.md`      |
+| Engineering Design        | Engineering Agent    | `ENGINEERING.md`       |
+| Repository Initialization | Initialization Agent | Initialized repository |
+| Plan Creation             | Planning Agent       | `PLAN.md`              |
+| Plan Review               | Review Agent         | Reviewed plan          |
+| Plan Implementation       | Implementation Agent | Source code            |
+| Code Review               | Review Agent         | Review report          |
 
 ---
 
 # Role Assignment
 
-Roles are assigned explicitly by the task.
+Roles are assigned explicitly by the current task.
 
-Agents must not infer or invent their own role.
+Agents should not invent or switch roles during execution.
 
 Example:
 
@@ -81,45 +121,16 @@ You are acting as the Planning Agent.
 
 Use:
 
-- skills/plan-creation/
+skills/plan-creation/
 
 Create the next implementation plan.
 ```
 
 The task determines the role.
 
-The role determines the skill.
+The role selects the appropriate skill.
 
----
-
-# Repository Relationship
-
-Roles do not replace repository documentation.
-
-Before performing work, every role should follow the repository guidance defined in:
-
-1. `AGENTS.md`
-2. Project documentation
-3. Relevant skills
-
-Project documentation remains the authoritative source of project knowledge.
-
----
-
-# Current Roles
-
-This repository defines the following engineering roles:
-
-| Role                 | Primary Responsibility                                    |
-| -------------------- | --------------------------------------------------------- |
-| Discovery Agent      | Build shared understanding and produce `PROJECT.md`       |
-| Roadmap Agent        | Produce `ROADMAP.md` from the approved project definition |
-| Architecture Agent   | Produce and evolve `ARCHITECTURE.md` and ADRs             |
-| Planning Agent       | Produce implementation plans                              |
-| Implementation Agent | Implement approved plans                                  |
-| Review Agent         | Review plans and implementations                          |
-
-Future roles may be added as the engineering process evolves.
+The skill produces repository artifacts.
 
 ---
 
@@ -129,33 +140,26 @@ Roles should be:
 
 * focused;
 * reusable;
-* tool-agnostic;
+* tool-independent;
 * clearly scoped;
-* aligned with repository methodology.
-
-Each role should have a single primary responsibility.
+* aligned with the project lifecycle.
 
 Avoid combining multiple engineering responsibilities into a single role.
 
 ---
 
-# Relationship to AI Tools
+# Tool Independence
 
-The engineering methodology is independent of AI tooling.
+Role definitions are independent of AI tools.
 
-Tool-specific configuration belongs outside this directory.
-
-Examples:
+Tool-specific adaptation belongs in dedicated configuration directories such as:
 
 ```text
 .cursor/
 .codex/
-.claude/
 ```
 
-These directories adapt the methodology to specific tools.
-
-The role definitions remain unchanged.
+The engineering methodology remains unchanged regardless of the execution environment.
 
 ---
 
@@ -165,6 +169,6 @@ Roles define **who performs the work**.
 
 Skills define **how the work is performed**.
 
-Repository documentation defines **what the project is**.
+Project documentation defines **what is being built**.
 
-Together they provide a consistent, reusable engineering workflow that can be executed by different AI agents without changing the underlying methodology.
+Together they form a reusable engineering framework that enables consistent collaboration between humans and AI agents across different tools and projects.

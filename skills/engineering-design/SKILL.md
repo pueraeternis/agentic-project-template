@@ -4,29 +4,49 @@
 
 This skill transforms an approved project architecture into concrete engineering decisions.
 
-The primary outcome is a completed `ENGINEERING.md` that defines how the project will be implemented from an engineering perspective.
+It defines **how the approved architecture will be implemented**.
 
-Engineering Design bridges system architecture and repository initialization.
+The primary output is `ENGINEERING.md`, which becomes the engineering specification for repository initialization and future implementation.
 
-It defines the project-specific engineering environment, tooling, conventions, runtime assumptions, validation commands, and implementation constraints.
-
----
-
-## Role
-
-Engineering Agent
+Engineering Design bridges architecture and implementation.
 
 ---
 
-## When to Use
+# Lifecycle Stage
+
+```text
+Architecture Design
+        ↓
+Engineering Design
+        ↓
+Repository Initialization
+```
+
+Architecture defines **how the system is organized**.
+
+Engineering Design defines **how that architecture will be implemented**.
+
+---
+
+# Role
+
+Primary role:
+
+**Engineering Agent**
+
+This skill may also be executed by another reasoning-capable agent acting in the Engineering Agent role.
+
+---
+
+# When to Use
 
 Use this skill when:
 
 * `PROJECT.md` has been approved;
 * `ROADMAP.md` has been approved;
 * `ARCHITECTURE.md` has been approved;
-* the repository needs project-specific engineering decisions before initialization;
-* implementation tooling or conventions need to be defined or revised.
+* engineering conventions must be defined;
+* repository initialization is the next lifecycle stage.
 
 Do not use this skill for:
 
@@ -35,242 +55,232 @@ Do not use this skill for:
 * architecture design;
 * repository initialization;
 * implementation planning;
-* production code implementation.
+* production code.
 
 ---
 
-## Inputs
+# Inputs
 
-The skill requires:
+Required:
 
-* approved `PROJECT.md`;
-* approved `ROADMAP.md`;
-* approved `ARCHITECTURE.md`;
-* relevant ADRs, if any;
-* known project constraints;
-* known development environment constraints.
+* `PROJECT.md`
+* `ROADMAP.md`
+* `ARCHITECTURE.md`
 
-The architecture should already be stable enough to guide engineering decisions.
+Optional:
+
+* ADRs;
+* project constraints;
+* engineering assumptions discovered earlier.
+
+Architecture should already be sufficiently stable.
 
 ---
 
-## Outputs
+# Outputs
 
-The skill produces:
+Produce:
 
-* completed or updated `ENGINEERING.md`;
-* selected language and runtime versions;
-* dependency management decisions;
-* quality tooling decisions;
-* validation commands;
-* repository layout conventions;
+* `ENGINEERING.md`
+
+The document should define:
+
+* programming language;
+* runtime versions;
+* dependency management;
+* quality tooling;
+* runtime technologies;
+* repository structure;
 * testing strategy;
 * configuration strategy;
+* development workflow;
+* coding conventions;
 * operational assumptions;
 * deferred engineering decisions.
 
-The output should provide enough project-specific information for Repository Initialization.
+The result should provide sufficient information for Repository Initialization.
 
 ---
 
-## Procedure
+# Procedure
 
-### Step 1 — Build Project Context
+## Step 1 — Understand the Project
 
 Review:
 
-* `PROJECT.md`;
-* `ROADMAP.md`;
-* `ARCHITECTURE.md`;
-* relevant ADRs;
-* known project constraints.
+* project goals;
+* roadmap;
+* architecture;
+* ADRs;
+* engineering assumptions.
 
-Understand:
-
-* what is being built;
-* how the system is organized;
-* which capabilities are required in the MVP;
-* which architectural boundaries must be supported;
-* which engineering constraints are already known.
-
-Engineering decisions should support documented project intent and architecture.
+Identify the engineering implications of the approved architecture.
 
 ---
 
-### Step 2 — Define Runtime and Tooling
+## Step 2 — Select Engineering Stack
 
-Select and document:
+Define:
 
-* primary language;
-* target runtime version;
+* programming language;
+* runtime version;
 * dependency manager;
 * formatter;
 * linter;
 * type checker;
-* test framework;
-* build tools, if applicable.
+* test framework.
 
-Prefer simple, stable, widely supported tooling.
-
-Avoid introducing tools without clear project value.
+Prefer mature, stable, and simple tooling.
 
 ---
 
-### Step 3 — Define Project Technology Stack
+## Step 3 — Define Runtime Technologies
 
-Document project technologies such as:
+Document technologies required by the architecture.
+
+Examples:
 
 * web framework;
 * agent framework;
 * MCP framework;
-* LLM provider or serving approach;
+* LLM provider;
 * database;
 * vector database;
-* queue or workflow engine;
-* frontend framework;
 * configuration library;
-* logging approach.
+* logging.
 
-Only include technologies that are already justified by the project architecture or near-term roadmap.
-
-Defer speculative technology choices.
+Only document technologies required by the approved architecture or near-term roadmap.
 
 ---
 
-### Step 4 — Define Repository Layout
+## Step 4 — Define Repository Structure
 
-Describe the expected repository layout.
+Describe:
 
-Include:
-
-* source directory;
-* test directory;
+* repository layout;
+* source layout;
+* documentation layout;
+* testing layout;
 * configuration files;
-* documentation locations;
-* generated artifact locations;
-* runtime or deployment files if known.
+* generated artifacts.
 
-The layout should be specific enough for repository initialization but should not overdefine future implementation details.
+The structure should be sufficiently concrete for Repository Initialization.
 
 ---
 
-### Step 5 — Define Validation Strategy
-
-Document required validation commands and expectations.
-
-Examples:
-
-* formatting;
-* linting;
-* type checking;
-* unit tests;
-* integration tests;
-* build checks.
-
-Validation should match the selected tooling and project constraints.
-
----
-
-### Step 6 — Define Configuration and Operational Assumptions
+## Step 5 — Define Engineering Workflow
 
 Document:
 
-* configuration sources;
-* environment variable conventions;
-* secrets handling;
-* local development assumptions;
-* deployment assumptions;
-* state and persistence assumptions.
+* validation commands;
+* testing strategy;
+* development workflow;
+* coding conventions;
+* configuration strategy.
 
-Operational details that require executable procedures may later be expanded in `RUNBOOK.md`.
+The workflow should be reproducible by both humans and AI agents.
 
 ---
 
-### Step 7 — Identify Deferred Engineering Decisions
+## Step 6 — Document Operational Assumptions
 
-Record engineering decisions that are intentionally postponed.
+Record assumptions such as:
+
+* development environment;
+* deployment targets;
+* runtime services;
+* infrastructure constraints.
+
+Detailed operational procedures belong later in `RUNBOOK.md`.
+
+---
+
+## Step 7 — Record Deferred Decisions
+
+Explicitly document engineering decisions intentionally postponed.
 
 Examples:
 
-* CI/CD platform;
-* deployment infrastructure;
-* observability stack;
-* production database choice;
-* packaging and release strategy.
+* CI/CD;
+* deployment platform;
+* observability;
+* production infrastructure;
+* release process.
 
-Deferred decisions should be explicit so future agents do not invent them prematurely.
-
----
-
-### Step 8 — Produce ENGINEERING.md
-
-Populate the engineering template.
-
-The document should be concrete enough for repository initialization while remaining easy to revise as implementation evolves.
-
-Do not duplicate architecture documentation.
-
-Do not include product vision content.
+Avoid making speculative decisions.
 
 ---
 
-## Rules
+## Step 8 — Produce Documentation
 
-During Engineering Design:
+Complete `ENGINEERING.md`.
 
-* derive decisions from `PROJECT.md`, `ROADMAP.md`, and `ARCHITECTURE.md`;
-* prefer simple and maintainable tooling;
-* document project-specific engineering conventions;
-* distinguish accepted decisions from deferred decisions;
-* avoid speculative technology choices;
-* avoid unnecessary infrastructure;
-* keep implementation details out unless needed for repository initialization.
+The document should become the engineering specification for repository initialization.
+
+Avoid duplicating:
+
+* project intent;
+* roadmap;
+* architecture.
+
+---
+
+# Rules
+
+Do:
+
+* derive engineering decisions from approved architecture;
+* keep engineering conventions explicit;
+* prefer simple tooling;
+* distinguish accepted and deferred decisions;
+* optimize for maintainability.
 
 Do not:
 
 * redefine project goals;
-* rewrite the roadmap;
-* redesign the architecture;
+* redesign architecture;
 * create implementation plans;
-* implement code;
-* introduce tools only because they are popular.
+* generate production code;
+* introduce technologies without justification.
+
+Engineering Design translates architecture into engineering practice.
 
 ---
 
-## Engineering Principles
+# Principles
 
 Engineering decisions should be:
 
 * explicit;
-* justified;
 * maintainable;
-* aligned with architecture;
-* suitable for the MVP;
-* easy for agents and humans to follow.
+* reproducible;
+* architecture-driven;
+* appropriate for the MVP;
+* easy for humans and AI agents to follow.
 
-Prefer the simplest tooling and repository structure that supports the approved architecture.
-
-Add complexity only when it is justified by documented project requirements.
+Prefer the simplest engineering solution that satisfies the approved architecture.
 
 ---
 
-## Success Criteria
+# Success Criteria
 
 The skill is complete when:
 
-* `ENGINEERING.md` is completed or updated;
-* language and runtime decisions are documented;
-* tooling choices are documented;
-* repository layout conventions are defined;
-* validation commands are documented;
-* configuration strategy is documented;
+* `ENGINEERING.md` is complete;
+* engineering conventions are documented;
+* tooling is defined;
+* repository structure is specified;
+* validation workflow is documented;
 * deferred engineering decisions are explicit;
-* the human approves the resulting engineering design.
+* the document is sufficient for Repository Initialization;
+* the human approves the engineering design.
 
 ---
 
-## Next Skill
+# Handover
 
-After Engineering Design is complete, continue with:
+After Engineering Design is approved, continue with:
 
 **Repository Initialization**
+
+The Initialization Agent will materialize the approved engineering design into a repository that is ready for implementation planning.

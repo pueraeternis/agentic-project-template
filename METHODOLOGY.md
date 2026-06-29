@@ -1,20 +1,18 @@
-# METHODOLOGY.md
-
 # Agentic Engineering Methodology
 
 ## Purpose
 
-This document defines the core engineering principles for developing software projects with AI agents.
+This document defines the engineering methodology for developing software with AI agents.
 
-It is not tied to any specific tool, IDE, programming language, framework, or model.
+The methodology is independent of any programming language, framework, IDE, or AI model.
 
-The methodology is designed for projects where humans and AI agents collaborate through a shared repository.
+It describes how humans and AI agents collaborate through a repository that serves as the project's long-term memory.
 
 ---
 
-## Core Idea
+# Core Philosophy
 
-The repository is the shared working memory of humans and AI agents.
+The repository is the permanent system of record.
 
 Chat history is temporary.
 
@@ -22,363 +20,294 @@ Agent memory is unreliable.
 
 Human memory is incomplete.
 
-The repository is the durable place where project knowledge, decisions, plans, architecture, implementation, and history must converge.
+Project intent, engineering decisions, architecture, implementation plans, and project history belong in the repository.
+
+Documentation is not an output of development.
+
+Documentation is part of development.
 
 ---
 
-## What This Methodology Is Not
+# Project Lifecycle
 
-This methodology is not vibe coding.
+Projects evolve through the following stages.
 
-It is not ad hoc prompting.
+```text
+Idea
+        ↓
+Project Discovery
+        ↓
+PROJECT.md
 
-It is not unrestricted autonomous coding.
+Roadmap Creation
+        ↓
+ROADMAP.md
 
-It is not a replacement for engineering judgment.
+Architecture Design
+        ↓
+ARCHITECTURE.md
 
-It is not a collection of tool-specific rules.
+Engineering Design
+        ↓
+ENGINEERING.md
 
-It is a structured approach for building software with AI agents while preserving clarity, control, traceability, and maintainability.
+Repository Initialization
+        ↓
+Initialized Repository
 
----
+Plan Creation
+        ↓
+PLAN.md
 
-## Principle 1: Shared Understanding Precedes Implementation
+Plan Review
+        ↓
 
-Before code is written, the project must have a shared understanding of what is being built and why.
+Plan Implementation
+        ↓
 
-That understanding should be captured in repository artifacts.
+Code Review
+```
 
-Typical artifacts include:
-
-* project definition;
-* goals and non-goals;
-* architecture;
-* implementation plans;
-* decision records;
-* acceptance criteria.
-
-Code should implement documented intent.
-
-When intent is unclear, clarify it before implementation.
-
----
-
-## Principle 2: The Repository Is Long-Term Memory
-
-Important knowledge must live in the repository.
-
-Do not rely on:
-
-* chat history;
-* private notes;
-* IDE sessions;
-* temporary agent context;
-* memory of previous conversations.
-
-If knowledge matters for future work, it should become a repository artifact.
-
-Examples of repository artifacts:
-
-* `AGENTS.md`;
-* `PROJECT.md`;
-* architecture documentation;
-* decision records;
-* implementation plans;
-* completed plans;
-* generated documentation;
-* validation reports.
-
-Knowledge outside the repository effectively does not exist for future agents.
+Each stage produces durable repository knowledge before implementation continues.
 
 ---
 
-## Principle 3: Documentation Drives Implementation
+# Lifecycle Stages
 
-Documentation is not a follow-up task.
+## Project Discovery
 
-Documentation is part of the engineering process.
+Define the project vision.
 
-Implementation should follow documented project intent, architecture, decisions, and active plans.
+Produce:
 
-When documentation and implementation disagree:
-
-* update documentation if the implementation change is intentional;
-* update implementation if documentation is authoritative.
-
-Do not leave the repository in an inconsistent state.
-
----
-
-## Principle 4: Plans Authorize Change
-
-Significant implementation work should be authorized by an explicit plan.
-
-A plan defines:
-
-* objective;
+* project goals;
 * scope;
-* acceptance criteria;
-* implementation steps;
-* risks;
-* validation requirements.
+* non-goals;
+* success criteria.
 
-Agents should not silently expand scope.
+Artifact:
 
-If new work is discovered during implementation, update the plan or create a new one.
-
-The active plan defines the current implementation boundary.
+`PROJECT.md`
 
 ---
 
-## Principle 5: Humans Own Intent, Agents Execute Within Boundaries
+## Roadmap Creation
 
-Humans own:
+Define how the project will evolve.
 
-* product direction;
-* priorities;
-* architectural trade-offs;
-* scope decisions;
-* final approval.
+Produce:
 
-AI agents help with:
+* implementation phases;
+* milestones;
+* dependencies.
 
-* exploration;
-* analysis;
-* implementation;
-* refactoring;
-* validation;
-* documentation updates.
+Artifact:
 
-Agents should operate inside documented boundaries.
-
-They may propose changes, but they should not silently redefine the project.
+`ROADMAP.md`
 
 ---
 
-## Principle 6: AI Agents Are First-Class Contributors
+## Architecture Design
 
-Projects should be understandable not only to humans, but also to future AI agents.
+Design the system structure.
 
-This requires agent-legible structure:
-
-* clear entry points;
-* explicit documentation hierarchy;
-* stable terminology;
-* focused documents;
-* documented architecture;
-* documented decisions;
-* small implementation plans;
-* reproducible validation steps.
-
-A future agent should be able to enter the repository, read the documented context, and perform useful work without relying on hidden conversation history.
-
----
-
-## Principle 7: Small Iterations Preserve Quality
-
-Prefer small, bounded increments.
-
-A good iteration has:
-
-* clear scope;
-* limited architectural impact;
-* explicit acceptance criteria;
-* validation;
-* documentation updates.
-
-Small iterations are easier to:
-
-* review;
-* test;
-* debug;
-* revert;
-* hand off to another agent.
-
-Large speculative changes reduce control and increase the risk of incoherent code.
-
----
-
-## Principle 8: Architecture Evolves Intentionally
-
-Architecture should not change accidentally.
-
-Any meaningful architectural change should be documented.
-
-Architecture documentation should describe:
+Produce:
 
 * components;
 * responsibilities;
 * boundaries;
-* dependency flow;
-* integration points;
-* ownership rules.
+* dependency flow.
 
-Decision records should capture:
+Artifact:
 
-* context;
-* decision;
-* rationale;
-* consequences;
-* rejected alternatives when useful.
-
-Architecture should be visible in documentation, not only in source code.
+`ARCHITECTURE.md`
 
 ---
 
-## Principle 9: Knowledge Must Mature
+## Engineering Design
 
-Repeated knowledge should move from temporary instructions into durable artifacts.
+Define implementation conventions.
 
-Typical maturation path:
+Produce:
+
+* technology stack;
+* engineering standards;
+* repository organization;
+* development workflow;
+* validation strategy.
+
+Artifact:
+
+`ENGINEERING.md`
+
+---
+
+## Repository Initialization
+
+Transform approved documentation into an initialized repository.
+
+Produce:
+
+* project documentation;
+* project-local AI rules;
+* repository metadata;
+* initialized project structure.
+
+No production code is created during this stage.
+
+---
+
+## Implementation Lifecycle
+
+After initialization:
+
+* create plans;
+* review plans;
+* implement incrementally;
+* review implementation;
+* repeat.
+
+---
+
+# Engineering Principles
+
+## Documentation Before Code
+
+Implementation follows documented intent.
+
+Do not implement undocumented behavior.
+
+---
+
+## Repository as Long-Term Memory
+
+Important knowledge belongs in the repository.
+
+Do not rely on conversations.
+
+---
+
+## Plans Authorize Change
+
+Implementation should follow approved plans.
+
+Avoid expanding scope without updating documentation.
+
+---
+
+## Humans Own Intent
+
+Humans define:
+
+* goals;
+* priorities;
+* architecture;
+* scope.
+
+Agents execute within documented boundaries.
+
+---
+
+## Prefer Simplicity
+
+Choose the simplest solution that satisfies the documented requirements.
+
+Avoid unnecessary abstractions.
+
+Avoid premature architecture.
+
+Introduce complexity only when it solves a demonstrated problem.
+
+---
+
+## Small Iterations
+
+Deliver work in small, reviewable increments.
+
+Each iteration should:
+
+* have a clear scope;
+* update documentation when necessary;
+* remain independently understandable.
+
+---
+
+## Architecture Evolves Intentionally
+
+Architectural changes require documentation.
+
+Architecture should never exist only in source code.
+
+---
+
+## Knowledge Matures
+
+Repository knowledge evolves:
 
 ```text
 Conversation
-↓
-Decision
-↓
-Project Knowledge
-↓
+        ↓
+Project Documentation
+        ↓
 Template
-↓
+        ↓
 Skill
-↓
+        ↓
 Automation
 ```
 
-A one-time instruction may stay in a prompt.
-
-A repeated rule should become project knowledge and durable repository knowledge.
-
-A repeated document structure should become a template.
-
-A repeated workflow should become a skill.
-
-A repeated scheduled or trigger-based workflow may become automation.
-
-The system should learn from repeated work.
+Repeated practices should become permanent repository knowledge.
 
 ---
 
-## Principle 10: Validation Is Part of the Work
+## Validation Completes Work
 
-Work is incomplete until it has been validated according to project standards.
+Implementation is incomplete until validation has been performed.
 
-Validation may include:
-
-* tests;
-* static analysis;
-* type checking;
-* formatting checks;
-* manual review;
-* documentation review;
-* acceptance criteria verification.
-
-Validation requirements are project-specific and should be documented in the repository.
-
-Agents should not assume that code generation is the final step.
+Validation requirements belong to the project.
 
 ---
 
-## Principle 11: Traceability Matters
+## Tool Independence
 
-Future contributors should be able to understand why the project looks the way it does.
+The methodology is independent of:
 
-Traceability means connecting:
-
-* goals to requirements;
-* requirements to architecture;
-* architecture to decisions;
-* decisions to plans;
-* plans to implementation;
-* implementation to validation.
-
-Traceability reduces dependency on memory and makes future agent work safer.
-
----
-
-## Principle 12: The Process Should Stay Tool-Agnostic
-
-The methodology must not depend on a specific AI tool.
-
-It should work with:
-
-* Codex CLI;
 * Cursor;
+* Codex CLI;
 * Claude Code;
-* other AI coding agents;
-* human-only development.
+* ChatGPT;
+* future AI development tools.
 
-Tool-specific configuration belongs in tool-specific files.
-
-Core project knowledge belongs in repository documentation.
+Tool-specific configuration belongs in tool-specific directories.
 
 ---
 
-## Practical Workflow
+# Definition of Done
 
-A typical project follows this flow:
+A lifecycle stage is complete when:
 
-```text
-Idea
-↓
-Discussion
-↓
-PROJECT.md
-↓
-ROADMAP.md
-↓
-ARCHITECTURE.md
-↓
-Implementation Plan
-↓
-Plan Review
-↓
-Implementation
-↓
-Validation
-↓
-Documentation Update
-↓
-Completed Plan
-```
-
-The exact document set may vary by project.
-
-The key rule is that knowledge should become explicit before it becomes code.
+* required artifacts have been created;
+* repository knowledge is consistent;
+* documentation has been updated;
+* validation requirements have been satisfied;
+* no important knowledge exists only in conversation.
 
 ---
 
-## Definition of Done
+# Summary
 
-Work is complete when:
+Agentic Engineering is a documentation-driven and lifecycle-oriented software engineering methodology.
 
-* the requested scope has been implemented;
-* acceptance criteria are satisfied;
-* validation has been performed;
-* documentation has been updated when needed;
-* decisions have been recorded when needed;
-* the repository remains internally consistent.
-
-Code alone does not complete a task.
-
----
-
-## Summary
-
-Agentic engineering is disciplined software engineering adapted for AI-assisted development.
-
-The goal is not to let agents code freely.
-
-The goal is to create a repository where humans and AI agents can collaborate safely, incrementally, and predictably.
-
-The repository is the shared working memory.
+Humans define intent.
 
 Documentation preserves intent.
 
-Plans control change.
+Repositories preserve knowledge.
 
-Architecture guides implementation.
+Plans authorize implementation.
+
+Agents execute within documented boundaries.
 
 Validation protects quality.
 
-Agents execute within boundaries.
+The repository remains the single source of truth throughout the entire project lifecycle.
