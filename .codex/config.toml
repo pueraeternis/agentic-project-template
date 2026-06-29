@@ -1,0 +1,37 @@
+# ============================================================================
+# Codex Configuration
+#
+# This file configures Codex CLI for repositories using the
+# Agentic Engineering Methodology.
+#
+# Repository methodology, roles, and skills are defined outside this file.
+# ============================================================================
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+# ============================================================================
+# Model Selection
+#
+# The model is intentionally not specified.
+#
+# Codex CLI should use the user's configured default model or project-specific
+# runtime override.
+#
+# The engineering methodology is model-independent.
+# ============================================================================
+
+# ============================================================================
+# Roles and Skills
+#
+# Agent roles are defined in:
+#
+#   .agents/
+#
+# Engineering procedures are defined in:
+#
+#   skills/
+#
+# Do not duplicate role or skill lists in this file.
+# This avoids configuration drift when roles or skills evolve.
+# ============================================================================
